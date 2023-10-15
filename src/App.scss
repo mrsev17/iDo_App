@@ -12,7 +12,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
+figure, figcaption, footer, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     margin: 0;
@@ -23,17 +23,13 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, hgroup, menu, nav, section {
     display: block;
 }
 html {
     height: 100%;
 }
-body {
-    line-height: 1;
-    background-color: rgb(22, 62, 118);
-    font-family: "Montserrat", sans-serif;
-}
+
 ol, ul {
     list-style: none;
 }
@@ -51,17 +47,150 @@ table {
 }
 a {
     text-decoration: none;
-    color: #cccccc;
+    // color: #cccccc;
 }
+/* Variables */
+
+$color-text-light: #E6E6FA;
+$color-bg-light: #6a5acd;
+$color-bg-body-light: #ccccff;
+
+/* = = = = = */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+}
+
+body {
+    line-height: 1;
+    background-color: $color-bg-body-light;
+    font-family: "Montserrat", sans-serif;
+}
+
 h1,h2 {
-    color: #cccccc;
+    color: $color-text-light;
+    font-weight: 500;
 }
 .app {
   text-align: center;
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  main {
+    height: 86vh;
+    position: relative;
+    .content-page {
+        margin: 0 auto;
+        max-width: 80%;
+        min-height: 360px;
+        border-radius: 3px;
+        .content-title {
+            padding-top: 20px;
+        }
+    }
   }
 }
+.relative {
+    position: relative;
+}
+
+/* Flip Card */
+
+.flip-container {
+    perspective: 1000px;
+    height: 200px;
+    border-radius: 8px;
+
+}
+
+.flipper {
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: flipIn 1s ease-in-out forwards;
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    border-radius: 8px;
+    background-color: $color-bg-light;
+    transform: rotateY(0deg);
+}
+
+.back {
+    background-color: $color-bg-light;
+    transform: rotateY(180deg);
+    border-radius: 8px;
+}
+
+@keyframes flipIn {
+    from {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+.flip-container:hover .back {
+    opacity: 1;
+}
+
+/* styles move */
+
+.slide-container {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #3498db;
+    animation: slideIn 1s forwards;
+}
+
+.content {
+    color: white;
+    padding: 20px;
+    background-color: $color-bg-light;
+    width: 80%;
+    min-height: 300px;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+@keyframes slideIn {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@media(max-width: 568px) {
+    .app {
+        main {
+            .content-page {
+                max-width: 300px;
+            }
+        }
+    }
+}
+
 

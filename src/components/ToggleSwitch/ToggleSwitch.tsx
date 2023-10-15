@@ -6,10 +6,10 @@ export const ToggleSwitch = () => {
     const handleToggle = () => {
         setIsChecked(!isChecked);
     };
-    console.log(isChecked)
+    console.log(isChecked);
 return ( 
 	<div className="container"> 
-	<span className={isChecked ? "label-text" : "label-text-dark"}>{isChecked ? "Dark Theme" : "Light Theme"}{" "}</span>
+	<span className={isChecked ? "label-text-dark" : "label-text"}>{isChecked ? "Dark" : "Light"}{" "}</span>
 	<div className="toggle-switch"> 
 		<input type="checkbox" className="checkbox"
 			name="toggleTheme" id="toggleTheme" checked={isChecked} onChange={handleToggle} /> 

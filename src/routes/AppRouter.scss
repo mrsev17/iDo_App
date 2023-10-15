@@ -1,27 +1,44 @@
+@import '../App.scss';
+
 .nav-wrapper {
-    margin: 30px 0 30px 0;
+    max-width: 96%;
+    margin: 30px auto 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
     flex-wrap: wrap;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
     .active {
         transition: .5s;
-        background-color: aliceblue;
-        color: black;
+        background-color: $color-bg-light;
+        color: $color-text-light;
     }
     a {
         width: 100%;
         max-width: 120px;
-        color: rgb(206, 214, 214);
-        border: 1px solid rgb(206, 214, 214);
+        color: $color-bg-light;
+        border: 1px solid $color-bg-light;
         border-radius: 3px;
-        padding: 4px;
+        padding: 6px;
         transition: ease-in-out .5s;
         &:hover {
             transition: .5s;
-            background-color: rgb(206, 214, 214);
-            color: black;
+            background-color: $color-bg-light;
+            color: $color-text-light;
+        }
+    }
+}
+
+@media(max-width: 569px) {
+    .nav-wrapper {
+        width: 300px;
+        a {
+            max-width: 100%;
         }
     }
 }

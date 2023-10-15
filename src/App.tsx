@@ -1,17 +1,16 @@
 import {AppRouter} from './routes';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer';
 import './App.scss';
-import { ToggleSwitch } from './components/ToggleSwitch';
 
 function App() {
   return (
     <div className="app">
-      <header>
-        <div className='header__right-side'></div>
-        <div className='header__left-side'>
-          <ToggleSwitch />
-        </div>
-      </header>
-      <AppRouter/>
+      <Header />
+      <main>
+        <AppRouter/>
+      </main>
+      <Footer />
     </div>
   );
 }

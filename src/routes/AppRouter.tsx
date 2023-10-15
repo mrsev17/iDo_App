@@ -6,13 +6,13 @@ import './AppRouter.scss';
 export const AppRouter = () => {
     return (
         <Router>
-            <NavigationQuiz/>
             <Routes>
                 <Route path='/' element={<MainPage />}/>
                 <Route path='/html-quiz' element={<HtmlCard/>} />
                 <Route path='/css-quiz' element={<CssCard/>} />
                 <Route path='/javascript-quiz' element={<JavaScriptCard/>} />
             </Routes>
+            <NavigationQuiz/>
         </Router>
     )
 };

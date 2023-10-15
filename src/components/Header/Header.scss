@@ -1,0 +1,11 @@
+@import '../../App.scss';
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-bg-light;
+    margin-bottom: 30px;
+    .header__right-side {
+        padding-left: 20px;
+    }
+}
