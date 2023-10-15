@@ -1,0 +1,27 @@
+.nav-wrapper {
+    margin: 30px 0 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    .active {
+        transition: .5s;
+        background-color: aliceblue;
+        color: black;
+    }
+    a {
+        width: 100%;
+        max-width: 120px;
+        color: rgb(206, 214, 214);
+        border: 1px solid rgb(206, 214, 214);
+        border-radius: 3px;
+        padding: 4px;
+        transition: ease-in-out .5s;
+        &:hover {
+            transition: .5s;
+            background-color: rgb(206, 214, 214);
+            color: black;
+        }
+    }
+}

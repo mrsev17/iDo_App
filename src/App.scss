@@ -1,3 +1,4 @@
+@import './fonts/stylesheet.scss';
 * {
   box-sizing: box-sizing;
 }
@@ -30,6 +31,8 @@ html {
 }
 body {
     line-height: 1;
+    background-color: rgb(22, 62, 118);
+    font-family: "Montserrat", sans-serif;
 }
 ol, ul {
     list-style: none;
@@ -46,7 +49,19 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-/* .app {
+a {
+    text-decoration: none;
+    color: #cccccc;
+}
+h1,h2 {
+    color: #cccccc;
+}
+.app {
   text-align: center;
-} */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
 
