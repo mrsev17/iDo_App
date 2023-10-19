@@ -1,12 +1,15 @@
 import React, { useState } from "react"; 
+import { useDispatch } from "react-redux";
+import { switchMode } from '../../redux/mode/actionCreators';
 import "./ToggleSwitch.scss";
 
 export const ToggleSwitch = () => { 
     const [isChecked, setIsChecked] = useState<boolean>(false);
+	const dispatch = useDispatch();
     const handleToggle = () => {
+		dispatch(switchMode(isChecked))
         setIsChecked(!isChecked);
     };
-    console.log(isChecked);
 return ( 
 	<div className="container"> 
 	<span className={isChecked ? "label-text-dark" : "label-text"}>{isChecked ? "Dark" : "Light"}{" "}</span>

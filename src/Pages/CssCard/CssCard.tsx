@@ -1,11 +1,15 @@
+import { useSelector } from "react-redux";
+import { stateToogle } from "../../interfaces";
+
 export const CssCard = () => {
+    const mode = useSelector((state:stateToogle) => state.mode.toggle);
     return (
         <div className="content-page flip-container">
             <div className="flipper">
-                <div className="front">
-                    <h2 className="content-title">This page for CSS quiz</h2>
+                <div className={mode ? "front-dark" : "front"}>
+                    <h2 className="content-title">This page for OPERATIONS</h2>
                 </div>
-                <div className="back">
+                <div className={mode ? "back-dark" : "back"}>
                     
                 </div>
             </div>

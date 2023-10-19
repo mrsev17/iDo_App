@@ -1,4 +1,6 @@
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
+import {store} from './redux/store';
 import App from './App';
 
 const root = ReactDOM.createRoot(
@@ -6,6 +8,8 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <App />
+  <Provider store={store}>
+        <App />
+  </Provider>
 );
 

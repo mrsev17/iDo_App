@@ -1,12 +1,15 @@
+import { useSelector } from "react-redux"
+import { stateToogle } from "../../interfaces"
 
 export const MainPage = () => {
+    const mode = useSelector((state:stateToogle) => state.mode.toggle);
     return (
         <div className="content-page flip-container">
             <div className="flipper">
-                <div className="front">
-                    <h2 className="content-title">This is main page with instruction</h2>
+                <div className={mode ? "front-dark" : "front"}>
+                    <h2 className="content-title">This page for ToDo List</h2>
                 </div>
-                <div className="back">
+                <div className={mode ? "back-dark" : "back"}>
                     
                 </div>
             </div>
