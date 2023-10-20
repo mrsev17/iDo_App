@@ -138,30 +138,30 @@ h1,h2 {
 .front-dark {
     border-radius: 8px;
     background-color: $color-bg-dark;
-    transform: rotateY(0deg);
+    transform: rotateX(0deg);
 }
 .front {
     border-radius: 8px;
     background-color: $color-bg-light;
-    transform: rotateY(0deg);
+    transform: rotateX(0deg);
 }
 .back-dark {
     background-color: $color-bg-dark;
-    transform: rotateY(180deg);
+    transform: rotateX(180deg);
     border-radius: 8px;
 }
 .back {
     background-color: $color-bg-light;
-    transform: rotateY(180deg);
+    transform: rotateX(180deg);
     border-radius: 8px;
 }
 
 @keyframes flipIn {
     from {
-        transform: rotateY(180deg);
+        transform: rotateX(180deg);
     }
     to {
-        transform: rotateY(0deg);
+        transform: rotateX(0deg);
     }
 }
 
