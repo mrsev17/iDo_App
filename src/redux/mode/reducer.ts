@@ -1,5 +1,3 @@
-
-
 import * as actionTypes from './actionTypes';
 
 interface actionInterface {
@@ -9,7 +7,7 @@ interface initialValue {
     toggle: boolean
 }
 
-const initialState:initialValue = {toggle:false};
+const initialState:initialValue = {toggle:true};
 
 const modeReducer = (state = initialState, action:actionInterface) => {
     switch(action.type) {

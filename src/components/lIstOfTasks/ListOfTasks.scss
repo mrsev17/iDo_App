@@ -1,0 +1,44 @@
+@import '../../App.scss';
+
+.list-active {
+    ul {
+        max-width: 98%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        max-width: 90%;
+        margin: 0 auto;
+        li {
+            border-radius: 8px;
+            border: 1px solid transparent;
+            width: 100%;
+            max-width: 96%;
+            color: $color-text-light;
+            background-color: $color-bg-body-dark;
+            padding: 12px;
+        }
+    }
+}
+.list-active-dark {
+    ul {
+        max-width: 98%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        max-width: 90%;
+        margin: 0 auto;
+        li {
+            border-radius: 8px;
+            width: 100%;
+            max-width: 96%;
+            color: $color-text-light;
+            border: 1px solid $color-bg-body-light;
+            background-color: transparent;
+            padding: 12px;
+        }
+    }
+}

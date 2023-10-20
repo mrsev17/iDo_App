@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { NavigationQuiz } from "./NavigationQuiz";
 import {MainPage, HtmlCard, CssCard, JavaScriptCard} from '../Pages';
 import './AppRouter.scss';
-/* Hiden comment*/
+
 export const AppRouter = () => {
     return (
         <Router>

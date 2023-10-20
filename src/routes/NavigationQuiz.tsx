@@ -8,10 +8,10 @@ export const NavigationQuiz = () => {
     const location = useLocation();
     return (
         <nav className={mode ? "nav-wrapper-dark" : "nav-wrapper"}>
-            <Link className={location.pathname === "/javascript-quiz" ? "active" : ""} to='/javascript-quiz'>Statistic</Link>
+            <Link className={location.pathname === "/" ? "active" : ""} to='/'>Create New Task</Link>
+            <Link className={location.pathname === "/javascript-quiz" ? "active" : ""} to='/javascript-quiz'>Active Tasks</Link>
             <Link className={location.pathname === "/html-quiz" ? "active" : ""} to='/html-quiz'>Performers</Link>
             <Link className={location.pathname === "/css-quiz" ? "active" : ""} to='/css-quiz'>Operations</Link>
-            <Link className={location.pathname === "/" ? "active" : ""} to='/'>ToDo List</Link>
         </nav>
     )
 }

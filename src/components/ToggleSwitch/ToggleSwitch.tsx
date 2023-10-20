@@ -4,7 +4,7 @@ import { switchMode } from '../../redux/mode/actionCreators';
 import "./ToggleSwitch.scss";
 
 export const ToggleSwitch = () => { 
-    const [isChecked, setIsChecked] = useState<boolean>(false);
+    const [isChecked, setIsChecked] = useState<boolean>(true);
 	const dispatch = useDispatch();
     const handleToggle = () => {
 		dispatch(switchMode(isChecked))
