@@ -1,44 +1,69 @@
 @import '../../App.scss';
 
 .list-active {
+    width: 50%;
+    padding: 0 15px;
+    height: 100%;
+    max-height: 440px;
+    overflow: auto;
     ul {
-        max-width: 98%;
+        max-width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 12px;
-        max-width: 90%;
+        gap: 20px;
+        max-width: 100%;
         margin: 0 auto;
         li {
             border-radius: 8px;
-            border: 1px solid transparent;
+            border: 1px solid $color-bg-body-dark;
             width: 100%;
-            max-width: 96%;
+            max-width: 100%;
             color: $color-text-light;
             background-color: $color-bg-body-dark;
             padding: 12px;
+            height: 40px;
         }
     }
 }
 .list-active-dark {
+    width: 50%;
+    padding: 0 15px;
+    height: 100%;
+    max-height: 440px;
+    overflow: auto;
     ul {
-        max-width: 98%;
+        max-width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 12px;
-        max-width: 90%;
+        gap: 20px;
+        max-width: 100%;
         margin: 0 auto;
         li {
             border-radius: 8px;
-            width: 100%;
-            max-width: 96%;
-            color: $color-text-light;
             border: 1px solid $color-bg-body-light;
+            width: 100%;
+            max-width: 100%;
+            color: $color-text-light;
             background-color: transparent;
             padding: 12px;
+            height: 40px;
         }
+    }
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media(max-width: 992px) {
+    .list-active,
+    .list-active-dark {
+        width: 100%;
     }
 }

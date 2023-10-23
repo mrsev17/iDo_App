@@ -1,5 +1,8 @@
 @import './fonts/stylesheet.scss';
 * {
+    box-sizing: border-box;
+}
+* {
   box-sizing: box-sizing;
 }
 html, body, div, span, applet, object, iframe,
@@ -75,8 +78,9 @@ $color-bg-body-dark: #181818;
 
 body {
     line-height: 1;
-    background-color: $color-bg-body-light;
+    // background-color: $color-bg-body-light;
     font-family: "Montserrat", sans-serif;
+    background: radial-gradient(circle at 10% 20%, rgb(186, 190, 245) 0%, rgb(192, 192, 245) 33.1%, rgb(218, 203, 246) 90%);
 }
 
 h1,h2 {
@@ -98,7 +102,7 @@ h1,h2 {
     .content-page {
         margin: 0 auto;
         max-width: 80%;
-        min-height: 360px;
+        min-height: 560px;
         border-radius: 3px;
         .content-title {
             padding-top: 20px;
@@ -138,6 +142,9 @@ h1,h2 {
     border-radius: 8px;
     background-color: $color-bg-dark;
     transform: rotateX(0deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .front {
     border-radius: 8px;
@@ -172,6 +179,7 @@ h1,h2 {
     .app {
         main {
             .content-page {
+                min-height: 440px;
                 max-width: 94%;
             }
         }

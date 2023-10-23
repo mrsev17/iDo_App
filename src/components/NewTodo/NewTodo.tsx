@@ -15,10 +15,12 @@ const NewTodo = () => {
         setNewTask('');
     }
     return (
-        <form onSubmit={newTaskSubmit}>
-            <input type="text" value={newTask} onChange={changeNewTaskInput}  placeholder="Write new Task"  />
-            <button>Create Task</button>
-        </form>
+        <>
+            <form className="form-new-task" onSubmit={newTaskSubmit}>
+                <input type="text" value={newTask} onChange={changeNewTaskInput}  placeholder="Write new Task"  />
+                <button>Create Task</button>
+            </form>
+        </>
     )
 }
 
