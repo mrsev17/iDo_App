@@ -1,14 +1,15 @@
-import React, { useState } from "react"; 
-import { useDispatch } from "react-redux";
+import React from "react"; 
+import { useDispatch, useSelector } from "react-redux";
 import { switchMode } from '../../redux/mode/actionCreators';
+import { RootState } from "../../redux/store";
 import "./ToggleSwitch.scss";
 
-export const ToggleSwitch = () => { 
-    const [isChecked, setIsChecked] = useState<boolean>(true);
-	const dispatch = useDispatch();
+
+export const ToggleSwitch: React.FC = () => { 
+	const isChecked = useSelector((state: RootState) => state.mode.toggle);
+    const dispatch = useDispatch();
     const handleToggle = () => {
-		dispatch(switchMode(isChecked))
-        setIsChecked(!isChecked);
+        dispatch(switchMode(!isChecked));
     };
 return ( 
 	<div className="container"> 

@@ -11,8 +11,10 @@ const NewTodo = () => {
     }
     const newTaskSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(newTaskTodo(newTask));
-        setNewTask('');
+        if(newTask) {
+            dispatch(newTaskTodo(newTask));
+            setNewTask('');
+        }
     }
     return (
         <>

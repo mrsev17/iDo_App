@@ -7,7 +7,7 @@ interface initialValue {
     toggle: boolean
 }
 
-const initialState:initialValue = {toggle:true};
+const initialState:initialValue = {toggle:false};
 
 const modeReducer = (state = initialState, action:actionInterface) => {
     switch(action.type) {
