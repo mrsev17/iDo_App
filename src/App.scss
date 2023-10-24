@@ -175,6 +175,17 @@ h1,h2 {
     opacity: 1;
 }
 
+@media(max-width: 992px) {
+    .app {
+        main {
+            .content-page {
+                min-height: 470px;
+                max-width: 94%;
+            }
+        }
+    }
+}
+
 @media(max-width: 568px) {
     .app {
         main {
