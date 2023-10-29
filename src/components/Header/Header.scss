@@ -1,15 +1,21 @@
 @import '../../App.scss';
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-bg-light;
+  margin-bottom: 30px;
+  .header__right-side {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: $color-bg-light;
-    margin-bottom: 30px;
-    .header__right-side {
-        padding-left: 20px;
+    gap: 10px;
+    padding-left: 20px;
+    svg {
+      fill: aliceblue;
     }
+  }
 }
 
 .dark-header {
-    background-color: $color-bg-dark;
+  background-color: $color-bg-dark;
 }

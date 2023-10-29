@@ -3,6 +3,13 @@ import { stateToogle } from '../../interfaces';
 import ToDo from '../ToDo/ToDo';
 import './ListOfTasks.scss';
 
+interface itemInterface {
+  text: string;
+  id: string;
+  completed: boolean;
+  responsiblePerson: string;
+}
+
 const ListOfTasks: React.FC = () => {
   const tasks = useSelector((state: any) => state.tasks);
   const mode: boolean = useSelector((state: stateToogle) => state.mode.toggle);
@@ -11,7 +18,7 @@ const ListOfTasks: React.FC = () => {
     <div className={mode ? 'list-active' : 'list-active-dark'}>
       <ul>
         {tasks.length !== 0 ? (
-          tasks.map((item: any | undefined) => {
+          tasks.map((item: itemInterface) => {
             return (
               <ToDo
                 key={item.id}

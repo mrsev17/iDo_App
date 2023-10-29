@@ -6,9 +6,11 @@ interface ToDoProps {
   id: string;
   text: string;
   completed: boolean;
+  responsiblePerson?: string;
 }
 
 const ToDo: React.FC<ToDoProps> = ({ id, text, completed }) => {
+  // const tasks = useSelector((state: any) => state.tasks);
   const dispatch = useDispatch();
   const handleRemove = (id: string) => {
     dispatch(removeTodo(id));

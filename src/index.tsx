@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import ReactDOM from 'react-dom/client';
-import store, {persistor} from './redux/store';
+import store, { persistor } from './redux/store';
 import App from './App';
 
 const root = ReactDOM.createRoot(
@@ -15,4 +15,3 @@ root.render(
     </PersistGate>
   </Provider>
 );
-
