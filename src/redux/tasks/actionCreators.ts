@@ -27,3 +27,10 @@ export const clearAllTodos = () => {
     payload: '',
   };
 };
+
+export const clearCompleted = () => {
+  return {
+    type: actionTypes.CLEAR_COMPLETED,
+    payload: '',
+  };
+};

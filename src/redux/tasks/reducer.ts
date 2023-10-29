@@ -33,6 +33,11 @@ const todoReducer = (state = initialState, action: any) => {
       return completeTasks;
     case actionTypes.CLEAR_ALL_TASKS:
       return [];
+    case actionTypes.CLEAR_COMPLETED:
+      const clearCompletedData = state.filter(
+        (task) => task.completed === false
+      );
+      return clearCompletedData;
     default:
       return state;
   }

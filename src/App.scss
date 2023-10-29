@@ -212,8 +212,8 @@ h2 {
   border-radius: 8px;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
-  animation: flipIn 1s ease-in-out forwards;
+  // transform-style: preserve-3d;
+  // animation: flipIn 1s ease-in-out forwards;
 }
 .front-dark,
 .back-dark,
@@ -222,8 +222,10 @@ h2 {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 100%;
   height: 100%;
-  position: absolute;
-  backface-visibility: hidden;
+  // position: absolute;
+  // backface-visibility: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .front-dark {
   border-radius: 8px;
@@ -239,11 +241,13 @@ h2 {
   transform: rotateX(0deg);
 }
 .back-dark {
+  display: none;
   background-color: $color-bg-dark;
   transform: rotateX(180deg);
   border-radius: 8px;
 }
 .back {
+  display: none;
   background-color: $color-bg-light;
   transform: rotateX(180deg);
   border-radius: 8px;

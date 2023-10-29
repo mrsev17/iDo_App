@@ -15,7 +15,6 @@ const ToDo: React.FC<ToDoProps> = ({ id, text, completed }) => {
   };
   const handleCheckBox = (id: string) => {
     dispatch(completeTodo(id));
-    console.log(completed);
   };
   return (
     <li className='todo-item' key={id}>

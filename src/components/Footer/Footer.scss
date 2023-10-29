@@ -7,13 +7,35 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .footer__right-side {
+    .footer__left-side {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 52px;
       .local-storage-clear-btn {
+        box-sizing: content-box;
+        background-color: $color-bg-body-light;
+        color: black;
+        font-size: 20px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        transition: ease-in-out 0.5s;
+        &:hover {
+          transition: 0.5s;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          background-color: rgb(182, 44, 44);
+          color: aliceblue;
+        }
+      }
+    }
+    .footer__right-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 52px;
+      .completed-clear-btn {
         box-sizing: content-box;
         background-color: $color-bg-body-light;
         color: black;
