@@ -1,0 +1,17 @@
+.todo-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .todo-complete {
+    input {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+.completed-task {
+  text-decoration: line-through;
+  text-decoration-color: rgb(47, 59, 187);
+  text-decoration-thickness: 3px;
+}

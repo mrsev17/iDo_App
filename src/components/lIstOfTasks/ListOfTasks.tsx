@@ -1,26 +1,29 @@
-import { useSelector, useDispatch } from 'react-redux';
-import './ListOfTasks.scss';
+import { useSelector } from 'react-redux';
 import { stateToogle } from '../../interfaces';
-import { removeTodo } from '../../redux/tasks/actionCreators';
+import ToDo from '../ToDo/ToDo';
+import './ListOfTasks.scss';
 
 const ListOfTasks: React.FC = () => {
-  const dispatch = useDispatch();
   const tasks = useSelector((state: any) => state.tasks);
   const mode: boolean = useSelector((state: stateToogle) => state.mode.toggle);
-  const handleRemove = (id: string) => {
-    dispatch(removeTodo(id));
-  };
+
   return (
     <div className={mode ? 'list-active' : 'list-active-dark'}>
       <ul>
-        {tasks.map((item: any | undefined) => {
-          return (
-            <li className='todo-item' key={item.id}>
-              <p>{item.text}</p>{' '}
-              <button onClick={() => handleRemove(item.id)}>X</button>
-            </li>
-          );
-        })}
+        {tasks.length !== 0 ? (
+          tasks.map((item: any | undefined) => {
+            return (
+              <ToDo
+                key={item.id}
+                id={item.id}
+                text={item.text}
+                completed={item.completed}
+              />
+            );
+          })
+        ) : (
+          <h2>List is empty</h2>
+        )}
       </ul>
     </div>
   );

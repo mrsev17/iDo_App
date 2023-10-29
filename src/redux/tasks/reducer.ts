@@ -21,8 +21,18 @@ const todoReducer = (state = initialState, action: any) => {
       };
       return [...state, newTask];
     case actionTypes.REMOVE_TASK:
-      const updateTasks = state.filter((tasks) => tasks.id !== action.payload);
+      const updateTasks = state.filter((task) => task.id !== action.payload);
       return updateTasks;
+    case actionTypes.COMPLETE_TASK:
+      const completeTasks = state.map((task) => {
+        if (task.id === action.payload) {
+          return { ...task, completed: !task.completed };
+        }
+        return task;
+      });
+      return completeTasks;
+    case actionTypes.CLEAR_ALL_TASKS:
+      return [];
     default:
       return state;
   }
