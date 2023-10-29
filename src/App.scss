@@ -1,59 +1,138 @@
 @import './fonts/stylesheet.scss';
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 * {
   box-sizing: box-sizing;
 }
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-article, aside, details, figcaption, figure,
-footer, hgroup, menu, nav, section {
-    display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 html {
-    height: 100%;
+  height: 100%;
 }
 
-ol, ul {
-    list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-    quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 /* Variables */
 
-$color-text-light: #E6E6FA;
+$color-text-light: #e6e6fa;
 $color-bg-light: #6a5acd;
 $color-bg-body-light: #e6e8fa;
 
@@ -64,31 +143,37 @@ $color-bg-body-dark: #181818;
 
 /* = = = = = */
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease-in forwards;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
 }
 
 body {
-    line-height: 1;
-    // background-color: $color-bg-body-light;
-    font-family: "Montserrat", sans-serif;
-    background: radial-gradient(circle at 10% 20%, rgb(186, 190, 245) 0%, rgb(192, 192, 245) 33.1%, rgb(218, 203, 246) 90%);
+  line-height: 1;
+  // background-color: $color-bg-body-light;
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(186, 190, 245) 0%,
+    rgb(192, 192, 245) 33.1%,
+    rgb(218, 203, 246) 90%
+  );
 }
 
-h1,h2 {
-    color: $color-text-light;
-    font-weight: 500;
+h1,
+h2 {
+  color: $color-text-light;
+  font-weight: 500;
 }
 .app-dark-body {
-    background-color: $color-bg-body-dark;
+  background-color: $color-bg-body-dark;
 }
 .app {
   text-align: center;
@@ -100,101 +185,101 @@ h1,h2 {
     height: 86vh;
     position: relative;
     .content-page {
-        margin: 0 auto;
-        max-width: 80%;
-        min-height: 560px;
-        border-radius: 3px;
-        .content-title {
-            padding-top: 20px;
-            margin-bottom: 20px;
-        }
+      margin: 0 auto;
+      max-width: 80%;
+      min-height: 560px;
+      border-radius: 3px;
+      .content-title {
+        padding-top: 20px;
+        margin-bottom: 20px;
+      }
     }
   }
 }
 .relative {
-    position: relative;
+  position: relative;
 }
 
 /* Flip Card */
 
 .flip-container {
-    perspective: 1000px;
-    height: 200px;
-    border-radius: 8px;
+  perspective: 1000px;
+  height: 200px;
+  border-radius: 8px;
 }
 
 .flipper {
-    border-radius: 8px;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    animation: flipIn 1s ease-in-out forwards;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  //   animation: flipIn 1s ease-in-out forwards;
 }
-.front-dark, .back-dark,
-.front, .back {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
+.front-dark,
+.back-dark,
+.front,
+.back {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 100%;
+  height: 100%;
+  // position: absolute;
+  backface-visibility: hidden;
 }
 .front-dark {
-    border-radius: 8px;
-    background-color: $color-bg-dark;
-    transform: rotateX(0deg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  border-radius: 8px;
+  background-color: $color-bg-dark;
+  transform: rotateX(0deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .front {
-    border-radius: 8px;
-    background-color: $color-bg-light;
-    transform: rotateX(0deg);
+  border-radius: 8px;
+  background-color: $color-bg-light;
+  transform: rotateX(0deg);
 }
 .back-dark {
-    background-color: $color-bg-dark;
-    transform: rotateX(180deg);
-    border-radius: 8px;
+  background-color: $color-bg-dark;
+  transform: rotateX(180deg);
+  border-radius: 8px;
 }
 .back {
-    background-color: $color-bg-light;
-    transform: rotateX(180deg);
-    border-radius: 8px;
+  background-color: $color-bg-light;
+  transform: rotateX(180deg);
+  border-radius: 8px;
 }
 
 @keyframes flipIn {
-    from {
-        transform: rotateX(180deg);
-    }
-    to {
-        transform: rotateX(0deg);
-    }
+  from {
+    transform: rotateX(180deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
 }
 
 .flip-container:hover .back {
-    opacity: 1;
+  opacity: 1;
 }
 
-@media(max-width: 992px) {
-    .app {
-        main {
-            .content-page {
-                min-height: 470px;
-                max-width: 94%;
-            }
-        }
+@media (max-width: 992px) {
+  .app {
+    main {
+      .content-page {
+        min-height: 470px;
+        max-width: 94%;
+      }
     }
+  }
 }
 
-@media(max-width: 568px) {
-    .app {
-        main {
-            .content-page {
-                min-height: 440px;
-                max-width: 94%;
-            }
-        }
+@media (max-width: 568px) {
+  .app {
+    main {
+      .content-page {
+        min-height: 440px;
+        max-width: 94%;
+      }
     }
+  }
 }
-
-

@@ -22,9 +22,12 @@ const ToDo: React.FC<ToDoProps> = ({ id, text, completed }) => {
       <div className='todo-text'>
         <p className={completed ? 'completed-task' : ''}>{text}</p>
       </div>
-      {!completed ? 'In progress' : 'Completed'}
+
       <div className='todo-actions'>
         <div className='todo-complete'>
+          <div className='todo-status'>
+            {!completed ? <p>In progress</p> : <p>Completed</p>}
+          </div>
           <input
             type='checkbox'
             checked={completed}
