@@ -269,6 +269,11 @@ h2 {
 @media (max-width: 992px) {
   .app {
     main {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
       .content-page {
         min-height: 470px;
         max-width: 94%;
@@ -280,9 +285,17 @@ h2 {
 @media (max-width: 568px) {
   .app {
     main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
       .content-page {
-        min-height: 440px;
-        max-width: 94%;
+        min-height: 460px;
+        max-width: 98%;
+        .list-active {
+          max-height: 240px;
+        }
       }
     }
   }

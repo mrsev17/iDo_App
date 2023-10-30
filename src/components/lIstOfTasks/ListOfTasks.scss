@@ -75,11 +75,12 @@
 @media (max-width: 567px) {
   .list-active,
   .list-active-dark {
+    padding: 0 10px;
     max-height: 210px;
     ul {
       gap: 10px;
       li {
-        height: 30px;
+        height: 36px;
       }
     }
   }

@@ -68,7 +68,11 @@ const ToDo: React.FC<ToDoProps> = ({ id, text, completed }) => {
       <div className='todo-actions'>
         <div className='todo-complete'>
           <div className='todo-status'>
-            {!completed ? <p>In progress</p> : <p>Completed</p>}
+            {!completed ? (
+              <p>In progress</p>
+            ) : (
+              <p className='todo-status-task-complete'>Completed</p>
+            )}
           </div>
           <input
             type='checkbox'

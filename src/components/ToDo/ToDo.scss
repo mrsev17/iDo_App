@@ -41,6 +41,28 @@
 
 .completed-task {
   text-decoration: line-through;
-  text-decoration-color: $color-bg-dark;
+  text-decoration-color: rgb(61, 93, 219);
   text-decoration-thickness: 3px;
+}
+.todo-status-task-complete {
+  color: rgb(61, 93, 219);
+}
+
+@media (max-width: 567px) {
+  .todo-item {
+    .todo-text {
+      p {
+        font-size: 14px;
+      }
+    }
+    .todo-actions {
+      .todo-complete {
+        .todo-status {
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
 }

@@ -12,6 +12,7 @@ const initialState: Todo[] | undefined = [];
 
 const todoReducer = (state = initialState, action: any) => {
   switch (action.type) {
+    //
     case actionTypes.NEW_TASK:
       const newTask = {
         id: uuidv4(),
@@ -20,9 +21,11 @@ const todoReducer = (state = initialState, action: any) => {
         responsiblePerson: 'Nobody',
       };
       return [...state, newTask];
+    //
     case actionTypes.REMOVE_TASK:
       const updateTasks = state.filter((task) => task.id !== action.payload);
       return updateTasks;
+    //
     case actionTypes.COMPLETE_TASK:
       const completeTasks = state.map((task) => {
         if (task.id === action.payload) {
@@ -31,13 +34,16 @@ const todoReducer = (state = initialState, action: any) => {
         return task;
       });
       return completeTasks;
+    //
     case actionTypes.CLEAR_ALL_TASKS:
       return [];
+    //
     case actionTypes.CLEAR_COMPLETED:
       const clearCompletedData = state.filter(
         (task) => task.completed === false
       );
       return clearCompletedData;
+    //
     case actionTypes.EDIT_TASK:
       return state.map((task) => {
         if (task.id === action.payload.id) {
@@ -45,6 +51,7 @@ const todoReducer = (state = initialState, action: any) => {
         }
         return task;
       });
+    //
     default:
       return state;
   }
