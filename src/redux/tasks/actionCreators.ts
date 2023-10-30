@@ -34,3 +34,10 @@ export const clearCompleted = () => {
     payload: '',
   };
 };
+
+export const editTask = (id: string, newText: string) => {
+  return {
+    type: actionTypes.EDIT_TASK,
+    payload: { id, newText },
+  };
+};

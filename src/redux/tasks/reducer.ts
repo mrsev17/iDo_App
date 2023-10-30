@@ -38,6 +38,13 @@ const todoReducer = (state = initialState, action: any) => {
         (task) => task.completed === false
       );
       return clearCompletedData;
+    case actionTypes.EDIT_TASK:
+      return state.map((task) => {
+        if (task.id === action.payload.id) {
+          return { ...task, text: action.payload.newText };
+        }
+        return task;
+      });
     default:
       return state;
   }

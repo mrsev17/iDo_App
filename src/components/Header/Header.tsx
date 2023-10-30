@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { ToggleSwitch } from '../ToggleSwitch';
 import { stateToogle } from '../../interfaces';
-import IconCat from '../IconCat/IconCat';
+import { IconCat } from '../IconCat/IconCat';
 import './Header.scss';
 
 export const Header = () => {
