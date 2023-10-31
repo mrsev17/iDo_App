@@ -11,7 +11,7 @@ interface itemInterface {
 }
 
 const ListOfTasks: React.FC = () => {
-  const tasks = useSelector((state: any) => state.tasks);
+  const tasks = useSelector((state: any) => state.tasks.todos);
   const mode: boolean = useSelector((state: stateToogle) => state.mode.toggle);
 
   return (

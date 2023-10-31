@@ -275,6 +275,7 @@ h2 {
       gap: 10px;
       margin-bottom: 20px;
       .content-page {
+        width: 100%;
         min-height: 470px;
         max-width: 94%;
       }
@@ -293,6 +294,7 @@ h2 {
       .content-page {
         min-height: 460px;
         max-width: 98%;
+        width: 100%;
         .list-active {
           max-height: 240px;
         }

@@ -1,0 +1,24 @@
+@import '../../App.scss';
+
+.todo-app__list-actions {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  //   align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  li {
+    line-height: 24px;
+    color: aliceblue;
+    text-align: left;
+    font-size: 14px;
+    p {
+      margin-bottom: 12px;
+    }
+    .todo-app__user-actions-line {
+      height: 2px;
+      width: 100%;
+      background-color: $color-bg-light;
+    }
+  }
+}
