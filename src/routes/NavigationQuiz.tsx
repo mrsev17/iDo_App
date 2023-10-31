@@ -12,7 +12,7 @@ export const NavigationQuiz = () => {
         <Link className={location.pathname === '/' ? 'active' : ''} to='/'>
           Create New Task
         </Link>
-        <Link
+        {/* <Link
           className={location.pathname === '/javascript-quiz' ? 'active' : ''}
           to='/javascript-quiz'
         >
@@ -23,7 +23,7 @@ export const NavigationQuiz = () => {
           to='/html-quiz'
         >
           Performers
-        </Link>
+        </Link> */}
         <Link
           className={location.pathname === '/css-quiz' ? 'active' : ''}
           to='/css-quiz'

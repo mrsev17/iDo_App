@@ -2,9 +2,14 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  .content-title {
-    span {
-      color: green;
+  .content-title-wrapper {
+    width: 94%;
+    margin: 0 auto;
+    .content-title {
+      width: 100%;
+      span {
+        color: green;
+      }
     }
   }
 }

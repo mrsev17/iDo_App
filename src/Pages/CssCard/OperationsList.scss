@@ -1,5 +1,16 @@
 @import '../../App.scss';
-
+.content-title {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+.front {
+  .completed-task {
+    text-decoration-color: $color-bg-light;
+  }
+  .todo-status-task-complete {
+    color: $color-bg-body-light;
+  }
+}
 .todo-app__list-actions {
   padding: 0 10px;
   display: flex;

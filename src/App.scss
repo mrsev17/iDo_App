@@ -189,9 +189,18 @@ h2 {
       max-width: 80%;
       min-height: 560px;
       border-radius: 3px;
-      .content-title {
-        padding-top: 20px;
-        margin-bottom: 20px;
+      .content-title-wrapper {
+        width: 96%;
+        margin: 0 auto;
+        height: 60px;
+        .content-title {
+          width: 100%;
+          padding-top: 20px;
+          margin-bottom: 20px;
+          p {
+            color: rgb(51, 88, 234);
+          }
+        }
       }
     }
   }
@@ -278,6 +287,10 @@ h2 {
         width: 100%;
         min-height: 470px;
         max-width: 94%;
+        .content-title-wrapper {
+          margin: 0 auto;
+          width: 94%;
+        }
       }
     }
   }
@@ -295,8 +308,12 @@ h2 {
         min-height: 460px;
         max-width: 98%;
         width: 100%;
-        .list-active {
-          max-height: 240px;
+        .content-title-wrapper {
+          width: 94%;
+          margin: 0 auto;
+          .list-active {
+            max-height: 240px;
+          }
         }
       }
     }
