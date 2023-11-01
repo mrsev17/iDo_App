@@ -6,23 +6,19 @@ import {
   editTask,
 } from '../../redux/tasks/actionCreators';
 import editIcon from '../../assets/edit-icon.png';
-//
+import removeIcon from '../../assets/icon-delete.svg';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-//
+import { TodoInterface } from '../../interfaces';
+import Checkbox from '@mui/material/Checkbox';
 import './ToDo.scss';
 import '../../App.scss';
 
-interface ToDoProps {
-  id: string;
-  text: string;
-  completed: boolean;
-  responsiblePerson?: string;
-}
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -30,25 +26,23 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
-  // bgcolor: '$color-bg-dark',
+  bgcolor: '#e7eaf6',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
   borderRadius: '8px',
 };
 
-const ToDo: React.FC<ToDoProps> = ({ id, text, completed }) => {
+const ToDo: React.FC<TodoInterface> = ({ id, text, completed }) => {
   const [editText, setEditText] = useState<string>(text);
+  const [open, setOpen] = useState<boolean>(false);
+  const dispatch = useDispatch();
   const changeEditInput = (e: ChangeEvent<HTMLInputElement>) => {
     setEditText(e.target.value);
   };
-  //
-  const [open, setOpen] = useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  //
-  const dispatch = useDispatch();
+
   const handleRemove = (id: string) => {
     dispatch(removeTodo(id));
   };
@@ -74,10 +68,20 @@ const ToDo: React.FC<ToDoProps> = ({ id, text, completed }) => {
               <p className='todo-status-task-complete'>Completed</p>
             )}
           </div>
-          <input
-            type='checkbox'
+          <Checkbox
             checked={completed}
             onChange={() => handleCheckBox(id)}
+            color='secondary'
+            {...label}
+            sx={{
+              transform: 'scale(1.25)',
+              marginTop: '1px',
+              padding: 0,
+              color: 'azure',
+              '&.Mui-checked': {
+                color: '#9896f1',
+              },
+            }}
           />
         </div>
         <div className='todo-edit'>
@@ -96,7 +100,7 @@ const ToDo: React.FC<ToDoProps> = ({ id, text, completed }) => {
                 variant='h6'
                 component='h2'
                 align='center'
-                sx={{ mb: 2.5, color: 'text.disabled' }}
+                sx={{ mb: 2.5, color: '#38598b' }}
               >
                 Edit Todo
               </Typography>
@@ -104,9 +108,8 @@ const ToDo: React.FC<ToDoProps> = ({ id, text, completed }) => {
                 id='outlined-basic'
                 label='Edit Text'
                 variant='outlined'
-                sx={{ width: '100%' }}
+                sx={{ width: '100%', color: 'azure' }}
                 defaultValue={text}
-                // value={text}
                 onChange={changeEditInput}
               />
               <Button
@@ -120,7 +123,13 @@ const ToDo: React.FC<ToDoProps> = ({ id, text, completed }) => {
           </Modal>
         </div>
         <div className='todo-remove'>
-          <button onClick={() => handleRemove(id)}>X</button>
+          <button onClick={() => handleRemove(id)}>
+            <img
+              className='todo__remove-icon'
+              src={removeIcon}
+              alt='Remove Icon'
+            />
+          </button>
         </div>
       </div>
     </li>

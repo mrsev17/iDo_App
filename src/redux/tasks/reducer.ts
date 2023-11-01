@@ -15,15 +15,12 @@ interface InitState {
 }
 
 const initialState: InitState = {
-  actions: [], // Start with an empty array
+  actions: [],
   todos: [],
 };
 
-// const initialState: initState[] | undefined = [];
-
 const todoReducer = (state: InitState = initialState, action: any) => {
   switch (action.type) {
-    //
     case actionTypes.NEW_TASK:
       const timeNewTask: string = getFormattedDateAndTime();
       const updatedActions = [
@@ -42,7 +39,6 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         actions: updatedActions,
         todos: newToDoState,
       };
-    //
     case actionTypes.REMOVE_TASK:
       const findNameForRemove = state.todos.filter(
         (task) => task.id === action.payload
@@ -61,7 +57,6 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         actions: updatedRemove,
         todos: updateTasks,
       };
-    //
     case actionTypes.COMPLETE_TASK:
       const getCompleteStatus = state.todos.filter(
         (task) => task.id === action.payload
@@ -86,13 +81,11 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         actions: updatedStatus,
         todos: completeTasks,
       };
-    //
     case actionTypes.CLEAR_ALL_TASKS:
       return {
         actions: [],
         todos: [],
       };
-    //
     case actionTypes.CLEAR_COMPLETED:
       const clearCompletedData = state.todos.filter(
         (task) => task.completed === false
@@ -106,7 +99,6 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         actions: updatedClearTasks,
         todos: clearCompletedData,
       };
-    //
     case actionTypes.EDIT_TASK:
       const findEditedTask = state.todos.filter(
         (task) => task.id === action.payload.id
@@ -126,7 +118,6 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         actions: updateEditTaskAction,
         todos: updateEditTask,
       };
-    //
     default:
       return state;
   }

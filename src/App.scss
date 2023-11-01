@@ -131,7 +131,7 @@ a {
   text-decoration: none;
 }
 /* Variables */
-
+$color-ui-accent: #9896f1;
 $color-text-light: #e6e6fa;
 $color-bg-light: #6a5acd;
 $color-bg-body-light: #e6e8fa;
@@ -198,7 +198,7 @@ h2 {
           padding-top: 20px;
           margin-bottom: 20px;
           p {
-            color: rgb(51, 88, 234);
+            color: #9896f1;
           }
         }
       }
@@ -305,7 +305,7 @@ h2 {
       gap: 10px;
       margin-bottom: 20px;
       .content-page {
-        min-height: 460px;
+        min-height: 510px;
         max-width: 98%;
         width: 100%;
         .content-title-wrapper {

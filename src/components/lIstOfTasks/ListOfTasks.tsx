@@ -1,14 +1,8 @@
 import { useSelector } from 'react-redux';
 import { stateToogle } from '../../interfaces';
 import ToDo from '../ToDo/ToDo';
+import { TodoInterface } from '../../interfaces';
 import './ListOfTasks.scss';
-
-interface itemInterface {
-  text: string;
-  id: string;
-  completed: boolean;
-  responsiblePerson: string;
-}
 
 const ListOfTasks: React.FC = () => {
   const tasks = useSelector((state: any) => state.tasks.todos);
@@ -18,7 +12,7 @@ const ListOfTasks: React.FC = () => {
     <div className={mode ? 'list-active' : 'list-active-dark'}>
       <ul>
         {tasks.length !== 0 ? (
-          tasks.map((item: itemInterface) => {
+          tasks.map((item: TodoInterface) => {
             return (
               <ToDo
                 key={item.id}

@@ -44,19 +44,19 @@ export default function LinearWithValueLabel() {
 
   useEffect(() => {
     setProgress(currentProgress);
-    // const timer = setInterval(() => {
-    //   setProgress((prevProgress) =>
-    //     prevProgress >= 100 ? 0 : prevProgress + 10
-    //   );
-    // }, 800);
-    // return () => {
-    //   clearInterval(timer);
-    // };
   }, [currentProgress]);
 
   return (
     <Box sx={{ width: '100%' }}>
-      <LinearProgressWithLabel value={progress} />
+      <LinearProgressWithLabel
+        sx={{
+          backgroundColor: 'white',
+          '& .MuiLinearProgress-bar': {
+            backgroundColor: '#9896f1',
+          },
+        }}
+        value={progress}
+      />
     </Box>
   );
 }

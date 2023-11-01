@@ -7,18 +7,16 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    input {
-      cursor: pointer;
-      width: 22px;
-      height: 22px;
-    }
   }
   .todo-edit {
+    width: 22px;
+    height: 22px;
     button {
       border: none;
       border-radius: 2px;
-      padding: 2px 6px;
+      padding: 3px 7px;
       background-color: aliceblue;
+
       cursor: pointer;
       img {
         margin-top: 2px;
@@ -28,24 +26,30 @@
     }
   }
   .todo-remove {
+    width: 22px;
+    height: 22px;
     button {
       cursor: pointer;
       color: black;
       background-color: aliceblue;
       border: none;
       border-radius: 2px;
-      padding: 3px 7px;
+      padding: 2px 6px;
+      .todo__remove-icon {
+        height: 16px;
+        width: 16px;
+      }
     }
   }
 }
 
 .completed-task {
   text-decoration: line-through;
-  text-decoration-color: rgb(61, 93, 219);
+  text-decoration-color: $color-ui-accent;
   text-decoration-thickness: 3px;
 }
 .todo-status-task-complete {
-  color: rgb(61, 93, 219);
+  color: $color-ui-accent;
 }
 
 @media (max-width: 567px) {
