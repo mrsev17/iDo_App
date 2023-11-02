@@ -50,6 +50,7 @@ export default function LinearWithValueLabel() {
     <Box sx={{ width: '100%' }}>
       <LinearProgressWithLabel
         sx={{
+          borderRadius: '6px',
           backgroundColor: 'white',
           '& .MuiLinearProgress-bar': {
             backgroundColor: '#9896f1',

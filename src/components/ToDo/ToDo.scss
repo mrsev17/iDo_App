@@ -25,6 +25,12 @@
       }
     }
   }
+  .employee-focus {
+    &:focus,
+    &:focus-visible {
+      color: transparent;
+    }
+  }
   .todo-remove {
     width: 22px;
     height: 22px;

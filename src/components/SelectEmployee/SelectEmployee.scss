@@ -1,0 +1,11 @@
+@import '../../App.scss';
+.select-employee {
+  select {
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: $color-ui-accent;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}

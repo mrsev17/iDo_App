@@ -41,3 +41,17 @@ export const editTask = (id: string, newText: string) => {
     payload: { id, newText },
   };
 };
+
+export const newEmployee = (newEmployee: string) => {
+  return {
+    type: actionTypes.NEW_EMPLOYEE,
+    payload: newEmployee,
+  };
+};
+
+export const putOnTaskEmployee = (employee: string, id: string) => {
+  return {
+    type: actionTypes.PUT_ON_TASK_EMPLOYEE,
+    payload: { employee, id },
+  };
+};

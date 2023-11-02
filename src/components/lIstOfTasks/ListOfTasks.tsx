@@ -19,6 +19,7 @@ const ListOfTasks: React.FC = () => {
                 id={item.id}
                 text={item.text}
                 completed={item.completed}
+                responsiblePerson={item.responsiblePerson}
               />
             );
           })

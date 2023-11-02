@@ -8,5 +8,5 @@ export interface TodoInterface {
   text: string;
   id: string;
   completed: boolean;
-  responsiblePerson?: string;
+  responsiblePerson: string;
 }

@@ -17,13 +17,13 @@ export const NavigationQuiz = () => {
           to='/javascript-quiz'
         >
           Active Tasks
-        </Link>
+        </Link> */}
         <Link
           className={location.pathname === '/html-quiz' ? 'active' : ''}
           to='/html-quiz'
         >
           Performers
-        </Link> */}
+        </Link>
         <Link
           className={location.pathname === '/css-quiz' ? 'active' : ''}
           to='/css-quiz'

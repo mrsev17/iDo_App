@@ -12,15 +12,29 @@ interface Todo {
 interface InitState {
   actions: string[];
   todos: Todo[];
+  employees: string[];
 }
 
 const initialState: InitState = {
   actions: [],
   todos: [],
+  employees: ['Nobody'],
 };
 
 const todoReducer = (state: InitState = initialState, action: any) => {
   switch (action.type) {
+    case actionTypes.PUT_ON_TASK_EMPLOYEE:
+      const updatedTodos = state.todos.map((todo) => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, responsiblePerson: action.payload.employee };
+        }
+        return todo;
+      });
+      return { ...state, todos: updatedTodos };
+    //
+    case actionTypes.NEW_EMPLOYEE:
+      return { ...state, employees: [...state.employees, action.payload] };
+    //
     case actionTypes.NEW_TASK:
       const timeNewTask: string = getFormattedDateAndTime();
       const updatedActions = [
@@ -54,6 +68,7 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         (task) => task.id !== action.payload
       );
       return {
+        ...state,
         actions: updatedRemove,
         todos: updateTasks,
       };
@@ -78,11 +93,13 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         } - ${timeStatusTask}`,
       ];
       return {
+        ...state,
         actions: updatedStatus,
         todos: completeTasks,
       };
     case actionTypes.CLEAR_ALL_TASKS:
       return {
+        ...state,
         actions: [],
         todos: [],
       };
@@ -96,6 +113,7 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         `User remove completed tasks - ${timeClearTasks}`,
       ];
       return {
+        ...state,
         actions: updatedClearTasks,
         todos: clearCompletedData,
       };
@@ -115,6 +133,7 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         `User changed the task name from ${findEditedTask} to ${action.payload.newText} - ${timeEditTask}`,
       ];
       return {
+        ...state,
         actions: updateEditTaskAction,
         todos: updateEditTask,
       };

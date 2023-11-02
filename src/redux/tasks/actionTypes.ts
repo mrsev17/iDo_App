@@ -4,3 +4,5 @@ export const COMPLETE_TASK = 'COMPLETE_TASK';
 export const CLEAR_ALL_TASKS = 'CLEAR_ALL_TASKS';
 export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
 export const EDIT_TASK = 'EDIT_TASK';
+export const NEW_EMPLOYEE = 'NEW_EMPLOYEE';
+export const PUT_ON_TASK_EMPLOYEE = 'PUT_ON_TASK_EMPLOYEE';

@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TodoInterface } from '../../interfaces';
 import Checkbox from '@mui/material/Checkbox';
+import SelectEmployee from '../SelectEmployee/SelectEmployee';
 import './ToDo.scss';
 import '../../App.scss';
 
@@ -33,7 +34,12 @@ const style = {
   borderRadius: '8px',
 };
 
-const ToDo: React.FC<TodoInterface> = ({ id, text, completed }) => {
+const ToDo: React.FC<TodoInterface> = ({
+  id,
+  text,
+  completed,
+  responsiblePerson,
+}) => {
   const [editText, setEditText] = useState<string>(text);
   const [open, setOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
@@ -53,6 +59,7 @@ const ToDo: React.FC<TodoInterface> = ({ id, text, completed }) => {
     dispatch(editTask(id, newText));
     handleClose();
   };
+
   return (
     <li className='todo-item' key={id}>
       <div className='todo-text'>
@@ -60,6 +67,9 @@ const ToDo: React.FC<TodoInterface> = ({ id, text, completed }) => {
       </div>
 
       <div className='todo-actions'>
+        <div className='todo-employee'>
+          <SelectEmployee responsiblePerson={responsiblePerson} id={id} />
+        </div>
         <div className='todo-complete'>
           <div className='todo-status'>
             {!completed ? (
