@@ -1,10 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { stateToogle } from '../interfaces';
+import { StateToogle } from '../interfaces';
 import './AppRouter.scss';
 
 export const NavigationQuiz = () => {
-  const mode = useSelector((state: stateToogle) => state.mode.toggle);
+  const mode = useSelector((state: StateToogle) => state.mode.toggle);
   const location = useLocation();
   return (
     <div>

@@ -3,17 +3,10 @@ import LinearProgress, {
 } from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { TodoInterface } from '../../interfaces';
 import '../../App.scss';
-
-interface todoIterface {
-  text: string;
-  id: string;
-  completed: boolean;
-  responsiblePerson: string;
-}
 
 function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
@@ -34,13 +27,13 @@ function LinearProgressWithLabel(
   );
 }
 
-export default function LinearWithValueLabel() {
+const LinearWithValueLabel: React.FC = () => {
   const tasks = useSelector((state: any) => state.tasks.todos);
   const completeTasks = tasks.filter(
-    (item: todoIterface) => item.completed !== false
+    (item: TodoInterface) => item.completed !== false
   );
-  const currentProgress = (completeTasks.length / tasks.length) * 100;
-  const [progress, setProgress] = useState(currentProgress);
+  const currentProgress: number = (completeTasks.length / tasks.length) * 100;
+  const [progress, setProgress] = useState<number>(currentProgress);
 
   useEffect(() => {
     setProgress(currentProgress);
@@ -60,4 +53,6 @@ export default function LinearWithValueLabel() {
       />
     </Box>
   );
-}
+};
+
+export default LinearWithValueLabel;

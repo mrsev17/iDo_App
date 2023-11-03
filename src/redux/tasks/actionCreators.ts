@@ -49,6 +49,13 @@ export const newEmployee = (newEmployee: string) => {
   };
 };
 
+export const deleteEmployee = (id: number, nameEmployee: string) => {
+  return {
+    type: actionTypes.DELETE_EMPLOYEE,
+    payload: { id, nameEmployee },
+  };
+};
+
 export const putOnTaskEmployee = (employee: string, id: string) => {
   return {
     type: actionTypes.PUT_ON_TASK_EMPLOYEE,

@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux';
-import { stateToogle } from '../../interfaces';
+import { StateToogle, TodoInterface } from '../../interfaces';
 import ToDo from '../ToDo/ToDo';
-import { TodoInterface } from '../../interfaces';
 import './ListOfTasks.scss';
 
 const ListOfTasks: React.FC = () => {
   const tasks = useSelector((state: any) => state.tasks.todos);
-  const mode: boolean = useSelector((state: stateToogle) => state.mode.toggle);
+  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
 
   return (
     <div className={mode ? 'list-active' : 'list-active-dark'}>

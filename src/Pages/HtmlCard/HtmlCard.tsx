@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import { stateToogle } from '../../interfaces';
+import { StateToogle } from '../../interfaces';
 import NewEmployee from '../../components/NewEmployee/NewEmployee';
+import EmployeeList from '../../components/EmployeeList/EmployeeList';
 import './Employees.scss';
 
 export const HtmlCard = () => {
-  const mode = useSelector((state: stateToogle) => state.mode.toggle);
+  const mode = useSelector((state: StateToogle) => state.mode.toggle);
   return (
     <div className='content-page flip-container'>
       <div className='flipper'>
@@ -12,6 +13,7 @@ export const HtmlCard = () => {
           <div className='employees-content'>
             <h2>Employees</h2>
             <NewEmployee />
+            <EmployeeList />
           </div>
         </div>
         <div className={mode ? 'back-dark' : 'back'}></div>

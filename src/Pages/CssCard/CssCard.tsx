@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { stateToogle } from '../../interfaces';
+import { StateToogle } from '../../interfaces';
 import './OperationsList.scss';
 
 export const CssCard = () => {
-  const mode = useSelector((state: stateToogle) => state.mode.toggle);
+  const mode = useSelector((state: StateToogle) => state.mode.toggle);
   const actions = useSelector((state: any) => state.tasks.actions);
   return (
     <div className='content-page flip-container'>

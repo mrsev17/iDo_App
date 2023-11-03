@@ -1,0 +1,20 @@
+@import '../../App.scss';
+
+.employee-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 98%;
+  max-width: 40%;
+  margin: 0 auto;
+  h2 {
+    color: $color-ui-accent;
+  }
+}
+
+@media (max-width: 992px) {
+  .employee-list {
+    max-width: 100%;
+  }
+}

@@ -1,26 +1,26 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { TodoInterface } from '../../interfaces';
+import editIcon from '../../assets/edit-icon.png';
+import removeIcon from '../../assets/icon-delete.svg';
+import SelectEmployee from '../SelectEmployee/SelectEmployee';
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Modal,
+  Checkbox,
+} from '@mui/material';
 import {
   removeTodo,
   completeTodo,
   editTask,
 } from '../../redux/tasks/actionCreators';
-import editIcon from '../../assets/edit-icon.png';
-import removeIcon from '../../assets/icon-delete.svg';
-import { useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import { TodoInterface } from '../../interfaces';
-import Checkbox from '@mui/material/Checkbox';
-import SelectEmployee from '../SelectEmployee/SelectEmployee';
 import './ToDo.scss';
 import '../../App.scss';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -110,21 +110,53 @@ const ToDo: React.FC<TodoInterface> = ({
                 variant='h6'
                 component='h2'
                 align='center'
-                sx={{ mb: 2.5, color: '#38598b' }}
+                sx={{ mb: 2.5, color: '#6a5acd' }}
               >
                 Edit Todo
               </Typography>
               <TextField
                 id='outlined-basic'
-                label='Edit Text'
+                label='Edit Task'
                 variant='outlined'
-                sx={{ width: '100%', color: 'azure' }}
+                sx={{
+                  width: '100%',
+                  color: 'azure',
+                  '& label': {
+                    color: '#6a5acd',
+                  },
+                  '& input:focus + label': {
+                    color: '#6a5acd',
+                    borderColor: '#6a5acd',
+                  },
+                  '& input': {
+                    color: '#6a5acd',
+                    '&:focus': {
+                      borderColor: '#6a5acd',
+                    },
+                  },
+                  '& fieldset': {
+                    borderColor: '#6a5acd',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#6a5acd',
+                  },
+                  '&:focus fieldset': {
+                    borderColor: '#6a5acd',
+                  },
+                }}
                 defaultValue={text}
                 onChange={changeEditInput}
               />
               <Button
                 onClick={() => editHandle(id, editText)}
-                sx={{ mt: 2.5, width: '100%' }}
+                sx={{
+                  mt: 2.5,
+                  width: '100%',
+                  backgroundColor: '#6a5acd',
+                  '&:hover': {
+                    backgroundColor: '#9896f1',
+                  },
+                }}
                 variant='contained'
               >
                 Edit

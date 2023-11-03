@@ -1,19 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import * as actionTypes from './actionTypes';
 import { getFormattedDateAndTime } from '../../utils/currentTime';
-
-interface Todo {
-  id: string;
-  text: string;
-  completed: boolean;
-  responsiblePerson: string;
-}
-
-interface InitState {
-  actions: string[];
-  todos: Todo[];
-  employees: string[];
-}
+import { InitState } from '../../interfaces';
 
 const initialState: InitState = {
   actions: [],
@@ -34,6 +22,22 @@ const todoReducer = (state: InitState = initialState, action: any) => {
     //
     case actionTypes.NEW_EMPLOYEE:
       return { ...state, employees: [...state.employees, action.payload] };
+    //
+    case actionTypes.DELETE_EMPLOYEE:
+      const getAllTasksWithEmployee = state.todos.map((todo) => {
+        if (todo.responsiblePerson === action.payload.nameEmployee) {
+          return { ...todo, responsiblePerson: 'Nobody' };
+        }
+        return todo;
+      });
+      const filterEmployees = state.employees.filter(
+        (employee) => employee !== action.payload.nameEmployee
+      );
+      return {
+        ...state,
+        todos: getAllTasksWithEmployee,
+        employees: filterEmployees,
+      };
     //
     case actionTypes.NEW_TASK:
       const timeNewTask: string = getFormattedDateAndTime();

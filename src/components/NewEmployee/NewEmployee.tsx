@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { newEmployee } from '../../redux/tasks/actionCreators';
 import './NewEmployee.scss';
 
-const NewEmployee = () => {
-  const [employee, setEmployee] = useState('');
+const NewEmployee: React.FC = () => {
+  const [employee, setEmployee] = useState<string>('');
   const employeeInputHandle = (e: ChangeEvent<HTMLInputElement>) => {
     setEmployee(e.target.value);
   };

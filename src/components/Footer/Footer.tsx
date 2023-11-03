@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { stateToogle } from '../../interfaces';
+import { StateToogle } from '../../interfaces';
 import {
   clearAllTodos,
   clearCompleted,
@@ -8,7 +8,7 @@ import './Footer.scss';
 
 export const Footer: React.FC = () => {
   const dispatch = useDispatch();
-  const mode = useSelector((state: stateToogle) => state.mode.toggle);
+  const mode = useSelector((state: StateToogle) => state.mode.toggle);
   const clearLS = (): void => {
     dispatch(clearAllTodos());
   };
