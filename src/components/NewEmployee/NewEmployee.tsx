@@ -23,7 +23,7 @@ const NewEmployee: React.FC = () => {
           type='text'
           value={employee}
           onChange={employeeInputHandle}
-          placeholder='Write new Employee'
+          placeholder='Add new Employee'
           maxLength={28}
         />
         <button>Add new employee</button>

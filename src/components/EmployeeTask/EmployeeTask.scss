@@ -1,0 +1,27 @@
+@import '../../App.scss';
+.task-complete {
+  p {
+    color: rgb(44, 199, 44) !important;
+  }
+}
+.employee-task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color-bg-dark;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  min-height: 60px;
+  .employee-task-right-part {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  span,
+  p {
+    margin-top: 2px;
+    font-size: 14px;
+    color: azure;
+  }
+}
