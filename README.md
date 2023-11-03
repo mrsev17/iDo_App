@@ -1,6 +1,4 @@
 npm i
 npm start
 
-live version: https://seven-todo-app.netlify.app
-
-//
+live version: https://bucolic-cranachan-4faf87.netlify.app
