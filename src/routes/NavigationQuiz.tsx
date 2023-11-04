@@ -10,6 +10,9 @@ export const NavigationQuiz = () => {
   const getEmployeesLength = useSelector(
     (state: any) => state.tasks.employees
   ).length;
+  const getOperationsLength = useSelector(
+    (state: any) => state.tasks.actions
+  ).length;
   const mode = useSelector((state: StateToogle) => state.mode.toggle);
   const location = useLocation();
   return (
@@ -38,12 +41,19 @@ export const NavigationQuiz = () => {
             Employees
           </Link>
         </Badge>
-        <Link
-          className={location.pathname === '/operations' ? 'active' : ''}
-          to='/operations'
+        <Badge
+          className='employee-badge'
+          sx={badgeStyle}
+          badgeContent={getOperationsLength}
+          color='default'
         >
-          Operations
-        </Link>
+          <Link
+            className={location.pathname === '/operations' ? 'active' : ''}
+            to='/operations'
+          >
+            Operations
+          </Link>
+        </Badge>
       </nav>
     </div>
   );

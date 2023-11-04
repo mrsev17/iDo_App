@@ -24,7 +24,7 @@ const NewTodo: React.FC = () => {
           value={newTask}
           onChange={changeNewTaskInput}
           placeholder='Write new Task'
-          maxLength={28}
+          maxLength={40}
         />
         <button>Create Task</button>
       </form>

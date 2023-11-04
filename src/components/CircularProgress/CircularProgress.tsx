@@ -19,6 +19,7 @@ function LinearProgressWithLabel(
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography
+          width='30px'
           variant='body1'
           color='text.secondary'
           fontSize='18px'
