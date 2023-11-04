@@ -9,3 +9,24 @@
     }
   }
 }
+
+.select-employee-dark {
+  select {
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: $color-text-light;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}
+
+@media (max-width: 567px) {
+  .select-employee,
+  .select-employee-dark {
+    select {
+      margin-top: 1px;
+      font-size: 14px;
+    }
+  }
+}

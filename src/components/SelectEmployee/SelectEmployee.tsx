@@ -1,21 +1,25 @@
 import { useState, ChangeEvent } from 'react';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { putOnTaskEmployee } from '../../redux/tasks/actionCreators';
-import { SelectProps } from '../../interfaces';
+import { SelectProps, StateToogle } from '../../interfaces';
 import './SelectEmployee.scss';
 
-const SelectEmployee: React.FC<SelectProps> = ({ responsiblePerson, id }) => {
-  const getListEmployees = useSelector((state: any) => state.tasks.employees);
+const SelectEmployee: React.FC<SelectProps> = ({
+  responsiblePerson,
+  id,
+  text,
+}) => {
   const [selectedOption, setSelectedOption] =
     useState<string>(responsiblePerson);
+  const getListEmployees = useSelector((state: any) => state.tasks.employees);
   const dispatch = useDispatch();
+  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value);
-    dispatch(putOnTaskEmployee(e.target.value, id));
+    dispatch(putOnTaskEmployee(e.target.value, id, text));
   };
   return (
-    <div className='select-employee'>
+    <div className={mode ? 'select-employee' : 'select-employee-dark'}>
       <select value={selectedOption} onChange={handleSelectChange}>
         {getListEmployees.map((option: string, index: number) => (
           <option key={index} value={option}>

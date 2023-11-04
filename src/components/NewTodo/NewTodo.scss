@@ -37,3 +37,12 @@
     padding: 0 10px;
   }
 }
+
+@media (max-width: 567px) {
+  .form-new-task {
+    input,
+    button {
+      height: 32px;
+    }
+  }
+}

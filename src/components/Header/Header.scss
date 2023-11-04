@@ -1,5 +1,5 @@
 @import '../../App.scss';
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,9 +10,6 @@ header {
     align-items: center;
     gap: 10px;
     padding-left: 20px;
-    svg {
-      fill: aliceblue;
-    }
   }
 }
 

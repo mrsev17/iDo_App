@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { StateToogle } from '../../interfaces';
-import './OperationsList.scss';
+import './Operations.scss';
 
-export const CssCard = () => {
+export const Operations: React.FC = () => {
   const mode = useSelector((state: StateToogle) => state.mode.toggle);
   const actions = useSelector((state: any) => state.tasks.actions);
   return (
@@ -27,7 +27,6 @@ export const CssCard = () => {
             )}
           </ul>
         </div>
-        <div className={mode ? 'back-dark' : 'back'}></div>
       </div>
     </div>
   );

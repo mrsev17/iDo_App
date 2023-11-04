@@ -1,6 +1,5 @@
 import { AppRouter } from './routes';
-import { Header } from './components/Header/Header';
-import { Footer } from './components/Footer';
+import { Header, Footer } from './components';
 import { useSelector } from 'react-redux';
 import { StateToogle } from './interfaces';
 import './App.scss';

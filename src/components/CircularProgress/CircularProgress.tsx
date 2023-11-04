@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { TodoInterface } from '../../interfaces';
 import '../../App.scss';
+import './CircularProgress.scss';
 
 function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
@@ -18,7 +19,7 @@ function LinearProgressWithLabel(
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography
-          variant='body2'
+          variant='body1'
           color='text.secondary'
           fontSize='18px'
         >{`${Math.round(props.value)}%`}</Typography>
@@ -44,7 +45,7 @@ const LinearWithValueLabel: React.FC = () => {
       <LinearProgressWithLabel
         sx={{
           borderRadius: '6px',
-          backgroundColor: 'white',
+          backgroundColor: 'azure',
           '& .MuiLinearProgress-bar': {
             backgroundColor: '#9896f1',
           },

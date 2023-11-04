@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { TodoInterface } from '../../interfaces';
+import { useDispatch, useSelector } from 'react-redux';
+import { TodoInterface, StateToogle } from '../../interfaces';
 import editIcon from '../../assets/edit-icon.png';
 import removeIcon from '../../assets/icon-delete.svg';
 import SelectEmployee from '../SelectEmployee/SelectEmployee';
@@ -17,22 +17,15 @@ import {
   completeTodo,
   editTask,
 } from '../../redux/tasks/actionCreators';
+import {
+  checkBoxStyle,
+  checkBoxStyleLight,
+  editTaskStyles,
+} from '../../utils/commonData';
 import './ToDo.scss';
 import '../../App.scss';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: '#e7eaf6',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  borderRadius: '8px',
-};
+const label = { 'aria-label': 'Checkbox demo' };
 
 const ToDo: React.FC<TodoInterface> = ({
   id,
@@ -42,6 +35,7 @@ const ToDo: React.FC<TodoInterface> = ({
 }) => {
   const [editText, setEditText] = useState<string>(text);
   const [open, setOpen] = useState<boolean>(false);
+  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
   const dispatch = useDispatch();
   const changeEditInput = (e: ChangeEvent<HTMLInputElement>) => {
     setEditText(e.target.value);
@@ -65,10 +59,13 @@ const ToDo: React.FC<TodoInterface> = ({
       <div className='todo-text'>
         <p className={completed ? 'completed-task' : ''}>{text}</p>
       </div>
-
       <div className='todo-actions'>
         <div className='todo-employee'>
-          <SelectEmployee responsiblePerson={responsiblePerson} id={id} />
+          <SelectEmployee
+            responsiblePerson={responsiblePerson}
+            text={text}
+            id={id}
+          />
         </div>
         <div className='todo-complete'>
           <div className='todo-status'>
@@ -83,15 +80,7 @@ const ToDo: React.FC<TodoInterface> = ({
             onChange={() => handleCheckBox(id)}
             color='secondary'
             {...label}
-            sx={{
-              transform: 'scale(1.25)',
-              marginTop: '1px',
-              padding: 0,
-              color: 'azure',
-              '&.Mui-checked': {
-                color: '#9896f1',
-              },
-            }}
+            sx={mode ? checkBoxStyle : checkBoxStyleLight}
           />
         </div>
         <div className='todo-edit'>
@@ -104,13 +93,13 @@ const ToDo: React.FC<TodoInterface> = ({
             aria-labelledby='modal-modal-title'
             aria-describedby='modal-modal-description'
           >
-            <Box sx={style}>
+            <Box sx={editTaskStyles.editBoxStyles}>
               <Typography
                 id='modal-modal-title'
                 variant='h6'
                 component='h2'
                 align='center'
-                sx={{ mb: 2.5, color: '#6a5acd' }}
+                sx={editTaskStyles.titleEdit}
               >
                 Edit Todo
               </Typography>
@@ -118,45 +107,13 @@ const ToDo: React.FC<TodoInterface> = ({
                 id='outlined-basic'
                 label='Edit Task'
                 variant='outlined'
-                sx={{
-                  width: '100%',
-                  color: 'azure',
-                  '& label': {
-                    color: '#6a5acd',
-                  },
-                  '& input:focus + label': {
-                    color: '#6a5acd',
-                    borderColor: '#6a5acd',
-                  },
-                  '& input': {
-                    color: '#6a5acd',
-                    '&:focus': {
-                      borderColor: '#6a5acd',
-                    },
-                  },
-                  '& fieldset': {
-                    borderColor: '#6a5acd',
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#6a5acd',
-                  },
-                  '&:focus fieldset': {
-                    borderColor: '#6a5acd',
-                  },
-                }}
+                sx={editTaskStyles.textFieldEdit}
                 defaultValue={text}
                 onChange={changeEditInput}
               />
               <Button
                 onClick={() => editHandle(id, editText)}
-                sx={{
-                  mt: 2.5,
-                  width: '100%',
-                  backgroundColor: '#6a5acd',
-                  '&:hover': {
-                    backgroundColor: '#9896f1',
-                  },
-                }}
+                sx={editTaskStyles.editSubmit}
                 variant='contained'
               >
                 Edit

@@ -1,4 +1,3 @@
 export * from './MainPage';
-export * from './HtmlCard';
-export * from './CssCard';
-export * from './JavaScriptCard';
+export * from './Employees';
+export * from './Operations';

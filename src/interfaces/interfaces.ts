@@ -4,9 +4,21 @@ export interface StateToogle {
   };
 }
 
+export interface EmployeeProps {
+  employee: string;
+  id: number;
+}
+
+export interface EmployeeTaskProps {
+  text: string;
+  completed: boolean;
+  id: number;
+}
+
 export interface SelectProps {
   responsiblePerson: string;
   id: string;
+  text: string;
 }
 
 export interface TodoInterface {
@@ -14,6 +26,10 @@ export interface TodoInterface {
   id: string;
   completed: boolean;
   responsiblePerson: string;
+}
+
+export interface PersonalListProps {
+  getTasksEmployee: TodoInterface[];
 }
 
 export interface InitState {

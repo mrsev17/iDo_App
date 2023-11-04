@@ -4,7 +4,7 @@ import NewEmployee from '../../components/NewEmployee/NewEmployee';
 import EmployeeList from '../../components/EmployeeList/EmployeeList';
 import './Employees.scss';
 
-export const HtmlCard = () => {
+export const Employees: React.FC = () => {
   const mode = useSelector((state: StateToogle) => state.mode.toggle);
   return (
     <div className='content-page flip-container'>
@@ -16,7 +16,6 @@ export const HtmlCard = () => {
             <EmployeeList />
           </div>
         </div>
-        <div className={mode ? 'back-dark' : 'back'}></div>
       </div>
     </div>
   );

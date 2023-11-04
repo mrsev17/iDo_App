@@ -12,21 +12,47 @@ const initialState: InitState = {
 const todoReducer = (state: InitState = initialState, action: any) => {
   switch (action.type) {
     case actionTypes.PUT_ON_TASK_EMPLOYEE:
+      const timeSelectEmployee: string = getFormattedDateAndTime();
+      const updatedActionsResponsible = [
+        ...state.actions,
+        `Task ${action.payload.text} now on ${action.payload.employee} - ${timeSelectEmployee}`,
+      ];
       const updatedTodos = state.todos.map((todo) => {
         if (todo.id === action.payload.id) {
           return { ...todo, responsiblePerson: action.payload.employee };
         }
         return todo;
       });
-      return { ...state, todos: updatedTodos };
+      return {
+        ...state,
+        todos: updatedTodos,
+        actions: updatedActionsResponsible,
+      };
     //
     case actionTypes.NEW_EMPLOYEE:
-      return { ...state, employees: [...state.employees, action.payload] };
+      const timeNewEmployee: string = getFormattedDateAndTime();
+      const updatedActionsNewEmployee = [
+        ...state.actions,
+        `Employee ${action.payload} added to database - ${timeNewEmployee}`,
+      ];
+      return {
+        ...state,
+        employees: [...state.employees, action.payload],
+        actions: updatedActionsNewEmployee,
+      };
     //
     case actionTypes.DELETE_EMPLOYEE:
+      const timeDeleteEmployee: string = getFormattedDateAndTime();
+      const updatedActionsRemoveEmployee = [
+        ...state.actions,
+        `Employee ${action.payload.nameEmployee} removed from database - ${timeDeleteEmployee}`,
+      ];
       const getAllTasksWithEmployee = state.todos.map((todo) => {
         if (todo.responsiblePerson === action.payload.nameEmployee) {
-          return { ...todo, responsiblePerson: 'Nobody' };
+          return {
+            ...todo,
+            responsiblePerson: 'Nobody',
+          };
         }
         return todo;
       });
@@ -37,13 +63,14 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         ...state,
         todos: getAllTasksWithEmployee,
         employees: filterEmployees,
+        actions: updatedActionsRemoveEmployee,
       };
     //
     case actionTypes.NEW_TASK:
       const timeNewTask: string = getFormattedDateAndTime();
       const updatedActions = [
         ...state.actions,
-        `User create new task (${action.payload}) - ${timeNewTask}`,
+        `Task (${action.payload}) added to database - ${timeNewTask}`,
       ];
       const newTask = {
         id: uuidv4(),
@@ -66,7 +93,7 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const timeRemoveTask: string = getFormattedDateAndTime();
       const updatedRemove = [
         ...state.actions,
-        `User delete task (${findNameForRemove}) - ${timeRemoveTask}`,
+        `Task (${findNameForRemove}) was deleted - ${timeRemoveTask}`,
       ];
       const updateTasks = state.todos.filter(
         (task) => task.id !== action.payload
@@ -82,6 +109,7 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       );
       const getCurrentStatus: boolean = getCompleteStatus[0].completed;
       const getCurrentText: string = getCompleteStatus[0].text;
+      const getCurrentEmployee: string = getCompleteStatus[0].responsiblePerson;
 
       const completeTasks = state.todos.map((task) => {
         if (task.id === action.payload) {
@@ -92,10 +120,21 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const timeStatusTask: string = getFormattedDateAndTime();
       const updatedStatus = [
         ...state.actions,
-        `User mark task (${getCurrentText}) like ${
-          getCurrentStatus ? 'not completed' : 'completed'
-        } - ${timeStatusTask}`,
+        `Task (${getCurrentText}) marked like ${
+          getCurrentStatus
+            ? `not completed ${
+                getCurrentEmployee !== 'Nobody'
+                  ? 'by ' + getCurrentEmployee
+                  : ''
+              } - ${timeStatusTask}`
+            : `completed ${
+                getCurrentEmployee !== 'Nobody'
+                  ? 'by ' + getCurrentEmployee
+                  : ''
+              } - ${timeStatusTask}`
+        }`,
       ];
+
       return {
         ...state,
         actions: updatedStatus,
@@ -114,7 +153,7 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const timeClearTasks: string = getFormattedDateAndTime();
       const updatedClearTasks = [
         ...state.actions,
-        `User remove completed tasks - ${timeClearTasks}`,
+        `All completed tasks was deleted - ${timeClearTasks}`,
       ];
       return {
         ...state,
@@ -134,7 +173,7 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const timeEditTask: string = getFormattedDateAndTime();
       const updateEditTaskAction = [
         ...state.actions,
-        `User changed the task name from ${findEditedTask} to ${action.payload.newText} - ${timeEditTask}`,
+        `Task "${findEditedTask}" edited to "${action.payload.newText}" - ${timeEditTask}`,
       ];
       return {
         ...state,

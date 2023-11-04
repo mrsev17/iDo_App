@@ -29,7 +29,6 @@ export const MainPage: React.FC = () => {
             <ListOfTasks />
           </div>
         </div>
-        <div className={mode ? 'back-dark' : 'back'}></div>
       </div>
     </div>
   );

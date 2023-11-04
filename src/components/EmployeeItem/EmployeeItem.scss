@@ -1,5 +1,7 @@
 @import '../../App.scss';
-
+.MuiPaper-root {
+  width: 100%;
+}
 .employee-item {
   width: 100%;
   background-color: $color-bg-body-light;

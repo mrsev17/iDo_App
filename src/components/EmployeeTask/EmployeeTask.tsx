@@ -1,15 +1,13 @@
+import { EmployeeTaskProps } from '../../interfaces';
 import './EmployeeTask.scss';
 
-interface EmployeeTaskProps {
-  text: string;
-  completed: boolean;
-}
-
-const EmployeeTask: React.FC<EmployeeTaskProps> = ({ text, completed }) => {
+const EmployeeTask: React.FC<EmployeeTaskProps> = ({ text, completed, id }) => {
   return (
     <li className='employee-task'>
       <div className='employee-task-left-part'>
-        <p>{text}</p>
+        <p>
+          {id + 1}. {text}
+        </p>
       </div>
       <div
         className={

@@ -56,9 +56,13 @@ export const deleteEmployee = (id: number, nameEmployee: string) => {
   };
 };
 
-export const putOnTaskEmployee = (employee: string, id: string) => {
+export const putOnTaskEmployee = (
+  employee: string,
+  id: string,
+  text: string
+) => {
   return {
     type: actionTypes.PUT_ON_TASK_EMPLOYEE,
-    payload: { employee, id },
+    payload: { employee, id, text },
   };
 };

@@ -1,17 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StateToogle } from '../interfaces';
-import './AppRouter.scss';
-
+import { badgeStyle } from '../utils/commonData';
 import { Badge } from '@mui/material';
-
-const badgeStyle = {
-  width: '100%',
-  '& .MuiBadge-badge': {
-    color: 'azure',
-    backgroundColor: '#6a5acd',
-  },
-};
+import './AppRouter.scss';
 
 export const NavigationQuiz = () => {
   const getTasksLength = useSelector((state: any) => state.tasks.todos).length;
@@ -33,12 +25,6 @@ export const NavigationQuiz = () => {
             Tasks
           </Link>
         </Badge>
-        {/* <Link
-          className={location.pathname === '/javascript-quiz' ? 'active' : ''}
-          to='/javascript-quiz'
-        >
-          Active Tasks
-        </Link> */}
         <Badge
           className='employee-badge'
           sx={badgeStyle}
@@ -46,15 +32,15 @@ export const NavigationQuiz = () => {
           color='default'
         >
           <Link
-            className={location.pathname === '/html-quiz' ? 'active' : ''}
-            to='/html-quiz'
+            className={location.pathname === '/employees' ? 'active' : ''}
+            to='/employees'
           >
-            Performers
+            Employees
           </Link>
         </Badge>
         <Link
-          className={location.pathname === '/css-quiz' ? 'active' : ''}
-          to='/css-quiz'
+          className={location.pathname === '/operations' ? 'active' : ''}
+          to='/operations'
         >
           Operations
         </Link>

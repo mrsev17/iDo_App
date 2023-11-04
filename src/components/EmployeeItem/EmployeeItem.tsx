@@ -6,30 +6,17 @@ import {
   DialogTitle,
   Badge,
 } from '@mui/material';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { TodoInterface, EmployeeProps } from '../../interfaces';
+import { useState } from 'react';
 import { deleteEmployee } from '../../redux/tasks/actionCreators';
+import { badgeStyle, employeeItemStyles } from '../../utils/commonData';
 import PersonalList from '../PersonalList/PersonalList';
 import './EmployeeItem.scss';
-import { TodoInterface } from '../../interfaces';
-
-interface EmployeeProps {
-  employee: string;
-  id: number;
-}
-
-const badgeStyle = {
-  width: '100%',
-  '& .MuiBadge-badge': {
-    color: 'azure',
-    backgroundColor: '#6a5acd',
-  },
-};
 
 const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
+  const [open, setOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
-
   const getTasks = useSelector((state: any) => state.tasks.todos);
   const getTasksEmployee: TodoInterface[] = getTasks.filter(
     (task: TodoInterface) => task.responsiblePerson === employee
@@ -66,52 +53,31 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
               Actions
             </button>
             <Dialog
+              sx={{ width: '100%', maxWidth: '100%' }}
               open={open}
               onClose={handleClose}
               aria-labelledby='alert-dialog-title'
               aria-describedby='alert-dialog-description'
             >
-              <DialogTitle sx={{ color: 'black' }} id='alert-dialog-title'>
+              <DialogTitle
+                sx={employeeItemStyles.dialogTitle}
+                id='alert-dialog-title'
+              >
                 {`Actions with employee ${employee}`}
               </DialogTitle>
-              <DialogContent>
-                <PersonalList
-                  key={id}
-                  employee={employee}
-                  getTasksEmployee={getTasksEmployee}
-                />
+              <DialogContent sx={{ width: '100%', maxWidth: '100%' }}>
+                <PersonalList key={id} getTasksEmployee={getTasksEmployee} />
               </DialogContent>
-              <DialogActions
-                sx={{ display: 'flex', justifyContent: 'space-between' }}
-              >
+              <DialogActions sx={employeeItemStyles.dialogActions}>
                 <Button
-                  sx={{
-                    fontSize: '12px',
-                    width: '100%',
-                    color: 'azure',
-                    backgroundColor: '#dc2f2f',
-                    padding: '4px 12px 2px 12px',
-                    '&:hover': {
-                      backgroundColor: '#bc2525',
-                    },
-                  }}
+                  sx={employeeItemStyles.buttonRemoveEmployee}
                   onClick={() => removeEmployee(id, employee)}
                 >
                   Delete employee
                 </Button>
                 <Button
-                  sx={{
-                    fontSize: '12px',
-                    width: '100%',
-                    color: 'azure',
-                    backgroundColor: '#6a5acd',
-                    padding: '4px 12px 2px 12px',
-                    '&:hover': {
-                      backgroundColor: '#8f71ff',
-                    },
-                  }}
+                  sx={employeeItemStyles.buttonCloseModal}
                   onClick={handleClose}
-                  autoFocus
                 >
                   Close
                 </Button>
