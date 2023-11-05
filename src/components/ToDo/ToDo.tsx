@@ -19,6 +19,8 @@ const ToDo: React.FC<TodoInterface> = ({
   responsiblePerson,
 }) => {
   const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   const dispatch: Dispatch = useDispatch();
   const handleRemove = (id: string): void => {
     dispatch(removeTodo(id));
@@ -43,9 +45,11 @@ const ToDo: React.FC<TodoInterface> = ({
         <div className='todo__todo-complete'>
           <div className='todo__todo-status'>
             {!completed ? (
-              <p>In progress</p>
+              <p>{getCurrentLangDB.mainPage.statusInProgress}</p>
             ) : (
-              <p className='todo__todo-status-task-complete'>Completed</p>
+              <p className='todo__todo-status-task-complete'>
+                {getCurrentLangDB.mainPage.statusComplete}
+              </p>
             )}
           </div>
           <Checkbox

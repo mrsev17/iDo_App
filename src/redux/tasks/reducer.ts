@@ -2,15 +2,37 @@ import { v4 as uuidv4 } from 'uuid';
 import * as actionTypes from './actionTypes';
 import { getFormattedDateAndTime } from '../../utils/currentTime';
 import { InitState, TodoInterface } from '../../interfaces';
-
+import { languageDataEngUkr } from '../../utils/languages';
+import { engLangData, ukrLangData } from '../../utils/languages';
 const initialState: InitState = {
   actions: [],
   todos: [],
   employees: ['Nobody'],
+  languages: languageDataEngUkr,
 };
 
 const todoReducer = (state: InitState = initialState, action: any) => {
   switch (action.type) {
+    case actionTypes.CHANGE_LANGUAGE:
+      if (action.payload === 'English') {
+        return {
+          ...state,
+          languages: {
+            currentDataBase: engLangData,
+            currentLanguage: 'English',
+          },
+        };
+      }
+      if (action.payload === 'Ukrainian') {
+        return {
+          ...state,
+          languages: {
+            currentDataBase: ukrLangData,
+            currentLanguage: 'Ukrainian',
+          },
+        };
+      }
+      return state;
     case actionTypes.PUT_ON_TASK_EMPLOYEE:
       const timeSelectEmployee: string = getFormattedDateAndTime();
       const updatedActionsResponsible: string[] = [

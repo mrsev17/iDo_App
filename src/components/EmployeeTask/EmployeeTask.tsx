@@ -1,7 +1,10 @@
 import { EmployeeTaskProps } from '../../interfaces';
+import { useSelector } from 'react-redux';
 import './EmployeeTask.scss';
 
 const EmployeeTask: React.FC<EmployeeTaskProps> = ({ text, completed, id }) => {
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   return (
     <li className='todo__employee-task'>
       <div className='todo__employee-task-left-part'>
@@ -17,10 +20,14 @@ const EmployeeTask: React.FC<EmployeeTaskProps> = ({ text, completed, id }) => {
         }
       >
         <div>
-          <span>Status:</span>
+          <span>{getCurrentLangDB.employeesPage.statusSub}</span>
         </div>
         <div>
-          <p>{`${completed ? 'Complete' : 'In Progress'}`}</p>
+          <p>{`${
+            completed
+              ? getCurrentLangDB.employeesPage.currentStatusComplete
+              : getCurrentLangDB.employeesPage.currentStatusInProgress
+          }`}</p>
         </div>
       </div>
     </li>

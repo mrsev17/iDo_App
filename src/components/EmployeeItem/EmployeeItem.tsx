@@ -17,6 +17,8 @@ import './EmployeeItem.scss';
 
 const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   const dispatch: Dispatch = useDispatch();
   const getTasks: TodoInterface[] = useSelector(
     (state: any) => state.tasks.todos
@@ -56,7 +58,7 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
               className='todo__employee-item-actions'
               onClick={handleClickOpen}
             >
-              Actions
+              {getCurrentLangDB.employeesPage.actionsBtn}
             </button>
             <Dialog
               sx={{ width: '100%', maxWidth: '100%' }}
@@ -69,7 +71,7 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
                 sx={employeeItemStyles.dialogTitle}
                 id='alert-dialog-title'
               >
-                {`Actions with employee ${employee}`}
+                {`${getCurrentLangDB.employeesPage.titleCardActions} ${employee}`}
               </DialogTitle>
               <DialogContent sx={{ width: '100%', maxWidth: '100%' }}>
                 <PersonalList key={id} getTasksEmployee={getTasksEmployee} />
@@ -79,13 +81,13 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
                   sx={employeeItemStyles.buttonRemoveEmployee}
                   onClick={() => removeEmployee(id, employee)}
                 >
-                  Delete employee
+                  {getCurrentLangDB.employeesPage.deleteBtn}
                 </Button>
                 <Button
                   sx={employeeItemStyles.buttonCloseModal}
                   onClick={handleClose}
                 >
-                  Close
+                  {getCurrentLangDB.employeesPage.closeModalBtn}
                 </Button>
               </DialogActions>
             </Dialog>

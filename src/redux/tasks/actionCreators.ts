@@ -1,5 +1,12 @@
 import * as actionTypes from './actionTypes';
 
+export const changeLanguage = (targetLang: string) => {
+  return {
+    type: actionTypes.CHANGE_LANGUAGE,
+    payload: targetLang,
+  };
+};
+
 export const newTaskTodo = (task: string) => {
   return {
     type: actionTypes.NEW_TASK,

@@ -75,10 +75,22 @@
   right: 0px;
 }
 .label-text {
+  position: relative;
   margin-top: 18px;
   color: #e6e6fa;
+  svg {
+    position: absolute;
+    bottom: -2px;
+    right: -4px;
+  }
 }
 .label-text-dark {
+  position: relative;
   margin-top: 18px;
   color: #e6e6fa;
+  svg {
+    position: absolute;
+    bottom: -2px;
+    right: -4px;
+  }
 }

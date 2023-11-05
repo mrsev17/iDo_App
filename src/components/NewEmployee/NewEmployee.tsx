@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { newEmployee } from '../../redux/tasks/actionCreators';
 import { Dispatch } from 'redux';
 import './NewEmployee.scss';
@@ -17,6 +17,8 @@ const NewEmployee: React.FC = () => {
       setEmployee('');
     }
   };
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   return (
     <div className='todo__new-employee-form'>
       <form className='todo__form-new-employee' onSubmit={newemployeeSubmit}>
@@ -24,10 +26,10 @@ const NewEmployee: React.FC = () => {
           type='text'
           value={employee}
           onChange={employeeInputHandle}
-          placeholder='Add new Employee'
+          placeholder={getCurrentLangDB.employeesPage.placeholderNewEmployee}
           maxLength={28}
         />
-        <button>Add new employee</button>
+        <button>{getCurrentLangDB.employeesPage.submitNewEmployee}</button>
       </form>
     </div>
   );

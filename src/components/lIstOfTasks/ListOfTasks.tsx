@@ -6,6 +6,8 @@ import './ListOfTasks.scss';
 const ListOfTasks: React.FC = () => {
   const tasks: TodoInterface[] = useSelector((state: any) => state.tasks.todos);
   const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   return (
     <div className={mode ? 'todo__list-active' : 'todo__list-active-dark'}>
       <ul>
@@ -22,7 +24,7 @@ const ListOfTasks: React.FC = () => {
             );
           })
         ) : (
-          <h2>List is empty</h2>
+          <h2>{getCurrentLangDB.mainPage.infoAboutEmptyList}</h2>
         )}
       </ul>
     </div>

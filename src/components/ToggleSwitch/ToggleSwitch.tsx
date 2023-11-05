@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { switchMode } from '../../redux/mode/actionCreators';
 import { RootState } from '../../redux/store';
 import { Dispatch } from 'redux';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import './ToggleSwitch.scss';
 
 export const ToggleSwitch: React.FC = () => {
@@ -15,7 +17,11 @@ export const ToggleSwitch: React.FC = () => {
   return (
     <div className='todo__switch-mode-container'>
       <span className={isChecked ? 'label-text-dark' : 'label-text'}>
-        {isChecked ? 'Dark mode' : 'Light mode'}
+        {isChecked ? (
+          <DarkModeOutlinedIcon sx={{ color: '#9896f1' }} />
+        ) : (
+          <LightModeOutlinedIcon />
+        )}
       </span>
       <div className='toggle-switch'>
         <input

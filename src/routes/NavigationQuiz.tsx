@@ -6,6 +6,8 @@ import { Badge } from '@mui/material';
 import './AppRouter.scss';
 
 export const NavigationQuiz: React.FC = () => {
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   const getTasksLength: number = useSelector(
     (state: any) => state.tasks.todos
   ).length;
@@ -28,7 +30,7 @@ export const NavigationQuiz: React.FC = () => {
           color='default'
         >
           <Link className={location.pathname === '/' ? 'active' : ''} to='/'>
-            Tasks
+            {getCurrentLangDB.navigation.tasks}
           </Link>
         </Badge>
         <Badge
@@ -41,7 +43,7 @@ export const NavigationQuiz: React.FC = () => {
             className={location.pathname === '/employees' ? 'active' : ''}
             to='/employees'
           >
-            Employees
+            {getCurrentLangDB.navigation.employees}
           </Link>
         </Badge>
         <Badge
@@ -54,7 +56,7 @@ export const NavigationQuiz: React.FC = () => {
             className={location.pathname === '/operations' ? 'active' : ''}
             to='/operations'
           >
-            Operations
+            {getCurrentLangDB.navigation.operations}
           </Link>
         </Badge>
       </nav>

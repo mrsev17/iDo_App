@@ -6,6 +6,8 @@ const EmployeeList: React.FC = () => {
   const employees: string[] = useSelector(
     (state: any) => state.tasks.employees
   );
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   return (
     <ul className='todo__employee-list'>
       {employees.length > 1 ? (
@@ -16,7 +18,7 @@ const EmployeeList: React.FC = () => {
           return null;
         })
       ) : (
-        <h2>Add employee</h2>
+        <h2>{getCurrentLangDB.employeesPage.titleListEmployee}</h2>
       )}
     </ul>
   );

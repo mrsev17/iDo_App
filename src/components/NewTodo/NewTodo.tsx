@@ -1,11 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { newTaskTodo } from '../../redux/tasks/actionCreators';
 import { Dispatch } from 'redux';
 import './NewTodo.scss';
 
 const NewTodo: React.FC = () => {
   const [newTask, setNewTask] = useState<string>('');
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   const dispatch: Dispatch = useDispatch();
   const changeNewTaskInput = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTask(e.target.value);
@@ -25,10 +27,12 @@ const NewTodo: React.FC = () => {
           type='text'
           value={newTask}
           onChange={changeNewTaskInput}
-          placeholder='Write new Task'
+          placeholder={getCurrentLangDB.mainPage.placeHolderNewTodo}
           maxLength={50}
         />
-        <button className='todo__form-new-task-submit'>Create Task</button>
+        <button className='todo__form-new-task-submit'>
+          {getCurrentLangDB.mainPage.submitNewTodo}
+        </button>
       </form>
     </>
   );

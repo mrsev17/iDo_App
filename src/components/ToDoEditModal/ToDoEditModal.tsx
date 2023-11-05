@@ -1,7 +1,7 @@
 import { Box, TextField, Button, Typography, Modal } from '@mui/material';
 import { useState, ChangeEvent } from 'react';
 import { editTaskStyles } from '../../utils/commonData';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { editTask } from '../../redux/tasks/actionCreators';
 import { Dispatch } from 'redux';
 import { ToDoEditModalProps } from '../../interfaces';
@@ -10,6 +10,8 @@ import './ToDoEditModal.scss';
 
 const ToDoEditModal: React.FC<ToDoEditModalProps> = ({ text, id }) => {
   const [editText, setEditText] = useState<string>(text);
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   const changeEditInput = (e: ChangeEvent<HTMLInputElement>) => {
     setEditText(e.target.value);
   };
@@ -40,11 +42,11 @@ const ToDoEditModal: React.FC<ToDoEditModalProps> = ({ text, id }) => {
             align='center'
             sx={editTaskStyles.titleEdit}
           >
-            Edit Todo
+            {getCurrentLangDB.mainPage.editTaskTitle}
           </Typography>
           <TextField
             id='outlined-basic'
-            label='Edit Task'
+            label={getCurrentLangDB.mainPage.editTaskLabel}
             variant='outlined'
             sx={editTaskStyles.textFieldEdit}
             defaultValue={text}
@@ -55,7 +57,7 @@ const ToDoEditModal: React.FC<ToDoEditModalProps> = ({ text, id }) => {
             sx={editTaskStyles.editSubmit}
             variant='contained'
           >
-            Edit
+            {getCurrentLangDB.mainPage.editTaskSubmit}
           </Button>
         </Box>
       </Modal>

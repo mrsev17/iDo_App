@@ -10,6 +10,8 @@ import './Footer.scss';
 export const Footer: React.FC = () => {
   const dispatch: Dispatch = useDispatch();
   const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   const clearLS = (): void => {
     dispatch(clearAllTodos());
   };
@@ -19,7 +21,7 @@ export const Footer: React.FC = () => {
       <div className='footer__wrapper'>
         <div className='footer__left-side'>
           <button className='footer__local-storage-clear-btn' onClick={clearLS}>
-            Clear all data about tasks
+            {getCurrentLangDB.footer.clearAllData}
           </button>
         </div>
         <div className='footer__right-side'>
@@ -27,7 +29,7 @@ export const Footer: React.FC = () => {
             className='footer__completed-clear-btn'
             onClick={clearCompletedToDo}
           >
-            Remove completed tasks
+            {getCurrentLangDB.footer.removeCompleted}
           </button>
         </div>
       </div>

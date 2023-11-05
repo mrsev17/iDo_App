@@ -6,6 +6,8 @@ import CircularWithValueLabel from '../../components/CircularProgress/CircularPr
 import './MainPage.scss';
 
 export const MainPage: React.FC = () => {
+  const languageState = useSelector((state: any) => state.tasks.languages);
+  const getCurrentLangDB = languageState.currentDataBase;
   const tasks = useSelector((state: any) => state.tasks.todos);
   const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
   return (
@@ -15,7 +17,7 @@ export const MainPage: React.FC = () => {
           <div className='content-title-wrapper'>
             <h2 className='content-title'>
               {tasks.length === 0 ? (
-                'Create new task'
+                `${getCurrentLangDB.mainPage.title}`
               ) : (
                 <div className='fade-in'>
                   <CircularWithValueLabel />
