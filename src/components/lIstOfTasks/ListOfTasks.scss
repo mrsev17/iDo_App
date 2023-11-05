@@ -1,6 +1,6 @@
 @import '../../App.scss';
 
-.list-active {
+.todo__list-active {
   width: 70%;
   padding: 0 15px;
   height: 100%;
@@ -24,12 +24,12 @@
       max-width: 100%;
       color: $color-text-light;
       background-color: $color-bg-body-dark;
-      padding: 22px 12px;
+      padding: 19px 16px 19px 10px;
       height: 40px;
     }
   }
 }
-.list-active-dark {
+.todo__list-active-dark {
   width: 70%;
   padding: 0 15px;
   height: 100%;
@@ -53,34 +53,29 @@
       max-width: 100%;
       color: $color-text-light;
       background-color: transparent;
-      padding: 22px 12px;
+      padding: 19px 16px 19px 10px;
       height: 40px;
     }
   }
 }
 
-.todo-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 @media (max-width: 992px) {
-  .list-active,
-  .list-active-dark {
+  .todo__list-active,
+  .todo__list-active-dark {
     width: 100%;
     max-height: 306px;
   }
 }
 @media (max-width: 567px) {
-  .list-active,
-  .list-active-dark {
+  .todo__list-active,
+  .todo__list-active-dark {
     padding: 0 10px;
     max-height: 306px;
     ul {
       gap: 10px;
       li {
         height: 36px;
+        padding: 18px 16px 20px 10px;
       }
     }
   }

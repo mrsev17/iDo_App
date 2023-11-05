@@ -1,10 +1,6 @@
 @import '../../App.scss';
-.task-complete {
-  p {
-    color: rgb(44, 199, 44) !important;
-  }
-}
-.employee-task {
+
+.todo__employee-task {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,10 +9,15 @@
   padding: 8px;
   border-radius: 8px;
   min-height: 30px;
-  .employee-task-right-part {
+  .todo__employee-task-right-part {
     display: flex;
     align-items: center;
     gap: 10px;
+  }
+  .todo__task-complete {
+    p {
+      color: rgb(44, 199, 44) !important;
+    }
   }
   span,
   p {

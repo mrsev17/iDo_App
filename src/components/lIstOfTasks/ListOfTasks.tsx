@@ -8,7 +8,7 @@ const ListOfTasks: React.FC = () => {
   const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
 
   return (
-    <div className={mode ? 'list-active' : 'list-active-dark'}>
+    <div className={mode ? 'todo__list-active' : 'todo__list-active-dark'}>
       <ul>
         {tasks.length !== 0 ? (
           tasks.map((item: TodoInterface) => {

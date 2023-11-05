@@ -13,9 +13,9 @@ export const ToggleSwitch: React.FC = () => {
     dispatch(switchMode(!isChecked));
   };
   return (
-    <div className='container'>
+    <div className='todo__switch-mode-container'>
       <span className={isChecked ? 'label-text-dark' : 'label-text'}>
-        {isChecked ? 'Dark mode' : 'Light mode'}{' '}
+        {isChecked ? 'Dark mode' : 'Light mode'}
       </span>
       <div className='toggle-switch'>
         <input

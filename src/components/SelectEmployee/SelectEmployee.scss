@@ -1,20 +1,24 @@
 @import '../../App.scss';
-.select-employee {
+.todo__select-employee {
   select {
     font-size: 16px;
     border-radius: 4px;
     background-color: $color-ui-accent;
+    border: 1px solid $color-ui-accent;
+    color: black;
     &:focus-visible {
       outline: none;
     }
   }
 }
 
-.select-employee-dark {
+.todo__select-employee-dark {
   select {
     font-size: 16px;
     border-radius: 4px;
+    color: black;
     background-color: $color-text-light;
+    border: 1px solid $color-text-light;
     &:focus-visible {
       outline: none;
     }
@@ -22,8 +26,8 @@
 }
 
 @media (max-width: 567px) {
-  .select-employee,
-  .select-employee-dark {
+  .todo__select-employee,
+  .todo__select-employee-dark {
     select {
       margin-top: 1px;
       font-size: 14px;

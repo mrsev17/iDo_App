@@ -5,7 +5,7 @@ import './EmployeeList.scss';
 const EmployeeList = () => {
   const employees = useSelector((state: any) => state.tasks.employees);
   return (
-    <ul className='employee-list'>
+    <ul className='todo__employee-list'>
       {employees.length > 1 ? (
         employees.map((employee: string, id: number) => {
           if (employee !== 'Nobody') {

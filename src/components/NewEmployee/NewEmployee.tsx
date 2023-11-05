@@ -17,8 +17,8 @@ const NewEmployee: React.FC = () => {
     }
   };
   return (
-    <div className='new-employee-form'>
-      <form className='form-new-employee' onSubmit={newemployeeSubmit}>
+    <div className='todo__new-employee-form'>
+      <form className='todo__form-new-employee' onSubmit={newemployeeSubmit}>
         <input
           type='text'
           value={employee}

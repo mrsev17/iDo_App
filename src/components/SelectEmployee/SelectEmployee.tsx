@@ -19,7 +19,9 @@ const SelectEmployee: React.FC<SelectProps> = ({
     dispatch(putOnTaskEmployee(e.target.value, id, text));
   };
   return (
-    <div className={mode ? 'select-employee' : 'select-employee-dark'}>
+    <div
+      className={mode ? 'todo__select-employee' : 'todo__select-employee-dark'}
+    >
       <select value={selectedOption} onChange={handleSelectChange}>
         {getListEmployees.map((option: string, index: number) => (
           <option key={index} value={option}>

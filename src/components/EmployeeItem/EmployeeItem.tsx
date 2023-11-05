@@ -37,19 +37,22 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
   return (
     <>
       <Badge
-        className='employee-badge'
+        className='todo__employee-badge'
         sx={badgeStyle}
         badgeContent={getTasksEmployee.length}
         color='default'
       >
-        <li className='employee-item'>
-          <div className='employee-item-part-left'>
+        <li className='todo__employee-item'>
+          <div className='todo__employee-item-part-left'>
             <p>
               {id}. {employee}
             </p>
           </div>
-          <div className='employee-item-part-right'>
-            <button className='employee-item-actions' onClick={handleClickOpen}>
+          <div className='todo__employee-item-part-right'>
+            <button
+              className='todo__employee-item-actions'
+              onClick={handleClickOpen}
+            >
               Actions
             </button>
             <Dialog

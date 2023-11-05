@@ -1,47 +1,28 @@
 @import '../../App.scss';
-footer {
+
+.footer {
   background-color: $color-bg-light;
-  height: 52px;
-  .footer-wrapper {
+  .footer__wrapper {
+    margin: 13px auto;
     padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .footer__left-side {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 52px;
-      .local-storage-clear-btn {
-        box-sizing: content-box;
-        background-color: $color-bg-body-light;
-        color: black;
-        font-size: 20px;
-        border: 1px solid transparent;
-        border-radius: 8px;
-        transition: ease-in-out 0.5s;
-        &:hover {
-          transition: 0.5s;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          background-color: rgb(182, 44, 44);
-          color: aliceblue;
-        }
-      }
-    }
+    .footer__left-side,
     .footer__right-side {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 52px;
-      .completed-clear-btn {
+      .footer__local-storage-clear-btn,
+      .footer__completed-clear-btn {
+        padding: 4px 10px;
         box-sizing: content-box;
         background-color: $color-bg-body-light;
         color: black;
         font-size: 20px;
         border: 1px solid transparent;
-        border-radius: 8px;
+        border-radius: 4px;
         transition: ease-in-out 0.5s;
         &:hover {
           transition: 0.5s;
@@ -55,4 +36,30 @@ footer {
 }
 .dark-footer {
   background-color: $color-bg-dark;
+}
+
+@media (max-width: 567px) {
+  .footer {
+    .footer__wrapper {
+      .footer__left-side {
+        .footer__local-storage-clear-btn {
+          font-size: 14px;
+        }
+      }
+      .footer__right-side {
+        .footer__completed-clear-btn {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .footer {
+    .footer__wrapper {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
 }

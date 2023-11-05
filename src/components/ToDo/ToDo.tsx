@@ -55,24 +55,24 @@ const ToDo: React.FC<TodoInterface> = ({
   };
 
   return (
-    <li className='todo-item' key={id}>
-      <div className='todo-text'>
-        <p className={completed ? 'completed-task' : ''}>{text}</p>
+    <li className='todo__todo-item' key={id}>
+      <div className='-todo__todo-text'>
+        <p className={completed ? 'todo__completed-task' : ''}>{text}</p>
       </div>
-      <div className='todo-actions'>
-        <div className='todo-employee'>
+      <div className='todo__todo-actions'>
+        <div className='todo__todo-employee'>
           <SelectEmployee
             responsiblePerson={responsiblePerson}
             text={text}
             id={id}
           />
         </div>
-        <div className='todo-complete'>
-          <div className='todo-status'>
+        <div className='todo__todo-complete'>
+          <div className='todo__todo-status'>
             {!completed ? (
               <p>In progress</p>
             ) : (
-              <p className='todo-status-task-complete'>Completed</p>
+              <p className='todo__todo-status-task-complete'>Completed</p>
             )}
           </div>
           <Checkbox
@@ -83,9 +83,13 @@ const ToDo: React.FC<TodoInterface> = ({
             sx={mode ? checkBoxStyle : checkBoxStyleLight}
           />
         </div>
-        <div className='todo-edit'>
+        <div className='todo__todo-edit'>
           <button onClick={handleOpen}>
-            <img className='todo-edit-icon' src={editIcon} alt='Edit Icon' />
+            <img
+              className='todo__todo-edit-icon'
+              src={editIcon}
+              alt='Edit Icon'
+            />
           </button>
           <Modal
             open={open}
@@ -121,7 +125,7 @@ const ToDo: React.FC<TodoInterface> = ({
             </Box>
           </Modal>
         </div>
-        <div className='todo-remove'>
+        <div className='todo__todo-remove'>
           <button onClick={() => handleRemove(id)}>
             <img
               className='todo__remove-icon'

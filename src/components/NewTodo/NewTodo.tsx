@@ -18,15 +18,16 @@ const NewTodo: React.FC = () => {
   };
   return (
     <>
-      <form className='form-new-task' onSubmit={newTaskSubmit}>
+      <form className='todo__form-new-task' onSubmit={newTaskSubmit}>
         <input
+          className='todo__form-new-task-input'
           type='text'
           value={newTask}
           onChange={changeNewTaskInput}
           placeholder='Write new Task'
           maxLength={40}
         />
-        <button>Create Task</button>
+        <button className='todo__form-new-task-submit'>Create Task</button>
       </form>
     </>
   );

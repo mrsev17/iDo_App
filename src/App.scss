@@ -2,9 +2,7 @@
 * {
   box-sizing: border-box;
 }
-* {
-  box-sizing: box-sizing;
-}
+
 html,
 body,
 div,
@@ -130,6 +128,17 @@ table {
 a {
   text-decoration: none;
 }
+body {
+  line-height: 1;
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(186, 190, 245) 0%,
+    rgb(192, 192, 245) 33.1%,
+    rgb(218, 203, 246) 90%
+  );
+}
+
 /* Variables */
 $color-ui-accent: #9896f1;
 $color-text-light: #e6e6fa;
@@ -142,6 +151,13 @@ $color-bg-dark: #404040;
 $color-bg-body-dark: #181818;
 
 /* = = = = = */
+
+h1,
+h2 {
+  color: $color-text-light;
+  font-weight: 500;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -150,30 +166,16 @@ $color-bg-body-dark: #181818;
     opacity: 1;
   }
 }
+
 .fade-in {
   opacity: 0;
   animation: fadeIn 1s ease-in forwards;
 }
 
-body {
-  line-height: 1;
-  font-family: 'Montserrat', sans-serif;
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgb(186, 190, 245) 0%,
-    rgb(192, 192, 245) 33.1%,
-    rgb(218, 203, 246) 90%
-  );
-}
-
-h1,
-h2 {
-  color: $color-text-light;
-  font-weight: 500;
-}
 .app-dark-body {
   background-color: $color-bg-body-dark;
 }
+
 .app {
   text-align: center;
   display: flex;
@@ -204,6 +206,7 @@ h2 {
     }
   }
 }
+
 .relative {
   position: relative;
 }

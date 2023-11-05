@@ -3,8 +3,8 @@ import './EmployeeTask.scss';
 
 const EmployeeTask: React.FC<EmployeeTaskProps> = ({ text, completed, id }) => {
   return (
-    <li className='employee-task'>
-      <div className='employee-task-left-part'>
+    <li className='todo__employee-task'>
+      <div className='todo__employee-task-left-part'>
         <p>
           {id + 1}. {text}
         </p>
@@ -12,8 +12,8 @@ const EmployeeTask: React.FC<EmployeeTaskProps> = ({ text, completed, id }) => {
       <div
         className={
           completed
-            ? 'employee-task-right-part task-complete'
-            : 'employee-task-right-part'
+            ? 'todo__employee-task-right-part todo__task-complete'
+            : 'todo__employee-task-right-part'
         }
       >
         <div>

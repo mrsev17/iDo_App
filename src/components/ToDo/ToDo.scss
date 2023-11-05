@@ -1,24 +1,27 @@
 @import '../../App.scss';
 
-.todo-item {
-  .completed-task {
+.todo__todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .todo__completed-task {
     text-decoration: line-through;
     text-decoration-color: $color-bg-dark;
     text-decoration-thickness: 3px;
   }
-  .todo-actions {
+  .todo__todo-actions {
     display: flex;
     align-items: center;
     gap: 10px;
-    .todo-complete {
+    .todo__todo-complete {
       display: flex;
       align-items: center;
       gap: 10px;
-      .todo-status-task-complete {
+      .todo__todo-status-task-complete {
         color: $color-ui-accent;
       }
     }
-    .todo-edit {
+    .todo__todo-edit {
       width: 22px;
       height: 22px;
       button {
@@ -40,7 +43,7 @@
         color: transparent;
       }
     }
-    .todo-remove {
+    .todo__todo-remove {
       width: 22px;
       height: 22px;
       button {
@@ -60,25 +63,25 @@
 }
 
 @media (max-width: 567px) {
-  .todo-item {
-    .todo-text {
+  .todo__todo-item {
+    .todo__todo-text {
       p {
         font-size: 12px;
       }
     }
-    .todo-actions {
+    .todo__todo-actions {
       gap: 8px;
-      .todo-complete {
+      .todo__todo-complete {
         transform: scale(0.88);
-        .todo-status {
+        .todo__todo-status {
           display: none;
           p {
             font-size: 12px;
           }
         }
       }
-      .todo-remove,
-      .todo-edit {
+      .todo__todo-remove,
+      .todo__todo-edit {
         transform: scale(0.88);
       }
     }

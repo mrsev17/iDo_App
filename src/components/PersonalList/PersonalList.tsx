@@ -4,7 +4,7 @@ import './PersonalList.scss';
 
 const PersonalList: React.FC<PersonalListProps> = ({ getTasksEmployee }) => {
   return (
-    <ul className='employee-personal-list'>
+    <ul className='todo__employee-personal-list'>
       {getTasksEmployee.length > 0
         ? getTasksEmployee.map((task: TodoInterface, id: number) => (
             <EmployeeTask

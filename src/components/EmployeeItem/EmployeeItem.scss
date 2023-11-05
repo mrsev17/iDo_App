@@ -2,7 +2,7 @@
 .MuiPaper-root {
   width: 100%;
 }
-.employee-item {
+.todo__employee-item {
   width: 100%;
   background-color: $color-bg-body-light;
   padding: 8px;
@@ -11,14 +11,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  .employee-item-part-left {
+  .todo__employee-item-part-left {
     p {
       color: $color-bg-body-dark;
       font-weight: 500;
     }
   }
-  .employee-item-part-right {
-    .employee-item-actions {
+  .todo__employee-item-part-right {
+    .todo__employee-item-actions {
       background-color: #6a5acd;
       color: $color-bg-body-light;
       border: 1px solid transparent;

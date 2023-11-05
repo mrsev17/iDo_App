@@ -14,16 +14,19 @@ export const Footer: React.FC = () => {
   };
   const clearCompletedToDo = () => dispatch(clearCompleted());
   return (
-    <footer className={mode ? 'fade-in dark-footer' : 'fade-in'}>
-      <div className='footer-wrapper'>
+    <footer className={mode ? 'footer fade-in dark-footer' : 'footer fade-in'}>
+      <div className='footer__wrapper'>
         <div className='footer__left-side'>
-          <button className='local-storage-clear-btn' onClick={clearLS}>
-            Clear all data
+          <button className='footer__local-storage-clear-btn' onClick={clearLS}>
+            Clear all data about tasks
           </button>
         </div>
         <div className='footer__right-side'>
-          <button className='completed-clear-btn' onClick={clearCompletedToDo}>
-            Remove completed
+          <button
+            className='footer__completed-clear-btn'
+            onClick={clearCompletedToDo}
+          >
+            Remove completed tasks
           </button>
         </div>
       </div>
