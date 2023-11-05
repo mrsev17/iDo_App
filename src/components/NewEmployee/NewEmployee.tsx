@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { newEmployee } from '../../redux/tasks/actionCreators';
+import { Dispatch } from 'redux';
 import './NewEmployee.scss';
 
 const NewEmployee: React.FC = () => {
@@ -8,7 +9,7 @@ const NewEmployee: React.FC = () => {
   const employeeInputHandle = (e: ChangeEvent<HTMLInputElement>) => {
     setEmployee(e.target.value);
   };
-  const dispatch = useDispatch();
+  const dispatch: Dispatch = useDispatch();
   const newemployeeSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (employee.length > 2) {

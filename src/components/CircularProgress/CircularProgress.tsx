@@ -30,8 +30,8 @@ function LinearProgressWithLabel(
 }
 
 const LinearWithValueLabel: React.FC = () => {
-  const tasks = useSelector((state: any) => state.tasks.todos);
-  const completeTasks = tasks.filter(
+  const tasks: TodoInterface[] = useSelector((state: any) => state.tasks.todos);
+  const completeTasks: TodoInterface[] = tasks.filter(
     (item: TodoInterface) => item.completed !== false
   );
   const currentProgress: number = (completeTasks.length / tasks.length) * 100;

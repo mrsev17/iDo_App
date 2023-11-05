@@ -1,21 +1,24 @@
 import * as actionTypes from './actionTypes';
 
-interface actionInterface {
-    type: string,
+interface ActionInterface {
+  type: string;
 }
-interface initialValue {
-    toggle: boolean
+interface InitialValue {
+  toggle: boolean;
 }
 
-const initialState:initialValue = {toggle:false};
+const initialState: InitialValue = { toggle: false };
 
-const modeReducer = (state = initialState, action:actionInterface) => {
-    switch(action.type) {
-        case actionTypes.SWITCH_MODE:
-            return {...state, toggle: !state.toggle};
-        default:
-            return state;   
-    }
-}
+const modeReducer = (
+  state: InitialValue = initialState,
+  action: ActionInterface
+) => {
+  switch (action.type) {
+    case actionTypes.SWITCH_MODE:
+      return { ...state, toggle: !state.toggle };
+    default:
+      return state;
+  }
+};
 
 export default modeReducer;

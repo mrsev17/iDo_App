@@ -1,0 +1,22 @@
+.todo__todo-edit {
+  width: 22px;
+  height: 22px;
+  button {
+    border: none;
+    border-radius: 2px;
+    padding: 3px 7px;
+    background-color: aliceblue;
+    cursor: pointer;
+    img {
+      margin-top: 2px;
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+@media (max-width: 567px) {
+  .todo__todo-edit {
+    transform: scale(0.88);
+  }
+}

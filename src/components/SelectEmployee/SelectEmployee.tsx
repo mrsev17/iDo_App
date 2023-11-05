@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { putOnTaskEmployee } from '../../redux/tasks/actionCreators';
 import { SelectProps, StateToogle } from '../../interfaces';
+import { Dispatch } from 'redux';
 import './SelectEmployee.scss';
 
 const SelectEmployee: React.FC<SelectProps> = ({
@@ -11,8 +12,10 @@ const SelectEmployee: React.FC<SelectProps> = ({
 }) => {
   const [selectedOption, setSelectedOption] =
     useState<string>(responsiblePerson);
-  const getListEmployees = useSelector((state: any) => state.tasks.employees);
-  const dispatch = useDispatch();
+  const getListEmployees: string[] = useSelector(
+    (state: any) => state.tasks.employees
+  );
+  const dispatch: Dispatch = useDispatch();
   const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value);

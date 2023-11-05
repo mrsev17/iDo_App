@@ -5,14 +5,16 @@ import { badgeStyle } from '../utils/commonData';
 import { Badge } from '@mui/material';
 import './AppRouter.scss';
 
-export const NavigationQuiz = () => {
-  const getTasksLength = useSelector((state: any) => state.tasks.todos).length;
-  const mode = useSelector((state: StateToogle) => state.mode.toggle);
+export const NavigationQuiz: React.FC = () => {
+  const getTasksLength: number = useSelector(
+    (state: any) => state.tasks.todos
+  ).length;
+  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
   const location = useLocation();
-  const getEmployeesLength = useSelector(
+  const getEmployeesLength: number = useSelector(
     (state: any) => state.tasks.employees
   ).length;
-  const getOperationsLength = useSelector(
+  const getOperationsLength: number = useSelector(
     (state: any) => state.tasks.actions
   ).length;
 
@@ -29,7 +31,6 @@ export const NavigationQuiz = () => {
             Tasks
           </Link>
         </Badge>
-
         <Badge
           className='employee-badge'
           sx={badgeStyle}
@@ -43,7 +44,6 @@ export const NavigationQuiz = () => {
             Employees
           </Link>
         </Badge>
-
         <Badge
           className='employee-badge'
           sx={badgeStyle}

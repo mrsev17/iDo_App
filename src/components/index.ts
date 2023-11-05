@@ -12,3 +12,4 @@ export * from './ToDo';
 export * from './ToggleSwitch';
 export * from './SelectEmployee';
 export * from './NewTodo';
+export * from './ToDoEditModal';

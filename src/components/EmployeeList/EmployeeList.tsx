@@ -2,8 +2,10 @@ import { useSelector } from 'react-redux';
 import EmployeeItem from '../EmployeeItem/EmployeeItem';
 import './EmployeeList.scss';
 
-const EmployeeList = () => {
-  const employees = useSelector((state: any) => state.tasks.employees);
+const EmployeeList: React.FC = () => {
+  const employees: string[] = useSelector(
+    (state: any) => state.tasks.employees
+  );
   return (
     <ul className='todo__employee-list'>
       {employees.length > 1 ? (

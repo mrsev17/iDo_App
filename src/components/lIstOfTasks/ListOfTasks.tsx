@@ -4,9 +4,8 @@ import ToDo from '../ToDo/ToDo';
 import './ListOfTasks.scss';
 
 const ListOfTasks: React.FC = () => {
-  const tasks = useSelector((state: any) => state.tasks.todos);
+  const tasks: TodoInterface[] = useSelector((state: any) => state.tasks.todos);
   const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
-
   return (
     <div className={mode ? 'todo__list-active' : 'todo__list-active-dark'}>
       <ul>

@@ -28,6 +28,11 @@ export interface TodoInterface {
   responsiblePerson: string;
 }
 
+export interface ToDoEditModalProps {
+  text: string;
+  id: string;
+}
+
 export interface PersonalListProps {
   getTasksEmployee: TodoInterface[];
 }

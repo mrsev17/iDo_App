@@ -28,7 +28,6 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         todos: updatedTodos,
         actions: updatedActionsResponsible,
       };
-    //
     case actionTypes.NEW_EMPLOYEE:
       const timeNewEmployee: string = getFormattedDateAndTime();
       const updatedActionsNewEmployee: string[] = [
@@ -40,7 +39,6 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         employees: [...state.employees, action.payload],
         actions: updatedActionsNewEmployee,
       };
-    //
     case actionTypes.DELETE_EMPLOYEE:
       const timeDeleteEmployee: string = getFormattedDateAndTime();
       const updatedActionsRemoveEmployee: string[] = [
@@ -67,7 +65,6 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         employees: filterEmployees,
         actions: updatedActionsRemoveEmployee,
       };
-    //
     case actionTypes.NEW_TASK:
       const timeNewTask: string = getFormattedDateAndTime();
       const updatedActions: string[] = [

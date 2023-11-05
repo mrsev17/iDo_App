@@ -3,7 +3,7 @@ import { NavigationQuiz } from './NavigationQuiz';
 import { MainPage, Employees, Operations } from '../Pages';
 import './AppRouter.scss';
 
-export const AppRouter = () => {
+export const AppRouter: React.FC = () => {
   return (
     <Router>
       <Routes>

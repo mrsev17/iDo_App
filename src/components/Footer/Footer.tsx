@@ -4,15 +4,16 @@ import {
   clearAllTodos,
   clearCompleted,
 } from '../../redux/tasks/actionCreators';
+import { Dispatch } from 'redux';
 import './Footer.scss';
 
 export const Footer: React.FC = () => {
-  const dispatch = useDispatch();
-  const mode = useSelector((state: StateToogle) => state.mode.toggle);
+  const dispatch: Dispatch = useDispatch();
+  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
   const clearLS = (): void => {
     dispatch(clearAllTodos());
   };
-  const clearCompletedToDo = () => dispatch(clearCompleted());
+  const clearCompletedToDo: () => void = () => dispatch(clearCompleted());
   return (
     <footer className={mode ? 'footer fade-in dark-footer' : 'footer fade-in'}>
       <div className='footer__wrapper'>

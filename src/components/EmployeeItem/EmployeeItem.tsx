@@ -7,6 +7,7 @@ import {
   Badge,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 import { TodoInterface, EmployeeProps } from '../../interfaces';
 import { useState } from 'react';
 import { deleteEmployee } from '../../redux/tasks/actionCreators';
@@ -16,20 +17,22 @@ import './EmployeeItem.scss';
 
 const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const dispatch = useDispatch();
-  const getTasks = useSelector((state: any) => state.tasks.todos);
+  const dispatch: Dispatch = useDispatch();
+  const getTasks: TodoInterface[] = useSelector(
+    (state: any) => state.tasks.todos
+  );
   const getTasksEmployee: TodoInterface[] = getTasks.filter(
     (task: TodoInterface) => task.responsiblePerson === employee
   );
-  const handleClickOpen = () => {
+  const handleClickOpen = (): void => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setOpen(false);
   };
 
-  const removeEmployee = (id: number, nameEmployee: string) => {
+  const removeEmployee = (id: number, nameEmployee: string): void => {
     dispatch(deleteEmployee(id, nameEmployee));
     handleClose();
   };
