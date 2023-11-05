@@ -15,10 +15,10 @@ export const Header: React.FC = () => {
         <h2>{getCurrentLangDB.header.title}</h2>
         <IconCat />
       </div>
+      <div className='header__laguage-options'>
+        <LanguageOptions />
+      </div>
       <div className='header__left-side'>
-        <div className='header__laguage-options'>
-          <LanguageOptions />
-        </div>
         <ToggleSwitch />
       </div>
     </header>

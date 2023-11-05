@@ -19,3 +19,13 @@
 .dark-header {
   background-color: $color-bg-dark;
 }
+
+@media (max-width: 567px) {
+  .header {
+    .header__right-side {
+      h2 {
+        display: none;
+      }
+    }
+  }
+}

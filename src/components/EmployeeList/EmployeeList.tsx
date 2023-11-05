@@ -12,7 +12,7 @@ const EmployeeList: React.FC = () => {
     <ul className='todo__employee-list'>
       {employees.length > 1 ? (
         employees.map((employee: string, id: number) => {
-          if (employee !== 'Nobody') {
+          if (employee !== 'Nobody' && employee !== 'Ніхто') {
             return <EmployeeItem key={id} employee={employee} id={id} />;
           }
           return null;

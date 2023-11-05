@@ -5,6 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import { useState, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLanguage } from '../../redux/tasks/actionCreators';
+import './LanguageOptions.scss';
 
 const RowRadioButtonsGroup = () => {
   const [selectLang, setSelectLanguage] = useState<string>('English');
@@ -26,12 +27,30 @@ const RowRadioButtonsGroup = () => {
       >
         <FormControlLabel
           value='English'
-          control={<Radio />}
+          control={
+            <Radio
+              sx={{
+                color: '#9896f1',
+                '&.Mui-checked': {
+                  color: '#9896f1',
+                },
+              }}
+            />
+          }
           label={getCurrentLangDB.header.engOptionsToogle}
         />
         <FormControlLabel
           value='Ukrainian'
-          control={<Radio />}
+          control={
+            <Radio
+              sx={{
+                color: '#9896f1',
+                '&.Mui-checked': {
+                  color: '#9896f1',
+                },
+              }}
+            />
+          }
           label={getCurrentLangDB.header.ukrOptionsToggle}
         />
       </RadioGroup>
