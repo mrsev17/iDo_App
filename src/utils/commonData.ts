@@ -112,10 +112,12 @@ export const employeeItemStyles = {
   },
   dialogActions: {
     display: 'flex',
-    justifyContent: 'space-between',
-    margin: '0 auto',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    gap: '10px',
     width: '100%',
     maxWidth: '94%',
+    margin: '0 auto',
   },
   buttonRemoveEmployee: {
     fontSize: '12px',

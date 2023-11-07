@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { ToggleSwitch } from '../ToggleSwitch';
 import { StateToogle } from '../../interfaces';
 import { IconCat } from '../IconCat/IconCat';
-import LanguageOptions from '../LanguageOptions/LanguageOptions';
+// import LanguageOptions from '../LanguageOptions/LanguageOptions';
 import './Header.scss';
 
 export const Header: React.FC = () => {
@@ -15,9 +15,7 @@ export const Header: React.FC = () => {
         <h2>{getCurrentLangDB.header.title}</h2>
         <IconCat />
       </div>
-      <div className='header__laguage-options'>
-        <LanguageOptions />
-      </div>
+      <div className='header__laguage-options'>{/* <LanguageOptions /> */}</div>
       <div className='header__left-side'>
         <ToggleSwitch />
       </div>

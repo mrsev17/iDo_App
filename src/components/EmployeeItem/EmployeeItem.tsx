@@ -78,13 +78,21 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
               </DialogContent>
               <DialogActions sx={employeeItemStyles.dialogActions}>
                 <Button
-                  sx={employeeItemStyles.buttonRemoveEmployee}
+                  className='todo__employee-item-remove'
+                  sx={{
+                    ...employeeItemStyles.buttonRemoveEmployee,
+                    margin: '0 auto !important',
+                  }}
                   onClick={() => removeEmployee(id, employee)}
                 >
                   {getCurrentLangDB.employeesPage.deleteBtn}
                 </Button>
                 <Button
-                  sx={employeeItemStyles.buttonCloseModal}
+                  className='todo__employee-item-close'
+                  sx={{
+                    ...employeeItemStyles.buttonCloseModal,
+                    margin: '0 auto !important',
+                  }}
                   onClick={handleClose}
                 >
                   {getCurrentLangDB.employeesPage.closeModalBtn}

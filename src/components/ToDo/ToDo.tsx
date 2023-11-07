@@ -31,7 +31,7 @@ const ToDo: React.FC<TodoInterface> = ({
 
   return (
     <li className='todo__todo-item' key={id}>
-      <div className='-todo__todo-text'>
+      <div className='todo__todo-text'>
         <p className={completed ? 'todo__completed-task' : ''}>{text}</p>
       </div>
       <div className='todo__todo-actions'>

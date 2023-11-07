@@ -7,7 +7,7 @@ interface InitialValue {
   toggle: boolean;
 }
 
-const initialState: InitialValue = { toggle: false };
+const initialState: InitialValue = { toggle: true };
 
 const modeReducer = (
   state: InitialValue = initialState,
