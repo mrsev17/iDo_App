@@ -14,6 +14,10 @@
     align-items: center;
     gap: 10px;
   }
+  .todo__employee-task-status {
+    max-width: 84px;
+    width: 84px;
+  }
   .todo__task-complete {
     p {
       color: rgb(44, 199, 44) !important;

@@ -4,9 +4,12 @@
   background-color: $color-bg-light;
   .footer__modal-content {
     display: flex;
+    .footer__modal-title {
+      font-size: 18px;
+    }
   }
   .footer__wrapper {
-    margin: 13px auto;
+    margin: 8px auto;
     padding: 0 20px;
     display: flex;
     align-items: center;
@@ -61,7 +64,6 @@
 @media (max-width: 440px) {
   .footer {
     .footer__wrapper {
-      flex-direction: column;
       gap: 20px;
     }
   }

@@ -23,7 +23,7 @@ const EmployeeTask: React.FC<EmployeeTaskProps> = ({ text, completed, id }) => {
           <span>{getCurrentLangDB.employeesPage.statusSub}</span>
         </div>
         <div>
-          <p>{`${
+          <p className='todo__employee-task-status'>{`${
             completed
               ? getCurrentLangDB.employeesPage.currentStatusComplete
               : getCurrentLangDB.employeesPage.currentStatusInProgress

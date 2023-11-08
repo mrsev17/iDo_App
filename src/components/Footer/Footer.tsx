@@ -13,20 +13,39 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { IconGear } from '../IconGear';
 import LanguageOptions from '../LanguageOptions/LanguageOptions';
+import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
 import './Footer.scss';
 
-const style = {
+const settingsButton = {
+  padding: '0',
+  margin: '0',
+  minWidth: 'auto',
+};
+
+const styleModalContent = {
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   pt: 2,
   px: 4,
   pb: 3,
+  width: '96%',
+  backgroundColor: '#404040',
+  borderRadius: '8px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '10px',
+};
+
+const boxSettingsContent = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '10px',
 };
 
 export const Footer: React.FC = () => {
@@ -38,7 +57,6 @@ export const Footer: React.FC = () => {
     setOpen(false);
   };
 
-  //
   const dispatch: Dispatch = useDispatch();
   const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
   const languageState = useSelector((state: any) => state.tasks.languages);
@@ -50,19 +68,9 @@ export const Footer: React.FC = () => {
   return (
     <footer className={mode ? 'footer fade-in dark-footer' : 'footer fade-in'}>
       <div className='footer__wrapper'>
-        <div className='footer__left-side'>
-          {/* <button className='footer__local-storage-clear-btn' onClick={clearLS}>
-            {getCurrentLangDB.footer.clearAllData}
-          </button> */}
-        </div>
+        <div className='footer__left-side'></div>
         <div className='footer__right-side'>
-          {/* <button
-            className='footer__completed-clear-btn'
-            onClick={clearCompletedToDo}
-          >
-            {getCurrentLangDB.footer.removeCompleted}
-          </button> */}
-          <Button onClick={handleOpen}>
+          <Button sx={settingsButton} onClick={handleOpen}>
             <IconGear />
           </Button>
           <Modal
@@ -71,74 +79,23 @@ export const Footer: React.FC = () => {
             aria-labelledby='child-modal-title'
             aria-describedby='child-modal-description'
           >
-            <Box
-              sx={{
-                ...style,
-                width: 400,
-                backgroundColor: '#404040',
-                borderRadius: '8px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '10px',
-              }}
-            >
-              <h2 className='footer__modal-title' id='child-modal-title'>
-                Actions with data
-              </h2>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '10px',
-                }}
-              >
+            <Box sx={styleModalContent}>
+              <h2>{getCurrentLangDB.footer.modalTitle}</h2>
+              <Box sx={boxSettingsContent}>
                 <LanguageOptions />
-                <Button
-                  sx={{
-                    fontSize: '14px',
-                    backgroundColor: 'azure',
-                    color: 'red',
-                    '&:hover': {
-                      backgroundColor: 'whiteSmoke',
-                    },
-                  }}
-                  className='footer__completed-clear-btn'
+                <BtnDefaultModal
                   onClick={clearCompletedToDo}
-                >
-                  {getCurrentLangDB.footer.removeCompleted}
-                </Button>
-                <Button
-                  sx={{
-                    fontSize: '14px',
-                    backgroundColor: 'azure',
-                    color: 'red',
-                    '&:hover': {
-                      backgroundColor: 'whiteSmoke',
-                    },
-                  }}
-                  className='footer__local-storage-clear-btn'
+                  content={getCurrentLangDB.footer.removeCompleted}
+                />
+                <BtnDefaultModal
                   onClick={clearLS}
-                >
-                  {getCurrentLangDB.footer.clearAllData}
-                </Button>
+                  content={getCurrentLangDB.footer.clearAllData}
+                />
+                <BtnDefaultModal
+                  onClick={handleClose}
+                  content={getCurrentLangDB.footer.modalCloseBtn}
+                />
               </Box>
-              <Button
-                className='footer__close-modal-btn'
-                sx={{
-                  margin: '0 auto',
-                  backgroundColor: 'azure',
-                  color: '#9896f1',
-                  maxWidth: '160px',
-                  width: '100%',
-                  '&:hover': {
-                    backgroundColor: 'whiteSmoke',
-                  },
-                }}
-                onClick={handleClose}
-              >
-                Close
-              </Button>
             </Box>
           </Modal>
         </div>

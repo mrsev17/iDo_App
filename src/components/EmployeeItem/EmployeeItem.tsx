@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { deleteEmployee } from '../../redux/tasks/actionCreators';
 import { badgeStyle, employeeItemStyles } from '../../utils/commonData';
 import PersonalList from '../PersonalList/PersonalList';
+import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
 import './EmployeeItem.scss';
 
 const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
@@ -77,26 +78,14 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
                 <PersonalList key={id} getTasksEmployee={getTasksEmployee} />
               </DialogContent>
               <DialogActions sx={employeeItemStyles.dialogActions}>
-                <Button
-                  className='todo__employee-item-remove'
-                  sx={{
-                    ...employeeItemStyles.buttonRemoveEmployee,
-                    margin: '0 auto !important',
-                  }}
+                <BtnDefaultModal
+                  content={getCurrentLangDB.employeesPage.deleteBtn}
                   onClick={() => removeEmployee(id, employee)}
-                >
-                  {getCurrentLangDB.employeesPage.deleteBtn}
-                </Button>
-                <Button
-                  className='todo__employee-item-close'
-                  sx={{
-                    ...employeeItemStyles.buttonCloseModal,
-                    margin: '0 auto !important',
-                  }}
+                />
+                <BtnDefaultModal
+                  content={getCurrentLangDB.employeesPage.closeModalBtn}
                   onClick={handleClose}
-                >
-                  {getCurrentLangDB.employeesPage.closeModalBtn}
-                </Button>
+                />
               </DialogActions>
             </Dialog>
           </div>

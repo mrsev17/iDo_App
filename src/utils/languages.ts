@@ -43,6 +43,8 @@ export interface LanguageTranslations {
     operations: string;
   };
   footer: {
+    modalTitle: string;
+    modalCloseBtn: string;
     clearAllData: string;
     removeCompleted: string;
   };
@@ -80,7 +82,7 @@ export const ukrLangData: LanguageTranslations = {
     titleCardActions: 'Дії зі співробітником',
     deleteBtn: 'Видалити співробітника',
     closeModalBtn: 'Закрити',
-    statusSub: 'Cтатус',
+    statusSub: 'Cтатус: ',
     currentStatusInProgress: 'В процесі',
     currentStatusComplete: 'Завершено',
   },
@@ -95,6 +97,8 @@ export const ukrLangData: LanguageTranslations = {
     operations: 'Операції',
   },
   footer: {
+    modalTitle: 'Налаштування',
+    modalCloseBtn: 'Закрити',
     clearAllData: 'Видалити всі дані про завдання',
     removeCompleted: 'Видалити виконані завдання',
   },
@@ -127,7 +131,7 @@ export const engLangData: LanguageTranslations = {
     titleCardActions: 'Actions with employee',
     deleteBtn: 'Delete Employee',
     closeModalBtn: 'close',
-    statusSub: 'Status',
+    statusSub: 'Status: ',
     currentStatusInProgress: 'In progress',
     currentStatusComplete: 'Complete',
   },
@@ -142,6 +146,8 @@ export const engLangData: LanguageTranslations = {
     operations: 'Operations',
   },
   footer: {
+    modalTitle: 'Settings',
+    modalCloseBtn: 'Close',
     clearAllData: 'Clear all data about tasks',
     removeCompleted: 'Remove completed tasks',
   },
@@ -191,6 +197,8 @@ export const languageDataEngUkr: LanguageDataObject = {
       operations: 'Operations',
     },
     footer: {
+      modalTitle: 'Settings',
+      modalCloseBtn: 'Close',
       clearAllData: 'Clear all data about tasks',
       removeCompleted: 'Remove completed tasks',
     },

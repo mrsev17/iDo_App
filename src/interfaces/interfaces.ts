@@ -78,6 +78,8 @@ export interface LanguageTranslations {
     operations: string;
   };
   footer: {
+    modalTitle: string;
+    modalCloseBtn: string;
     clearAllData: string;
     removeCompleted: string;
   };

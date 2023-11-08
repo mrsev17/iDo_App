@@ -13,6 +13,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    .todo__todo-status {
+      max-width: 130px;
+      width: 130px;
+    }
     .todo__todo-complete {
       display: flex;
       align-items: center;
