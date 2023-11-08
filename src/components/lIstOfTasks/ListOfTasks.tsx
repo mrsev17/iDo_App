@@ -24,7 +24,15 @@ const ListOfTasks: React.FC = () => {
             );
           })
         ) : (
-          <h2>{getCurrentLangDB.mainPage.infoAboutEmptyList}</h2>
+          <span
+            className={
+              mode
+                ? 'todo__list-active-title-dark'
+                : 'todo__list-active-title-light'
+            }
+          >
+            {getCurrentLangDB.mainPage.infoAboutEmptyList}
+          </span>
         )}
       </ul>
     </div>

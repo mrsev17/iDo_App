@@ -15,7 +15,13 @@ export const MainPage: React.FC = () => {
       <div className='flipper'>
         <div className={mode ? 'front-dark' : 'front'}>
           <div className='content-title-wrapper'>
-            <h2 className='content-title'>
+            <h2
+              className={
+                mode
+                  ? 'main-page-content-title-dark'
+                  : 'main-page-content-title'
+              }
+            >
               {tasks.length === 0 ? (
                 `${getCurrentLangDB.mainPage.title}`
               ) : (

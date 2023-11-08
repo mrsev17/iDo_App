@@ -1,0 +1,13 @@
+@import '../../App.scss';
+
+.todo__settings-title-dark,
+.todo__settings-title-light {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.todo__settings-title-dark {
+  color: $color-bg-light;
+}
+.todo__settings-title-ligth {
+  color: black !important;
+}

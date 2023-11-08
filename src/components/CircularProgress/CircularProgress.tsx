@@ -5,15 +5,21 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { TodoInterface } from '../../interfaces';
+import { TodoInterface, StateToogle } from '../../interfaces';
 import '../../App.scss';
 import './CircularProgress.scss';
 
 function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
 ) {
+  const mode = useSelector((state: StateToogle) => state.mode.toggle);
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
       <Box sx={{ width: '100%', mr: 1 }}>
         <LinearProgress variant='determinate' {...props} />
       </Box>
@@ -21,7 +27,7 @@ function LinearProgressWithLabel(
         <Typography
           width='30px'
           variant='body1'
-          color='text.secondary'
+          color={mode ? '#9896f1' : '#e6e6fa'}
           fontSize='18px'
         >{`${Math.round(props.value)}%`}</Typography>
       </Box>
@@ -30,6 +36,7 @@ function LinearProgressWithLabel(
 }
 
 const LinearWithValueLabel: React.FC = () => {
+  const mode = useSelector((state: StateToogle) => state.mode.toggle);
   const tasks: TodoInterface[] = useSelector((state: any) => state.tasks.todos);
   const completeTasks: TodoInterface[] = tasks.filter(
     (item: TodoInterface) => item.completed !== false
@@ -46,7 +53,7 @@ const LinearWithValueLabel: React.FC = () => {
       <LinearProgressWithLabel
         sx={{
           borderRadius: '6px',
-          backgroundColor: 'azure',
+          backgroundColor: `${mode ? 'azure' : 'rgb(186, 190, 245)'}`,
           '& .MuiLinearProgress-bar': {
             backgroundColor: '#9896f1',
           },

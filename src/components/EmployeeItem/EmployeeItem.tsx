@@ -1,5 +1,4 @@
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -11,7 +10,7 @@ import { Dispatch } from 'redux';
 import { TodoInterface, EmployeeProps } from '../../interfaces';
 import { useState } from 'react';
 import { deleteEmployee } from '../../redux/tasks/actionCreators';
-import { badgeStyle, employeeItemStyles } from '../../utils/commonData';
+import { employeeItemStyles } from '../../utils/commonData';
 import PersonalList from '../PersonalList/PersonalList';
 import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
 import './EmployeeItem.scss';
@@ -39,12 +38,19 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
     dispatch(deleteEmployee(id, nameEmployee));
     handleClose();
   };
-
+  const badgeStyleEmployee = {
+    width: '100%',
+    margin: '0 auto',
+    '& .MuiBadge-badge': {
+      color: 'azure',
+      backgroundColor: '#6a5acd',
+    },
+  };
   return (
     <>
       <Badge
         className='todo__employee-badge'
-        sx={badgeStyle}
+        sx={badgeStyleEmployee}
         badgeContent={getTasksEmployee.length}
         color='default'
       >

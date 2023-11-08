@@ -13,7 +13,13 @@ export const Employees: React.FC = () => {
       <div className='flipper'>
         <div className={mode ? 'front-dark' : 'front'}>
           <div className='employees-content'>
-            <h2>{getCurrentLangDB.employeesPage.title}</h2>
+            <h2
+              className={
+                mode ? 'employees-title-dark' : 'employees-title-light'
+              }
+            >
+              {getCurrentLangDB.employeesPage.title}
+            </h2>
             <NewEmployee />
             <EmployeeList />
           </div>

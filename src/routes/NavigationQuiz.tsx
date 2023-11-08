@@ -21,18 +21,21 @@ export const NavigationQuiz: React.FC = () => {
   ).length;
 
   return (
-    <div>
+    <div className='todo__navigation'>
       <nav className={mode ? 'nav-wrapper-dark' : 'nav-wrapper'}>
-        <Badge
-          className='employee-badge'
-          sx={badgeStyle}
-          badgeContent={getTasksLength}
-          color='default'
-        >
-          <Link className={location.pathname === '/' ? 'active' : ''} to='/'>
-            {getCurrentLangDB.navigation.tasks}
-          </Link>
-        </Badge>
+        <>
+          <Badge
+            className='employee-badge'
+            sx={badgeStyle}
+            badgeContent={getTasksLength}
+            color='default'
+          >
+            <Link className={location.pathname === '/' ? 'active' : ''} to='/'>
+              {getCurrentLangDB.navigation.tasks}
+            </Link>
+          </Badge>
+        </>
+
         <Badge
           className='employee-badge'
           sx={badgeStyle}

@@ -1,3 +1,4 @@
+@import '../../App.scss';
 .main-content-page-todo {
   width: 100%;
   display: flex;
@@ -5,9 +6,6 @@
   .content-title-wrapper {
     width: 94%;
     margin: 0 auto;
-    .content-title {
-      width: 100%;
-    }
   }
 }
 

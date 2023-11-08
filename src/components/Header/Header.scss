@@ -5,27 +5,23 @@
   align-items: center;
   background-color: $color-bg-light;
   margin-bottom: 30px;
-  .header__right-side {
+  .header__left-side {
     display: flex;
     align-items: center;
     gap: 10px;
     padding-left: 20px;
+    .header__name-app {
+      color: $color-bg-body-light;
+    }
   }
-  .header__left-side {
+  .header__right-side {
     display: flex;
   }
 }
 
 .dark-header {
   background-color: $color-bg-dark;
-}
-
-@media (max-width: 567px) {
-  .header {
-    .header__right-side {
-      h2 {
-        display: none;
-      }
-    }
+  .header__name-app-dark {
+    color: $color-ui-accent;
   }
 }

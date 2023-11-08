@@ -102,9 +102,9 @@ nav,
 section {
   display: block;
 }
-html {
-  height: 100%;
-}
+// html {
+//   height: 100%;
+// }
 
 ol,
 ul {
@@ -137,6 +137,7 @@ body {
     rgb(192, 192, 245) 33.1%,
     rgb(218, 203, 246) 90%
   );
+  background-color: black;
 }
 
 /* Variables */
@@ -152,8 +153,7 @@ $color-bg-body-dark: #181818;
 
 /* = = = = = */
 
-h1,
-h2 {
+h1 {
   color: $color-text-light;
   font-weight: 500;
 }
@@ -177,23 +177,40 @@ h2 {
 }
 
 .app {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: space-between;
+  // text-align: center;
+  // display: flex;
+  // flex-direction: column;
+  // height: 100vh;
+  // justify-content: space-between;
   main {
-    height: 86vh;
-    position: relative;
+    margin-bottom: 30px;
+    // height: 86vh;
+    // position: relative;
+    // flex-direction: column;
+    // align-items: center;
     .content-page {
-      margin: 0 auto;
+      margin: 0 auto 30px;
       max-width: 80%;
-      min-height: 560px;
+      // min-height: 680px;
       border-radius: 3px;
       .content-title-wrapper {
         width: 96%;
         margin: 0 auto;
         height: 60px;
+        .main-page-content-title {
+          text-align: center;
+          padding-top: 20px;
+          margin-bottom: 20px;
+          width: 100%;
+          color: $color-bg-body-light;
+        }
+        .main-page-content-title-dark {
+          text-align: center;
+          width: 100%;
+          padding-top: 20px;
+          margin-bottom: 20px;
+          color: $color-ui-accent;
+        }
         .content-title {
           width: 100%;
           padding-top: 20px;
@@ -207,28 +224,29 @@ h2 {
   }
 }
 
-.relative {
-  position: relative;
-}
+// .relative {
+//   position: relative;
+// }
 
 /* Flip Card */
 
 .flip-container {
-  perspective: 1000px;
-  height: 200px;
+  // perspective: 1000px;
+  // height: 200px;
   border-radius: 8px;
 }
 
 .flipper {
   border-radius: 8px;
   width: 100%;
-  height: 100%;
+  // height: 100%;
 }
 .front-dark,
 .front {
+  min-height: 692px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 100%;
-  height: 100%;
+  // height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -249,14 +267,14 @@ h2 {
 @media (max-width: 992px) {
   .app {
     main {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 20px;
+      // display: flex;
+      // flex-direction: row;
+      // justify-content: space-between;
+      // gap: 10px;
+      // margin-bottom: 20px;
       .content-page {
         width: 100%;
-        min-height: 470px;
+        // min-height: 470px;
         max-width: 94%;
         .content-title-wrapper {
           margin: 0 auto;
@@ -274,16 +292,16 @@ h2 {
       flex-direction: column;
       justify-content: space-between;
       gap: 10px;
-      margin-bottom: 20px;
+      // margin-bottom: 20px;
       .content-page {
-        min-height: 510px;
+        // min-height: 510px;
         max-width: 98%;
         width: 100%;
         .content-title-wrapper {
           width: 94%;
           margin: 0 auto;
           .list-active {
-            max-height: 240px;
+            // max-height: 240px;
           }
         }
       }

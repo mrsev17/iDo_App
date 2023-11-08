@@ -1,6 +1,7 @@
 @import '../../App.scss';
 
 .todo__list-active {
+  margin: 0 auto 30px;
   width: 70%;
   padding: 0 15px;
   height: 100%;
@@ -46,6 +47,7 @@
     gap: 20px;
     max-width: 100%;
     margin: 0 auto;
+
     li {
       border-radius: 8px;
       border: 1px solid $color-bg-body-light;
@@ -58,19 +60,24 @@
     }
   }
 }
+.todo__list-active-title-light {
+  color: $color-bg-body-light;
+}
+.todo__list-active-title-dark {
+  color: $color-ui-accent;
+}
 
 @media (max-width: 992px) {
   .todo__list-active,
   .todo__list-active-dark {
     width: 100%;
-    max-height: 306px;
+    max-height: 492px;
   }
 }
 @media (max-width: 567px) {
   .todo__list-active,
   .todo__list-active-dark {
     padding: 0 10px;
-    max-height: 306px;
     ul {
       gap: 10px;
       li {

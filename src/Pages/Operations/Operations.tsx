@@ -7,18 +7,36 @@ export const Operations: React.FC = () => {
   const getCurrentLangDB = languageState.currentDataBase;
   const mode = useSelector((state: StateToogle) => state.mode.toggle);
   const actions = useSelector((state: any) => state.tasks.actions);
+  const currentLangActions = languageState.currentLanguage;
+  const getCurrentActionsByLanguage = (language: string): string[] => {
+    if (language === 'English') {
+      return actions.english;
+    }
+    if (language === 'Ukrainian') {
+      return actions.ukranian;
+    }
+    return [''];
+  };
+  const actionsData: string[] | undefined =
+    getCurrentActionsByLanguage(currentLangActions);
   return (
     <div className='content-page flip-container'>
       <div className='flipper'>
         <div className={mode ? 'front-dark' : 'front'}>
-          <h2 className='content-title'>
+          <h2
+            className={
+              mode
+                ? 'content-title-operations-dark'
+                : 'content-title-operations-light'
+            }
+          >
             {getCurrentLangDB.operationsPage.title}
           </h2>
           <ul className='todo-app__list-actions'>
-            {actions.length === 0 ? (
+            {actionsData.length === 0 ? (
               <li>{getCurrentLangDB.operationsPage.titleEmptyList}</li>
             ) : (
-              actions.map((action: string, id: number) => (
+              actionsData.map((action: string, id: number) => (
                 <li key={id}>
                   <p>
                     {id + 1}. {action}

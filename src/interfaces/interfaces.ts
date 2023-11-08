@@ -94,8 +94,14 @@ export interface LanguageSelect {
   currentLanguage: string;
   languageData: LanguageDataObject;
 }
+
+interface actionsInit {
+  english: string[];
+  ukranian: string[];
+}
+
 export interface InitState {
-  actions: string[];
+  actions: actionsInit;
   todos: TodoInterface[];
   employees: string[];
   languages: LanguageDataObject;

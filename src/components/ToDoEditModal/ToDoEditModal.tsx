@@ -1,14 +1,16 @@
-import { Box, TextField, Button, Typography, Modal } from '@mui/material';
+import { Box, TextField, Typography, Modal } from '@mui/material';
 import { useState, ChangeEvent } from 'react';
 import { editTaskStyles } from '../../utils/commonData';
 import { useDispatch, useSelector } from 'react-redux';
 import { editTask } from '../../redux/tasks/actionCreators';
 import { Dispatch } from 'redux';
-import { ToDoEditModalProps } from '../../interfaces';
+import { ToDoEditModalProps, StateToogle } from '../../interfaces';
 import editIcon from '../../assets/edit-icon.png';
+import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
 import './ToDoEditModal.scss';
 
 const ToDoEditModal: React.FC<ToDoEditModalProps> = ({ text, id }) => {
+  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
   const [editText, setEditText] = useState<string>(text);
   const languageState = useSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
@@ -23,6 +25,27 @@ const ToDoEditModal: React.FC<ToDoEditModalProps> = ({ text, id }) => {
     dispatch(editTask(id, newText));
     handleClose();
   };
+
+  const styleModalContent = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    pt: 2,
+    px: 4,
+    pb: 3,
+    width: '96%',
+    backgroundColor: `${mode ? '#404040' : '#f0f0f0'}`,
+    borderRadius: '8px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '10px',
+  };
+
   return (
     <div className='todo__todo-edit'>
       <button onClick={handleOpen}>
@@ -34,7 +57,7 @@ const ToDoEditModal: React.FC<ToDoEditModalProps> = ({ text, id }) => {
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
-        <Box sx={editTaskStyles.editBoxStyles}>
+        <Box sx={styleModalContent}>
           <Typography
             id='modal-modal-title'
             variant='h6'
@@ -52,13 +75,10 @@ const ToDoEditModal: React.FC<ToDoEditModalProps> = ({ text, id }) => {
             defaultValue={text}
             onChange={changeEditInput}
           />
-          <Button
+          <BtnDefaultModal
+            content={getCurrentLangDB.mainPage.editTaskSubmit}
             onClick={() => editHandle(id, editText)}
-            sx={editTaskStyles.editSubmit}
-            variant='contained'
-          >
-            {getCurrentLangDB.mainPage.editTaskSubmit}
-          </Button>
+          />
         </Box>
       </Modal>
     </div>

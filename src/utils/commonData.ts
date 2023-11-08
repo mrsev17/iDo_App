@@ -1,5 +1,7 @@
 export const badgeStyle = {
   width: '100%',
+  maxWidth: '380px',
+  margin: '0 auto',
   '& .MuiBadge-badge': {
     color: 'azure',
     backgroundColor: '#6a5acd',
@@ -73,6 +75,7 @@ export const editTaskStyles = {
   textFieldEdit: {
     width: '100%',
     color: 'azure',
+    marginBottom: '20px',
     '& label': {
       color: '#6a5acd',
     },

@@ -19,7 +19,11 @@ const RowRadioButtonsGroup = () => {
   return (
     <FormControl>
       <RadioGroup
-        sx={{ justifyContent: 'center' }}
+        sx={{
+          justifyContent: 'center',
+          backgroundColor: '#6a5acd',
+          borderRadius: '8px',
+        }}
         row
         aria-labelledby='demo-row-radio-buttons-group-label'
         name='row-radio-buttons-group'

@@ -1,8 +1,19 @@
+@import '../../App.scss';
+
 .employees-content {
   max-width: 98%;
   width: 100%;
   margin: 20px auto 0;
-  h2 {
+  .employees-title-dark,
+  .employees-title-light {
+    text-align: center;
     margin-bottom: 20px;
   }
+}
+
+.employees-title-dark {
+  color: $color-ui-accent;
+}
+.employees-title-light {
+  color: $color-bg-body-light;
 }

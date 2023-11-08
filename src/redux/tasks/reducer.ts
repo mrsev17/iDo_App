@@ -5,14 +5,23 @@ import { InitState, TodoInterface } from '../../interfaces';
 import { languageDataEngUkr } from '../../utils/languages';
 import { engLangData, ukrLangData } from '../../utils/languages';
 
+// interface actionsInit {
+//   english: string[];
+//   ukranian: string[];
+// }
+
 const initialState: InitState = {
-  actions: [],
+  actions: {
+    english: [],
+    ukranian: [],
+  },
   todos: [],
   employees: ['Nobody'],
   languages: languageDataEngUkr,
 };
 
 const todoReducer = (state: InitState = initialState, action: any) => {
+  console.log(state.actions);
   switch (action.type) {
     case actionTypes.CHANGE_LANGUAGE:
       if (action.payload === 'English') {
@@ -52,16 +61,24 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const timeSelectEmployee: string = getFormattedDateAndTime();
       const textPutOnTaskEmployeeEng = `Task ${action.payload.text} now on ${action.payload.employee} - ${timeSelectEmployee}`;
       const textPutOnTaskEmployeeUkr = `Завдання ${action.payload.text} зараз на ${action.payload.employee} - ${timeSelectEmployee}`;
-      let putOnEmployeeTaskFinal = '';
-      if (state.languages.currentLanguage === 'English') {
-        putOnEmployeeTaskFinal = textPutOnTaskEmployeeEng;
-      }
-      if (state.languages.currentLanguage === 'Ukrainian') {
-        putOnEmployeeTaskFinal = textPutOnTaskEmployeeUkr;
-      }
-      const updatedActionsResponsible: string[] = [
-        ...state.actions,
-        putOnEmployeeTaskFinal,
+      // let putOnEmployeeTaskFinal = '';
+      // if (state.languages.currentLanguage === 'English') {
+      //   putOnEmployeeTaskFinal = textPutOnTaskEmployeeEng;
+      // }
+      // if (state.languages.currentLanguage === 'Ukrainian') {
+      //   putOnEmployeeTaskFinal = textPutOnTaskEmployeeUkr;
+      // }
+      // const updatedActionsResponsible: string[] = [
+      //   ...state.actions,
+      //   putOnEmployeeTaskFinal,
+      // ];
+      const updateActionsPutTaskEng = [
+        ...state.actions.english,
+        textPutOnTaskEmployeeEng,
+      ];
+      const updateActionsPutTaskUkr = [
+        ...state.actions.ukranian,
+        textPutOnTaskEmployeeUkr,
       ];
       const updatedTodos: TodoInterface[] = state.todos.map((todo) => {
         if (todo.id === action.payload.id) {
@@ -72,27 +89,41 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       return {
         ...state,
         todos: updatedTodos,
-        actions: updatedActionsResponsible,
+        actions: {
+          english: updateActionsPutTaskEng,
+          ukranian: updateActionsPutTaskUkr,
+        },
       };
     case actionTypes.NEW_EMPLOYEE:
       const timeNewEmployee: string = getFormattedDateAndTime();
       const textNewEmployeeEng = `Employee ${action.payload} added to database - ${timeNewEmployee}`;
       const textNewEmployeeUkr = `Співробітника ${action.payload} додано до бази даних - ${timeNewEmployee}`;
-      let newEmployeeTextFinal = '';
-      if (state.languages.currentLanguage === 'English') {
-        newEmployeeTextFinal = textNewEmployeeEng;
-      }
-      if (state.languages.currentLanguage === 'Ukrainian') {
-        newEmployeeTextFinal = textNewEmployeeUkr;
-      }
-      const updatedActionsNewEmployee: string[] = [
-        ...state.actions,
-        newEmployeeTextFinal,
+      // let newEmployeeTextFinal = '';
+      // if (state.languages.currentLanguage === 'English') {
+      //   newEmployeeTextFinal = textNewEmployeeEng;
+      // }
+      // if (state.languages.currentLanguage === 'Ukrainian') {
+      //   newEmployeeTextFinal = textNewEmployeeUkr;
+      // }
+      // const updatedActionsNewEmployee: string[] = [
+      //   ...state.actions,
+      //   newEmployeeTextFinal,
+      // ];
+      const updateNewEmployeeActionEng = [
+        ...state.actions.english,
+        textNewEmployeeEng,
+      ];
+      const updateNewEmployeeActionUkr = [
+        ...state.actions.ukranian,
+        textNewEmployeeUkr,
       ];
       return {
         ...state,
         employees: [...state.employees, action.payload],
-        actions: updatedActionsNewEmployee,
+        actions: {
+          english: updateNewEmployeeActionEng,
+          ukranian: updateNewEmployeeActionUkr,
+        },
       };
 
     // This action for delete employee
@@ -101,16 +132,24 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const timeDeleteEmployee: string = getFormattedDateAndTime();
       const textDeleteEmployeeEng = `Employee ${action.payload.nameEmployee} removed from database - ${timeDeleteEmployee}`;
       const textDeleteemployeeUkr = `Співробітника ${action.payload.nameEmployee} видалено з бази даних - ${timeDeleteEmployee}`;
-      let deleteEmployeeTextFinal = '';
-      if (state.languages.currentLanguage === 'English') {
-        deleteEmployeeTextFinal = textDeleteEmployeeEng;
-      }
-      if (state.languages.currentLanguage === 'Ukrainian') {
-        deleteEmployeeTextFinal = textDeleteemployeeUkr;
-      }
-      const updatedActionsRemoveEmployee: string[] = [
-        ...state.actions,
-        deleteEmployeeTextFinal,
+      // let deleteEmployeeTextFinal = '';
+      // if (state.languages.currentLanguage === 'English') {
+      //   deleteEmployeeTextFinal = textDeleteEmployeeEng;
+      // }
+      // if (state.languages.currentLanguage === 'Ukrainian') {
+      //   deleteEmployeeTextFinal = textDeleteemployeeUkr;
+      // }
+      // const updatedActionsRemoveEmployee: string[] = [
+      //   ...state.actions,
+      //   deleteEmployeeTextFinal,
+      // ];
+      const updateDeleteEmployeeActionEng = [
+        ...state.actions.english,
+        textDeleteEmployeeEng,
+      ];
+      const updateDeleteEmployeeActionUkr = [
+        ...state.actions.ukranian,
+        textDeleteemployeeUkr,
       ];
       const getAllTasksWithEmployee: TodoInterface[] = state.todos.map(
         (todo) => {
@@ -133,21 +172,32 @@ const todoReducer = (state: InitState = initialState, action: any) => {
         ...state,
         todos: getAllTasksWithEmployee,
         employees: filterEmployees,
-        actions: updatedActionsRemoveEmployee,
+        actions: {
+          english: updateDeleteEmployeeActionEng,
+          ukranian: updateDeleteEmployeeActionUkr,
+        },
       };
     //
     case actionTypes.NEW_TASK:
       const timeNewTask: string = getFormattedDateAndTime();
       const textNewTaskEng = `Task (${action.payload}) added to database - ${timeNewTask}`;
       const textNewTaskUkr = `Завдання (${action.payload}) додано до бази даних - ${timeNewTask}`;
-      let newTaskTextFinal = '';
-      if (state.languages.currentLanguage === 'English') {
-        newTaskTextFinal = textNewTaskEng;
-      }
-      if (state.languages.currentLanguage === 'Ukrainian') {
-        newTaskTextFinal = textNewTaskUkr;
-      }
-      const updatedActions: string[] = [...state.actions, newTaskTextFinal];
+      // let newTaskTextFinal = '';
+      // if (state.languages.currentLanguage === 'English') {
+      //   newTaskTextFinal = textNewTaskEng;
+      // }
+      // if (state.languages.currentLanguage === 'Ukrainian') {
+      //   newTaskTextFinal = textNewTaskUkr;
+      // }
+      // const updatedActions: string[] = [...state.actions, newTaskTextFinal];
+      const updateNewTaskActionsEng = [
+        ...state.actions.english,
+        textNewTaskEng,
+      ];
+      const updateNewTaskActionsUkr = [
+        ...state.actions.ukranian,
+        textNewTaskUkr,
+      ];
       const newTask: TodoInterface = {
         id: uuidv4(),
         text: action.payload,
@@ -157,8 +207,11 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const newToDoState: TodoInterface[] = [...state.todos, newTask];
       return {
         ...state,
-        actions: updatedActions,
         todos: newToDoState,
+        actions: {
+          english: updateNewTaskActionsEng,
+          ukranian: updateNewTaskActionsUkr,
+        },
       };
     //
     case actionTypes.REMOVE_TASK:
@@ -168,21 +221,33 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const timeRemoveTask: string = getFormattedDateAndTime();
       const textRemoveTaskEng = `Task (${findNameForRemove}) was deleted - ${timeRemoveTask}`;
       const textRemoveTaskUkr = `Завдання (${findNameForRemove}) видалено - ${timeRemoveTask}`;
-      let removeTaskTextFinal = '';
-      if (state.languages.currentLanguage === 'English') {
-        removeTaskTextFinal = textRemoveTaskEng;
-      }
-      if (state.languages.currentLanguage === 'Ukrainian') {
-        removeTaskTextFinal = textRemoveTaskUkr;
-      }
-      const updatedRemove: string[] = [...state.actions, removeTaskTextFinal];
+      // let removeTaskTextFinal = '';
+      // if (state.languages.currentLanguage === 'English') {
+      //   removeTaskTextFinal = textRemoveTaskEng;
+      // }
+      // if (state.languages.currentLanguage === 'Ukrainian') {
+      //   removeTaskTextFinal = textRemoveTaskUkr;
+      // }
+      // const updatedRemove: string[] = [...state.actions, removeTaskTextFinal];
+
+      const updateRemoveTaskActionsEng = [
+        ...state.actions.english,
+        textRemoveTaskEng,
+      ];
+      const updateRemoveTaskActionsUkr = [
+        ...state.actions.ukranian,
+        textRemoveTaskUkr,
+      ];
       const updateTasks: TodoInterface[] = state.todos.filter(
         (task) => task.id !== action.payload
       );
       return {
         ...state,
-        actions: updatedRemove,
         todos: updateTasks,
+        actions: {
+          english: updateRemoveTaskActionsEng,
+          ukranian: updateRemoveTaskActionsUkr,
+        },
       };
     case actionTypes.COMPLETE_TASK:
       const getCompleteStatus: TodoInterface[] = state.todos.filter(
@@ -216,19 +281,31 @@ const todoReducer = (state: InitState = initialState, action: any) => {
               getCurrentEmployee !== 'Ніхто' ? 'від ' + getCurrentEmployee : ''
             } - ${timeStatusTask}`
       }`;
-      let completeTaskTextFinal = '';
-      if (state.languages.currentLanguage === 'English') {
-        completeTaskTextFinal = textCompleteTaskEng;
-      }
-      if (state.languages.currentLanguage === 'Ukrainian') {
-        completeTaskTextFinal = textCompleteTaskUkr;
-      }
-      const updatedStatus: string[] = [...state.actions, completeTaskTextFinal];
+      // let completeTaskTextFinal = '';
+      // if (state.languages.currentLanguage === 'English') {
+      //   completeTaskTextFinal = textCompleteTaskEng;
+      // }
+      // if (state.languages.currentLanguage === 'Ukrainian') {
+      //   completeTaskTextFinal = textCompleteTaskUkr;
+      // }
+      // const updatedStatus: string[] = [...state.actions, completeTaskTextFinal];
+
+      const updateCompleteTaskActionsEng = [
+        ...state.actions.english,
+        textCompleteTaskEng,
+      ];
+      const updateCompleteTaskActionsUkr = [
+        ...state.actions.ukranian,
+        textCompleteTaskUkr,
+      ];
 
       return {
         ...state,
-        actions: updatedStatus,
         todos: completeTasks,
+        actions: {
+          english: updateCompleteTaskActionsEng,
+          ukranian: updateCompleteTaskActionsUkr,
+        },
       };
     case actionTypes.CLEAR_ALL_TASKS:
       return {
@@ -243,21 +320,33 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const timeClearTasks: string = getFormattedDateAndTime();
       const textClearCompletedTasksEng = `All completed tasks was deleted - ${timeClearTasks}`;
       const textclearCompletedTasksUkr = `Усі виконані завдання видалено - ${timeClearTasks}`;
-      let removeCompletedTasksFinal = '';
-      if (state.languages.currentLanguage === 'English') {
-        removeCompletedTasksFinal = textClearCompletedTasksEng;
-      }
-      if (state.languages.currentLanguage === 'Ukrainian') {
-        removeCompletedTasksFinal = textclearCompletedTasksUkr;
-      }
-      const updatedClearTasks: string[] = [
-        ...state.actions,
-        removeCompletedTasksFinal,
+      // let removeCompletedTasksFinal = '';
+      // if (state.languages.currentLanguage === 'English') {
+      //   removeCompletedTasksFinal = textClearCompletedTasksEng;
+      // }
+      // if (state.languages.currentLanguage === 'Ukrainian') {
+      //   removeCompletedTasksFinal = textclearCompletedTasksUkr;
+      // }
+      // const updatedClearTasks: string[] = [
+      //   ...state.actions,
+      //   removeCompletedTasksFinal,
+      // ];
+      const updateClearCompletedTaskActionsEng = [
+        ...state.actions.english,
+        textClearCompletedTasksEng,
+      ];
+      const updateClearCompletedTaskActionsUkr = [
+        ...state.actions.ukranian,
+        textclearCompletedTasksUkr,
       ];
       return {
         ...state,
-        actions: updatedClearTasks,
+
         todos: clearCompletedData,
+        actions: {
+          english: updateClearCompletedTaskActionsEng,
+          ukranian: updateClearCompletedTaskActionsUkr,
+        },
       };
     case actionTypes.EDIT_TASK:
       const findEditedTask: string = state.todos.filter(
@@ -272,18 +361,30 @@ const todoReducer = (state: InitState = initialState, action: any) => {
       const timeEditTask: string = getFormattedDateAndTime();
       const textEditedTasksEng = `Task "${findEditedTask}" edited to "${action.payload.newText}" - ${timeEditTask}`;
       const textEditedTasksUkr = `Завдання "${findEditedTask}" змінено на "${action.payload.newText}" - ${timeEditTask}`;
-      let editTasksFinal = '';
-      if (state.languages.currentLanguage === 'English') {
-        editTasksFinal = textEditedTasksEng;
-      }
-      if (state.languages.currentLanguage === 'Ukrainian') {
-        editTasksFinal = textEditedTasksUkr;
-      }
-      const updateEditTaskAction: string[] = [...state.actions, editTasksFinal];
+      // let editTasksFinal = '';
+      // if (state.languages.currentLanguage === 'English') {
+      //   editTasksFinal = textEditedTasksEng;
+      // }
+      // if (state.languages.currentLanguage === 'Ukrainian') {
+      //   editTasksFinal = textEditedTasksUkr;
+      // }
+      // const updateEditTaskAction: string[] = [...state.actions, editTasksFinal];
+      const updatedEditedTaskActionsEng = [
+        ...state.actions.english,
+        textEditedTasksEng,
+      ];
+      const updatedEditedTaskActionsUkr = [
+        ...state.actions.ukranian,
+        textEditedTasksUkr,
+      ];
       return {
         ...state,
-        actions: updateEditTaskAction,
+
         todos: updateEditTask,
+        actions: {
+          english: updatedEditedTaskActionsEng,
+          ukranian: updatedEditedTaskActionsUkr,
+        },
       };
     default:
       return state;

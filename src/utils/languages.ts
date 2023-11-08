@@ -57,7 +57,7 @@ export interface LanguageSelect {
 
 export const ukrLangData: LanguageTranslations = {
   header: {
-    title: 'Додаток ToDo',
+    title: 'Додаток iDo',
     ukrOptionsToggle: 'Українська',
     engOptionsToogle: 'Англійська',
   },
@@ -106,7 +106,7 @@ export const ukrLangData: LanguageTranslations = {
 
 export const engLangData: LanguageTranslations = {
   header: {
-    title: 'ToDo App',
+    title: 'App iDo',
     ukrOptionsToggle: 'Ukrainian',
     engOptionsToogle: 'English',
   },
@@ -157,7 +157,7 @@ export const languageDataEngUkr: LanguageDataObject = {
   currentLanguage: 'English',
   currentDataBase: {
     header: {
-      title: 'ToDo App',
+      title: 'App iDo',
       ukrOptionsToggle: 'Ukrainian',
       engOptionsToogle: 'English',
     },
