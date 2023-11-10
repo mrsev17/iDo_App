@@ -1,6 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { TodoInterface } from '../../interfaces';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
+//
+import { Reorder, AnimatePresence } from 'framer-motion';
+import { reorderTodo } from '../../redux/tasks/actionCreators';
+//
 import ToDo from '../ToDo/ToDo';
 import './ListOfTasks.scss';
 
@@ -9,33 +13,46 @@ const ListOfTasks: React.FC = () => {
   const mode: boolean = useSelectMode();
   const languageState = useSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
+  const dispatch = useDispatch();
+  const handleReorder = (newOrder: any) => {
+    dispatch(reorderTodo(newOrder));
+  };
   return (
     <div className={mode ? 'todo__list-active' : 'todo__list-active-dark'}>
-      <ul>
-        {tasks.length !== 0 ? (
-          tasks.map((item: TodoInterface) => {
-            return (
-              <ToDo
-                key={item.id}
-                id={item.id}
-                text={item.text}
-                completed={item.completed}
-                responsiblePerson={item.responsiblePerson}
-              />
-            );
-          })
-        ) : (
-          <span
-            className={
-              mode
-                ? 'todo__list-active-title-dark'
-                : 'todo__list-active-title-light'
-            }
-          >
-            {getCurrentLangDB.mainPage.infoAboutEmptyList}
-          </span>
-        )}
-      </ul>
+      <Reorder.Group
+        // as='ul'
+        axis='y'
+        values={tasks}
+        layoutScroll
+        onReorder={handleReorder}
+      >
+        <AnimatePresence>
+          {tasks.length !== 0 ? (
+            tasks.map((todo: TodoInterface) => {
+              return (
+                <ToDo
+                  key={todo.id}
+                  id={todo.id}
+                  text={todo.text}
+                  completed={todo.completed}
+                  responsiblePerson={todo.responsiblePerson}
+                  todo={todo}
+                />
+              );
+            })
+          ) : (
+            <span
+              className={
+                mode
+                  ? 'todo__list-active-title-dark'
+                  : 'todo__list-active-title-light'
+              }
+            >
+              {getCurrentLangDB.mainPage.infoAboutEmptyList}
+            </span>
+          )}
+        </AnimatePresence>
+      </Reorder.Group>
     </div>
   );
 };

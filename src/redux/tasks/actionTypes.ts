@@ -8,3 +8,4 @@ export const EDIT_TASK: string = 'EDIT_TASK';
 export const NEW_EMPLOYEE: string = 'NEW_EMPLOYEE';
 export const PUT_ON_TASK_EMPLOYEE: string = 'PUT_ON_TASK_EMPLOYEE';
 export const DELETE_EMPLOYEE: string = 'DELETE_EMPLOYEE';
+export const REORDER_TODOS: string = 'REORDER_TODOS';

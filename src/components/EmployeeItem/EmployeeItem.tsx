@@ -30,8 +30,13 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
   const getCompletedTasks = getTasksEmployee.filter(
     (task) => task.completed === true
   );
-  const currentProgressEmployee: number =
-    (getCompletedTasks.length / getTasksEmployee.length) * 100;
+  const currentProgressEmployeeCalc = () => {
+    if (getCompletedTasks.length) {
+      return (getCompletedTasks.length / getTasksEmployee.length) * 100;
+    }
+    return 0;
+  };
+  const currentProgressEmployee = currentProgressEmployeeCalc();
   const handleClickOpen = (): void => {
     setOpen(true);
   };
@@ -74,7 +79,7 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
               {getCurrentLangDB.employeesPage.actionsBtn}
             </button>
             <Dialog
-              sx={{ width: '100%', maxWidth: '100%' }}
+              sx={{ width: '100%', maxWidth: '100%', textAlign: 'center' }}
               open={open}
               onClose={handleClose}
               aria-labelledby='alert-dialog-title'
@@ -86,10 +91,18 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
               >
                 {`${getCurrentLangDB.employeesPage.titleCardActions} ${employee}`}
               </DialogTitle>
-
-              <ProgressEmployee
+              {getTasksEmployee.length === 0 ? (
+                <span className='todo__employee-empty-list-sub'>
+                  Employee don't have active tasks
+                </span>
+              ) : (
+                <ProgressEmployee
+                  currentProgressEmployee={currentProgressEmployee}
+                />
+              )}
+              {/* <ProgressEmployee
                 currentProgressEmployee={currentProgressEmployee}
-              />
+              /> */}
 
               <DialogContent sx={{ width: '100%', maxWidth: '100%' }}>
                 <PersonalList key={id} getTasksEmployee={getTasksEmployee} />

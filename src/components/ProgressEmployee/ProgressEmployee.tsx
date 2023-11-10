@@ -8,6 +8,7 @@ import './ProgressEmployee.scss';
 function CircularProgressWithLabel(
   props: CircularProgressProps & { value: number }
 ) {
+  const checkValue = Math.round(props.value);
   return (
     <Box
       sx={{
@@ -40,7 +41,7 @@ function CircularProgressWithLabel(
           variant='caption'
           component='div'
           color='#e6e6fa'
-        >{`${Math.round(props.value)}%`}</Typography>
+        >{`${checkValue}%`}</Typography>
       </Box>
     </Box>
   );

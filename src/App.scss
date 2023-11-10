@@ -211,6 +211,9 @@ h1 {
 }
 
 /* Flip Card */
+.todo__employee-empty-list-sub {
+  color: $color-text-light;
+}
 
 .flip-container {
   border-radius: 8px;
@@ -225,7 +228,7 @@ h1 {
   min-height: 692px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 100%;
-  overflow-y: auto;
+  // overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 .front-dark {

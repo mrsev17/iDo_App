@@ -17,6 +17,14 @@ const initialState: InitState = {
 
 const todoReducer = (state: InitState = initialState, action: any) => {
   switch (action.type) {
+    //
+    case actionTypes.REORDER_TODOS:
+      const newOrder = action.payload;
+      return {
+        ...state,
+        todos: newOrder,
+      };
+    //
     case actionTypes.CHANGE_LANGUAGE:
       if (action.payload === 'English') {
         const updateEmployeesDefault: string[] = state.employees.map((item) => {
@@ -239,13 +247,17 @@ const todoReducer = (state: InitState = initialState, action: any) => {
     case actionTypes.CLEAR_ALL_TASKS:
       return {
         ...state,
-        actions: [],
+        actions: {
+          english: [],
+          ukranian: [],
+        },
         todos: [],
       };
     case actionTypes.CLEAR_COMPLETED:
       const clearCompletedData: TodoInterface[] = state.todos.filter(
         (task) => task.completed === false
       );
+      console.log(clearCompletedData);
       const timeClearTasks: string = getFormattedDateAndTime();
       const textClearCompletedTasksEng: string = `All completed tasks was deleted - ${timeClearTasks}`;
       const textclearCompletedTasksUkr: string = `Усі виконані завдання видалено - ${timeClearTasks}`;

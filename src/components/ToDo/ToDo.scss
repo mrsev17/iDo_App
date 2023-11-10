@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: grab;
   .todo__completed-task {
     text-decoration: line-through;
     text-decoration-color: $color-bg-dark;
@@ -52,6 +53,7 @@
 
 @media (max-width: 567px) {
   .todo__todo-item {
+    cursor: grab;
     .todo__todo-text {
       p {
         font-size: 14px;

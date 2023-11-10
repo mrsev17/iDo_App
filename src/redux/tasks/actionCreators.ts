@@ -73,3 +73,10 @@ export const putOnTaskEmployee = (
     payload: { employee, id, text },
   };
 };
+
+export const reorderTodo = (newOrder: string) => {
+  return {
+    type: actionTypes.REORDER_TODOS,
+    payload: newOrder,
+  };
+};

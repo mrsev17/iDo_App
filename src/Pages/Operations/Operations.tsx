@@ -15,10 +15,11 @@ export const Operations: React.FC = () => {
     if (language === 'Ukrainian') {
       return actions.ukranian;
     }
-    return [''];
+    return [];
   };
-  const actionsData: string[] | undefined =
-    getCurrentActionsByLanguage(currentLangActions);
+
+  const actionsData: string[] = getCurrentActionsByLanguage(currentLangActions);
+  console.log(actionsData);
   return (
     <div className='content-page flip-container'>
       <div className='flipper'>

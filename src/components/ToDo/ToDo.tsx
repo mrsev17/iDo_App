@@ -8,16 +8,44 @@ import { Dispatch } from 'redux';
 import removeIcon from '../../assets/icon-delete.svg';
 import SelectEmployee from '../SelectEmployee/SelectEmployee';
 import ToDoEditModal from '../ToDoEditModal/ToDoEditModal';
+//
+import { Reorder, AnimatePresence } from 'framer-motion';
+
+//
 import './ToDo.scss';
 import '../../App.scss';
 
+const variants = {
+  initial: {
+    opacity: 0,
+    height: 0,
+  },
+  animate: {
+    opacity: 1,
+    height: '40px',
+  },
+  exit: {
+    opacity: 0,
+    height: 0,
+  },
+};
+
 const label = { 'aria-label': 'Checkbox demo' };
 
-const ToDo: React.FC<TodoInterface> = ({
+export interface TodoInterfaceProps {
+  text: string;
+  id: string;
+  completed: boolean;
+  responsiblePerson: string;
+  todo: TodoInterface;
+}
+
+const ToDo: React.FC<TodoInterfaceProps> = ({
   id,
   text,
   completed,
   responsiblePerson,
+  todo,
 }) => {
   const mode: boolean = useSelectMode();
   const languageState = useSelector((state: any) => state.tasks.languages);
@@ -31,7 +59,14 @@ const ToDo: React.FC<TodoInterface> = ({
   };
 
   return (
-    <li className='todo__todo-item' key={id}>
+    <Reorder.Item
+      as='li'
+      value={todo}
+      whileDrag={{ scale: 1.05, border: '1px solid #9896f1' }}
+      {...variants}
+      className='todo__todo-item'
+      key={id}
+    >
       <div className='todo__todo-text'>
         <p className={completed ? 'todo__completed-task' : ''}>{text}</p>
       </div>
@@ -72,7 +107,7 @@ const ToDo: React.FC<TodoInterface> = ({
           </button>
         </div>
       </div>
-    </li>
+    </Reorder.Item>
   );
 };
 export default ToDo;
