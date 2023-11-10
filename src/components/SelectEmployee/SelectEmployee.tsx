@@ -1,7 +1,8 @@
 import { useState, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { putOnTaskEmployee } from '../../redux/tasks/actionCreators';
-import { SelectProps, StateToogle } from '../../interfaces';
+import { SelectProps } from '../../interfaces';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
 import { Dispatch } from 'redux';
 import './SelectEmployee.scss';
 
@@ -16,7 +17,7 @@ const SelectEmployee: React.FC<SelectProps> = ({
     (state: any) => state.tasks.employees
   );
   const dispatch: Dispatch = useDispatch();
-  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value);
     dispatch(putOnTaskEmployee(e.target.value, id, text));

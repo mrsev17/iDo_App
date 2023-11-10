@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { StateToogle } from '../interfaces';
+import { useSelectMode } from '../redux/selectors/modeSelector';
 import { badgeStyle } from '../utils/commonData';
 import { Badge } from '@mui/material';
 import './AppRouter.scss';
@@ -11,7 +11,7 @@ export const NavigationQuiz: React.FC = () => {
   const getTasksLength: number = useSelector(
     (state: any) => state.tasks.todos
   ).length;
-  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   const location = useLocation();
   const getEmployeesLength: number = useSelector(
     (state: any) => state.tasks.employees

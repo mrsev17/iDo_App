@@ -4,13 +4,14 @@ import { editTaskStyles } from '../../utils/commonData';
 import { useDispatch, useSelector } from 'react-redux';
 import { editTask } from '../../redux/tasks/actionCreators';
 import { Dispatch } from 'redux';
-import { ToDoEditModalProps, StateToogle } from '../../interfaces';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
+import { ToDoEditModalProps } from '../../interfaces';
 import editIcon from '../../assets/edit-icon.png';
 import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
 import './ToDoEditModal.scss';
 
 const ToDoEditModal: React.FC<ToDoEditModalProps> = ({ text, id }) => {
-  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   const [editText, setEditText] = useState<string>(text);
   const languageState = useSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { TodoInterface, StateToogle } from '../../interfaces';
+import { TodoInterface } from '../../interfaces';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
 import { removeTodo, completeTodo } from '../../redux/tasks/actionCreators';
 import { checkBoxStyle, checkBoxStyleLight } from '../../utils/commonData';
 import { Checkbox } from '@mui/material';
@@ -18,7 +19,7 @@ const ToDo: React.FC<TodoInterface> = ({
   completed,
   responsiblePerson,
 }) => {
-  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   const languageState = useSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
   const dispatch: Dispatch = useDispatch();

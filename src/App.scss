@@ -102,10 +102,6 @@ nav,
 section {
   display: block;
 }
-// html {
-//   height: 100%;
-// }
-
 ol,
 ul {
   list-style: none;
@@ -177,21 +173,11 @@ h1 {
 }
 
 .app {
-  // text-align: center;
-  // display: flex;
-  // flex-direction: column;
-  // height: 100vh;
-  // justify-content: space-between;
   main {
     margin-bottom: 30px;
-    // height: 86vh;
-    // position: relative;
-    // flex-direction: column;
-    // align-items: center;
     .content-page {
       margin: 0 auto 30px;
       max-width: 80%;
-      // min-height: 680px;
       border-radius: 3px;
       .content-title-wrapper {
         width: 96%;
@@ -224,29 +210,21 @@ h1 {
   }
 }
 
-// .relative {
-//   position: relative;
-// }
-
 /* Flip Card */
 
 .flip-container {
-  // perspective: 1000px;
-  // height: 200px;
   border-radius: 8px;
 }
 
 .flipper {
   border-radius: 8px;
   width: 100%;
-  // height: 100%;
 }
 .front-dark,
 .front {
   min-height: 692px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 100%;
-  // height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -267,14 +245,8 @@ h1 {
 @media (max-width: 992px) {
   .app {
     main {
-      // display: flex;
-      // flex-direction: row;
-      // justify-content: space-between;
-      // gap: 10px;
-      // margin-bottom: 20px;
       .content-page {
         width: 100%;
-        // min-height: 470px;
         max-width: 94%;
         .content-title-wrapper {
           margin: 0 auto;
@@ -292,17 +264,12 @@ h1 {
       flex-direction: column;
       justify-content: space-between;
       gap: 10px;
-      // margin-bottom: 20px;
       .content-page {
-        // min-height: 510px;
         max-width: 98%;
         width: 100%;
         .content-title-wrapper {
           width: 94%;
           margin: 0 auto;
-          .list-active {
-            // max-height: 240px;
-          }
         }
       }
     }

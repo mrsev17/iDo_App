@@ -111,7 +111,7 @@ export const editTaskStyles = {
 
 export const employeeItemStyles = {
   dialogTitle: {
-    color: 'black',
+    color: '#e6e6fa',
   },
   dialogActions: {
     display: 'flex',
@@ -120,7 +120,7 @@ export const employeeItemStyles = {
     gap: '10px',
     width: '100%',
     maxWidth: '94%',
-    margin: '0 auto',
+    margin: '0 auto 30px',
   },
   buttonRemoveEmployee: {
     fontSize: '12px',

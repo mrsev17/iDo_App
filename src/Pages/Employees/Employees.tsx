@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import { StateToogle } from '../../interfaces';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
 import NewEmployee from '../../components/NewEmployee/NewEmployee';
 import EmployeeList from '../../components/EmployeeList/EmployeeList';
 import './Employees.scss';
 
 export const Employees: React.FC = () => {
-  const mode = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   const languageState = useSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
   return (

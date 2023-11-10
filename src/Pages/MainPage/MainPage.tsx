@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
-import { StateToogle } from '../../interfaces';
 import NewTodo from '../../components/NewTodo/NewTodo';
 import ListOfTasks from '../../components/lIstOfTasks/ListOfTasks';
 import CircularWithValueLabel from '../../components/CircularProgress/CircularProgress';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
 import './MainPage.scss';
 
 export const MainPage: React.FC = () => {
   const languageState = useSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
   const tasks = useSelector((state: any) => state.tasks.todos);
-  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   return (
     <div className='content-page flip-container'>
       <div className='flipper'>

@@ -1,13 +1,14 @@
 @import '../../App.scss';
 .MuiPaper-root {
   width: 100%;
+  background-color: $color-bg-dark !important;
 }
 .todo__employee-item {
   width: 100%;
   background-color: $color-bg-body-light;
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid $color-bg-body-dark;
+  border: 1px solid azure;
   display: flex;
   align-items: center;
   justify-content: space-between;

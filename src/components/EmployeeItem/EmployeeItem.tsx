@@ -13,6 +13,7 @@ import { deleteEmployee } from '../../redux/tasks/actionCreators';
 import { employeeItemStyles } from '../../utils/commonData';
 import PersonalList from '../PersonalList/PersonalList';
 import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
+import ProgressEmployee from '../ProgressEmployee/ProgressEmployee';
 import './EmployeeItem.scss';
 
 const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
@@ -26,6 +27,11 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
   const getTasksEmployee: TodoInterface[] = getTasks.filter(
     (task: TodoInterface) => task.responsiblePerson === employee
   );
+  const getCompletedTasks = getTasksEmployee.filter(
+    (task) => task.completed === true
+  );
+  const currentProgressEmployee: number =
+    (getCompletedTasks.length / getTasksEmployee.length) * 100;
   const handleClickOpen = (): void => {
     setOpen(true);
   };
@@ -80,6 +86,11 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
               >
                 {`${getCurrentLangDB.employeesPage.titleCardActions} ${employee}`}
               </DialogTitle>
+
+              <ProgressEmployee
+                currentProgressEmployee={currentProgressEmployee}
+              />
+
               <DialogContent sx={{ width: '100%', maxWidth: '100%' }}>
                 <PersonalList key={id} getTasksEmployee={getTasksEmployee} />
               </DialogContent>

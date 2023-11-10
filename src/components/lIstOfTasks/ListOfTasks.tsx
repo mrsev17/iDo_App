@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
-import { StateToogle, TodoInterface } from '../../interfaces';
+import { TodoInterface } from '../../interfaces';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
 import ToDo from '../ToDo/ToDo';
 import './ListOfTasks.scss';
 
 const ListOfTasks: React.FC = () => {
   const tasks: TodoInterface[] = useSelector((state: any) => state.tasks.todos);
-  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   const languageState = useSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
   return (

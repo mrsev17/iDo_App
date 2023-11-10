@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import { StateToogle } from '../../interfaces';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
 import './Operations.scss';
 
 export const Operations: React.FC = () => {
   const languageState = useSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
-  const mode = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   const actions = useSelector((state: any) => state.tasks.actions);
   const currentLangActions = languageState.currentLanguage;
   const getCurrentActionsByLanguage = (language: string): string[] => {

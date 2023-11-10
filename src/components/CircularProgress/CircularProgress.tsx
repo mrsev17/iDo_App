@@ -6,13 +6,14 @@ import Box from '@mui/material/Box';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { TodoInterface, StateToogle } from '../../interfaces';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
 import '../../App.scss';
 import './CircularProgress.scss';
 
 function LinearProgressWithLabel(
   props: LinearProgressProps & { value: number }
 ) {
-  const mode = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   return (
     <Box
       sx={{

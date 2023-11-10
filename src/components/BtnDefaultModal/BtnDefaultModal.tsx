@@ -1,6 +1,5 @@
 import Button from '@mui/material/Button';
-import { useSelector } from 'react-redux';
-import { StateToogle } from '../../interfaces';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
 
 interface BtnDefaultModalProps {
   onClick: () => void;
@@ -11,7 +10,7 @@ const BtnDefaultModal: React.FC<BtnDefaultModalProps> = ({
   onClick,
   content,
 }) => {
-  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useSelectMode();
   const settingsButtonsLight = {
     margin: '0 auto !important',
     fontSize: '14px',
