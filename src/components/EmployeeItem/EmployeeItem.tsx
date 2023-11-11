@@ -14,6 +14,7 @@ import { employeeItemStyles } from '../../utils/commonData';
 import PersonalList from '../PersonalList/PersonalList';
 import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
 import ProgressEmployee from '../ProgressEmployee/ProgressEmployee';
+import { useSelectMode } from '../../redux/selectors/modeSelector';
 import './EmployeeItem.scss';
 
 const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
@@ -49,12 +50,14 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
     dispatch(deleteEmployee(id, nameEmployee));
     handleClose();
   };
+  const mode: boolean = useSelectMode();
   const badgeStyleEmployee = {
     width: '100%',
     margin: '0 auto',
+
     '& .MuiBadge-badge': {
       color: 'azure',
-      backgroundColor: '#6a5acd',
+      backgroundColor: mode ? '#6a5acd' : '#363b4e',
     },
   };
   return (
@@ -100,10 +103,6 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
                   currentProgressEmployee={currentProgressEmployee}
                 />
               )}
-              {/* <ProgressEmployee
-                currentProgressEmployee={currentProgressEmployee}
-              /> */}
-
               <DialogContent sx={{ width: '100%', maxWidth: '100%' }}>
                 <PersonalList key={id} getTasksEmployee={getTasksEmployee} />
               </DialogContent>

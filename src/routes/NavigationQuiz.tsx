@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useSelectMode } from '../redux/selectors/modeSelector';
-import { badgeStyle } from '../utils/commonData';
 import { Badge } from '@mui/material';
 import './AppRouter.scss';
 
@@ -19,6 +18,16 @@ export const NavigationQuiz: React.FC = () => {
   const getOperationsLength: number = useSelector(
     (state: any) => state.tasks.actions
   ).length;
+
+  const badgeStyle = {
+    width: '100%',
+    maxWidth: '380px',
+    margin: '0 auto',
+    '& .MuiBadge-badge': {
+      color: 'azure',
+      backgroundColor: mode ? '#6a5acd' : '#363b4e',
+    },
+  };
 
   return (
     <div className='todo__navigation'>

@@ -34,7 +34,7 @@ const ModalSettings = () => {
       px: 4,
       pb: 3,
       width: '96%',
-      backgroundColor: `${mode ? '#404040' : '#f0f0f0'}`,
+      backgroundColor: mode ? '#363b4e' : '#c4bbf0',
       borderRadius: '8px',
       display: 'flex',
       flexDirection: 'column',

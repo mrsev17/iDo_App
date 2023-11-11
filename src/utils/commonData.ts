@@ -1,13 +1,3 @@
-export const badgeStyle = {
-  width: '100%',
-  maxWidth: '380px',
-  margin: '0 auto',
-  '& .MuiBadge-badge': {
-    color: 'azure',
-    backgroundColor: '#6a5acd',
-  },
-};
-
 export const checkBoxStyle = {
   transform: 'scale(1.25)',
   marginTop: '1px',

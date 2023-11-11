@@ -146,6 +146,7 @@ $color-bg-body-light: #e6e8fa;
 
 $color-bg-dark: #404040;
 $color-bg-body-dark: #181818;
+$color-items-light-mode: #363b4e;
 
 /* = = = = = */
 
@@ -230,10 +231,11 @@ h1 {
   width: 100%;
   // overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  padding-top: 20px;
 }
 .front-dark {
   border-radius: 8px;
-  background-color: $color-bg-dark;
+  background-color: $color-items-light-mode;
   transform: rotateX(0deg);
   display: flex;
   flex-direction: column;

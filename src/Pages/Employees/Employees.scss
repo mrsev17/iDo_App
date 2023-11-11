@@ -4,6 +4,16 @@
   max-width: 98%;
   width: 100%;
   margin: 20px auto 0;
+  overflow: auto;
+  max-height: 540px;
+  scrollbar-width: thin;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
   .employees-title-dark,
   .employees-title-light {
     text-align: center;
