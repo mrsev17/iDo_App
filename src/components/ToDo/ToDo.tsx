@@ -1,17 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 import { TodoInterface } from '../../interfaces';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
-import { removeTodo, completeTodo } from '../../redux/tasks/actionCreators';
 import { checkBoxStyle, checkBoxStyleLight } from '../../utils/commonData';
 import { Checkbox } from '@mui/material';
-import { Dispatch } from 'redux';
 import removeIcon from '../../assets/icon-delete.svg';
 import SelectEmployee from '../SelectEmployee/SelectEmployee';
 import ToDoEditModal from '../ToDoEditModal/ToDoEditModal';
-//
-import { Reorder, AnimatePresence } from 'framer-motion';
-
-//
+import { Reorder } from 'framer-motion';
+// import { AnimatePresence } from 'framer-motion';
+import { useAppDispatch } from '../../hooks';
+import { removeTask, completeTask } from '../../redux/tasks/tasksSlice';
 import './ToDo.scss';
 import '../../App.scss';
 
@@ -48,14 +46,14 @@ const ToDo: React.FC<TodoInterfaceProps> = ({
   todo,
 }) => {
   const mode: boolean = useSelectMode();
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const handleRemove = (id: string): void => {
-    dispatch(removeTodo(id));
+    dispatch(removeTask(id));
   };
   const handleCheckBox = (id: string): void => {
-    dispatch(completeTodo(id));
+    dispatch(completeTask(id));
   };
 
   return (

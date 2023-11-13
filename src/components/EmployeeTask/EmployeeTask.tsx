@@ -1,9 +1,9 @@
 import { EmployeeTaskProps } from '../../interfaces';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 import './EmployeeTask.scss';
 
 const EmployeeTask: React.FC<EmployeeTaskProps> = ({ text, completed, id }) => {
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
   return (
     <li className='todo__employee-task'>

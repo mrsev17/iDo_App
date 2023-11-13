@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 import EmployeeItem from '../EmployeeItem/EmployeeItem';
 import './EmployeeList.scss';
 
 const EmployeeList: React.FC = () => {
-  const employees: string[] = useSelector(
+  const employees: string[] = useAppSelector(
     (state: any) => state.tasks.employees
   );
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
   return (
     <div className='todo__employee-list-wrapper'>

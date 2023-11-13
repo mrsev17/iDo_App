@@ -4,7 +4,7 @@ import LinearProgress, {
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 import { TodoInterface, StateToogle } from '../../interfaces';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
 import '../../App.scss';
@@ -37,8 +37,10 @@ function LinearProgressWithLabel(
 }
 
 const LinearWithValueLabel: React.FC = () => {
-  const mode = useSelector((state: StateToogle) => state.mode.toggle);
-  const tasks: TodoInterface[] = useSelector((state: any) => state.tasks.todos);
+  const mode = useAppSelector((state: StateToogle) => state.mode.toggle);
+  const tasks: TodoInterface[] = useAppSelector(
+    (state: any) => state.tasks.todos
+  );
   const completeTasks: TodoInterface[] = tasks.filter(
     (item: TodoInterface) => item.completed !== false
   );

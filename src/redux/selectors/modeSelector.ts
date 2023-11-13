@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 import { StateToogle } from '../../interfaces';
 
 export const useSelectMode = () => {
-  return useSelector((state: StateToogle) => state.mode.toggle);
+  return useAppSelector((state: StateToogle) => state.mode.toggle);
 };

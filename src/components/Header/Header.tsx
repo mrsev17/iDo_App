@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 import { ToggleSwitch } from '../ToggleSwitch';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
 import { IconCat } from '../IconCat/IconCat';
@@ -6,7 +6,7 @@ import './Header.scss';
 
 export const Header: React.FC = () => {
   const mode: boolean = useSelectMode();
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
   return (
     <header className={mode ? 'header fade-in dark-header' : 'header fade-in'}>

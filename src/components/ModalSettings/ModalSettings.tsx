@@ -1,15 +1,11 @@
 import { useState } from 'react';
 import { StateToogle } from '../../interfaces';
-import { useSelector, useDispatch } from 'react-redux';
-import { Dispatch } from 'redux';
 import { Box, Modal, Button } from '@mui/material';
 import { IconGear } from '../IconGear';
 import LanguageOptions from '../LanguageOptions/LanguageOptions';
 import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
-import {
-  clearAllTodos,
-  clearCompleted,
-} from '../../redux/tasks/actionCreators';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { clearAllTasks, clearCompleted } from '../../redux/tasks/tasksSlice';
 import './ModalSettings.scss';
 
 const ModalSettings = () => {
@@ -20,7 +16,9 @@ const ModalSettings = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const mode: boolean = useSelector((state: StateToogle) => state.mode.toggle);
+  const mode: boolean = useAppSelector(
+    (state: StateToogle) => state.mode.toggle
+  );
   const styleModalSettings = {
     mainContainer: {
       position: 'absolute' as 'absolute',
@@ -52,11 +50,11 @@ const ModalSettings = () => {
       minWidth: 'auto',
     },
   };
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const clearLS = (): void => {
-    dispatch(clearAllTodos());
+    dispatch(clearAllTasks());
   };
   const clearCompletedToDo: () => void = () => dispatch(clearCompleted());
   return (

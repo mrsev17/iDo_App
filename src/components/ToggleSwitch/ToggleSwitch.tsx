@@ -1,16 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { switchMode } from '../../redux/mode/actionCreators';
 import { RootState } from '../../redux/store';
-import { Dispatch } from 'redux';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { switchMode } from '../../redux/mode/modeSlice';
 import './ToggleSwitch.scss';
 
 export const ToggleSwitch: React.FC = () => {
-  const isChecked: boolean = useSelector(
+  const isChecked: boolean = useAppSelector(
     (state: RootState) => state.mode.toggle
   );
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const handleToggle = (): void => {
     dispatch(switchMode(!isChecked));
   };

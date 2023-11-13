@@ -1,21 +1,20 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { newTaskTodo } from '../../redux/tasks/actionCreators';
-import { Dispatch } from 'redux';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { addNewTask } from '../../redux/tasks/tasksSlice';
 import './NewTodo.scss';
 
 const NewTodo: React.FC = () => {
   const [newTask, setNewTask] = useState<string>('');
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const changeNewTaskInput = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTask(e.target.value);
   };
   const newTaskSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (newTask) {
-      dispatch(newTaskTodo(newTask));
+      dispatch(addNewTask(newTask));
       setNewTask('');
     }
   };

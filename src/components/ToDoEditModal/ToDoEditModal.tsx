@@ -1,11 +1,10 @@
 import { Box, TextField, Typography, Modal } from '@mui/material';
 import { useState, ChangeEvent } from 'react';
 import { editTaskStyles } from '../../utils/commonData';
-import { useDispatch, useSelector } from 'react-redux';
-import { editTask } from '../../redux/tasks/actionCreators';
-import { Dispatch } from 'redux';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
 import { ToDoEditModalProps } from '../../interfaces';
+import { editTask } from '../../redux/tasks/tasksSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import editIcon from '../../assets/edit-icon.png';
 import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
 import './ToDoEditModal.scss';
@@ -13,17 +12,17 @@ import './ToDoEditModal.scss';
 const ToDoEditModal: React.FC<ToDoEditModalProps> = ({ text, id }) => {
   const mode: boolean = useSelectMode();
   const [editText, setEditText] = useState<string>(text);
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
   const changeEditInput = (e: ChangeEvent<HTMLInputElement>) => {
     setEditText(e.target.value);
   };
   const [open, setOpen] = useState<boolean>(false);
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const handleOpen: () => void = () => setOpen(true);
   const handleClose: () => void = () => setOpen(false);
   const editHandle = (id: string, newText: string): void => {
-    dispatch(editTask(id, newText));
+    dispatch(editTask({ id, newText }));
     handleClose();
   };
 

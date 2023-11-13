@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { newEmployee } from '../../redux/tasks/actionCreators';
-import { Dispatch } from 'redux';
+import { useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
+import { newEmployee } from '../../redux/tasks/tasksSlice';
 import './NewEmployee.scss';
 
 const NewEmployee: React.FC = () => {
@@ -9,7 +9,7 @@ const NewEmployee: React.FC = () => {
   const employeeInputHandle = (e: ChangeEvent<HTMLInputElement>) => {
     setEmployee(e.target.value);
   };
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const newemployeeSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (employee.length > 2) {
@@ -17,7 +17,7 @@ const NewEmployee: React.FC = () => {
       setEmployee('');
     }
   };
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
   return (
     <div className='todo__new-employee-form'>

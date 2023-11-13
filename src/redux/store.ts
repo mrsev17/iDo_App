@@ -10,15 +10,16 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import modeReducer from './mode/reducer';
-import todoReducer from './tasks/reducer';
+import tasksSlice from './tasks/tasksSlice';
+import modeSlice from './mode/modeSlice';
 
 const rootReducer = combineReducers({
-  mode: modeReducer,
-  tasks: todoReducer,
+  mode: modeSlice,
+  tasks: tasksSlice,
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 const persistConfig = {
   key: 'root',

@@ -3,15 +3,15 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { useState, ChangeEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeLanguage } from '../../redux/tasks/actionCreators';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { changeLanguage } from '../../redux/tasks/tasksSlice';
 import './LanguageOptions.scss';
 
 const RowRadioButtonsGroup = () => {
   const [selectLang, setSelectLanguage] = useState<string>('English');
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectLanguage(e.target.value);
     dispatch(changeLanguage(e.target.value));

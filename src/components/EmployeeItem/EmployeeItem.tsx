@@ -5,24 +5,23 @@ import {
   DialogTitle,
   Badge,
 } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
 import { TodoInterface, EmployeeProps } from '../../interfaces';
 import { useState } from 'react';
-import { deleteEmployee } from '../../redux/tasks/actionCreators';
 import { employeeItemStyles } from '../../utils/commonData';
 import PersonalList from '../PersonalList/PersonalList';
 import BtnDefaultModal from '../BtnDefaultModal/BtnDefaultModal';
 import ProgressEmployee from '../ProgressEmployee/ProgressEmployee';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
+import { removeEmployee } from '../../redux/tasks/tasksSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import './EmployeeItem.scss';
 
 const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
-  const dispatch: Dispatch = useDispatch();
-  const getTasks: TodoInterface[] = useSelector(
+  const dispatch = useAppDispatch();
+  const getTasks: TodoInterface[] = useAppSelector(
     (state: any) => state.tasks.todos
   );
   const getTasksEmployee: TodoInterface[] = getTasks.filter(
@@ -46,8 +45,8 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
     setOpen(false);
   };
 
-  const removeEmployee = (id: number, nameEmployee: string): void => {
-    dispatch(deleteEmployee(id, nameEmployee));
+  const deleteEmployee = (nameEmployee: string): void => {
+    dispatch(removeEmployee(nameEmployee));
     handleClose();
   };
   const mode: boolean = useSelectMode();
@@ -109,7 +108,7 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
               <DialogActions sx={employeeItemStyles.dialogActions}>
                 <BtnDefaultModal
                   content={getCurrentLangDB.employeesPage.deleteBtn}
-                  onClick={() => removeEmployee(id, employee)}
+                  onClick={() => deleteEmployee(employee)}
                 />
                 <BtnDefaultModal
                   content={getCurrentLangDB.employeesPage.closeModalBtn}

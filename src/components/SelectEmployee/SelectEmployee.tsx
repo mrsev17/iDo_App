@@ -1,9 +1,9 @@
 import { useState, ChangeEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { putOnTaskEmployee } from '../../redux/tasks/actionCreators';
+import { useAppSelector } from '../../hooks';
 import { SelectProps } from '../../interfaces';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
-import { Dispatch } from 'redux';
+import { useAppDispatch } from '../../hooks';
+import { putTaskOnSomebody } from '../../redux/tasks/tasksSlice';
 import './SelectEmployee.scss';
 
 const SelectEmployee: React.FC<SelectProps> = ({
@@ -13,14 +13,15 @@ const SelectEmployee: React.FC<SelectProps> = ({
 }) => {
   const [selectedOption, setSelectedOption] =
     useState<string>(responsiblePerson);
-  const getListEmployees: string[] = useSelector(
+  const getListEmployees: string[] = useAppSelector(
     (state: any) => state.tasks.employees
   );
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const mode: boolean = useSelectMode();
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const employee = e.target.value;
     setSelectedOption(e.target.value);
-    dispatch(putOnTaskEmployee(e.target.value, id, text));
+    dispatch(putTaskOnSomebody({ employee, id, text }));
   };
   return (
     <div

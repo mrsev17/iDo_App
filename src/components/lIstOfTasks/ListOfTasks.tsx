@@ -1,26 +1,26 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { TodoInterface } from '../../interfaces';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
-//
 import { Reorder, AnimatePresence } from 'framer-motion';
-import { reorderTodo } from '../../redux/tasks/actionCreators';
-//
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { reorderTodos } from '../../redux/tasks/tasksSlice';
 import ToDo from '../ToDo/ToDo';
 import './ListOfTasks.scss';
 
 const ListOfTasks: React.FC = () => {
-  const tasks: TodoInterface[] = useSelector((state: any) => state.tasks.todos);
+  const tasks: TodoInterface[] = useAppSelector(
+    (state: any) => state.tasks.todos
+  );
   const mode: boolean = useSelectMode();
-  const languageState = useSelector((state: any) => state.tasks.languages);
+  const languageState = useAppSelector((state: any) => state.tasks.languages);
   const getCurrentLangDB = languageState.currentDataBase;
-  const dispatch = useDispatch();
-  const handleReorder = (newOrder: any) => {
-    dispatch(reorderTodo(newOrder));
+  const dispatch = useAppDispatch();
+  const handleReorder = (newOrder: string[]) => {
+    dispatch(reorderTodos(newOrder));
   };
   return (
     <div className={mode ? 'todo__list-active' : 'todo__list-active-dark'}>
       <Reorder.Group
-        // as='ul'
+        as='ul'
         axis='y'
         values={tasks}
         layoutScroll
