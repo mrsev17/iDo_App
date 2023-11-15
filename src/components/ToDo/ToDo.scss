@@ -51,6 +51,10 @@
   }
 }
 
+.todo__start-drag {
+  opacity: 0.5;
+}
+
 @media (max-width: 567px) {
   .todo__todo-item {
     cursor: grab;

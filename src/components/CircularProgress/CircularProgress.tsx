@@ -41,9 +41,12 @@ const LinearWithValueLabel: React.FC = () => {
   const tasks: TodoInterface[] = useAppSelector(
     (state: any) => state.tasks.todos
   );
-  const completeTasks: TodoInterface[] = tasks.filter(
-    (item: TodoInterface) => item.completed !== false
-  );
+  const completeTasks = () => {
+    if (tasks) {
+      return tasks.filter((item: TodoInterface) => item.completed !== false);
+    }
+    return 0;
+  };
   const currentProgress: number = (completeTasks.length / tasks.length) * 100;
   const [progress, setProgress] = useState<number>(currentProgress);
 

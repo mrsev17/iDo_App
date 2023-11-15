@@ -1,32 +1,25 @@
 import { useAppSelector } from '../../hooks';
-import { TodoInterface } from '../../interfaces';
+import {
+  LanguageSelect,
+  TodoInterface,
+  LanguageTranslations,
+} from '../../interfaces';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
 import { checkBoxStyle, checkBoxStyleLight } from '../../utils/commonData';
 import { Checkbox } from '@mui/material';
 import removeIcon from '../../assets/icon-delete.svg';
 import SelectEmployee from '../SelectEmployee/SelectEmployee';
 import ToDoEditModal from '../ToDoEditModal/ToDoEditModal';
-import { Reorder } from 'framer-motion';
-// import { AnimatePresence } from 'framer-motion';
 import { useAppDispatch } from '../../hooks';
-import { removeTask, completeTask } from '../../redux/tasks/tasksSlice';
+// import { LanguageTranslations } from '../../interfaces';
+import {
+  removeTask,
+  completeTask,
+  reorderTodos,
+} from '../../redux/tasks/tasksSlice';
 import './ToDo.scss';
 import '../../App.scss';
-
-const variants = {
-  initial: {
-    opacity: 0,
-    height: 0,
-  },
-  animate: {
-    opacity: 1,
-    height: '40px',
-  },
-  exit: {
-    opacity: 0,
-    height: 0,
-  },
-};
+import { useState } from 'react';
 
 const label = { 'aria-label': 'Checkbox demo' };
 
@@ -36,6 +29,7 @@ export interface TodoInterfaceProps {
   completed: boolean;
   responsiblePerson: string;
   todo: TodoInterface;
+  index: number;
 }
 
 const ToDo: React.FC<TodoInterfaceProps> = ({
@@ -44,10 +38,11 @@ const ToDo: React.FC<TodoInterfaceProps> = ({
   completed,
   responsiblePerson,
   todo,
+  index,
 }) => {
   const mode: boolean = useSelectMode();
   const languageState = useAppSelector((state: any) => state.tasks.languages);
-  const getCurrentLangDB = languageState.currentDataBase;
+  const getCurrentLangDB: LanguageTranslations = languageState.currentDataBase;
   const dispatch = useAppDispatch();
   const handleRemove = (id: string): void => {
     dispatch(removeTask(id));
@@ -56,17 +51,66 @@ const ToDo: React.FC<TodoInterfaceProps> = ({
     dispatch(completeTask(id));
   };
 
+  const todos: TodoInterface[] = useAppSelector((state) => state.tasks.todos);
+
+  const dragStartHandler = (e: React.DragEvent, index: number): void => {
+    e.dataTransfer.setData('text/plain', index.toString());
+  };
+
+  const handleDrop = (e: React.DragEvent, targetIndex: number): void => {
+    e.preventDefault();
+    if (e.target instanceof HTMLElement) {
+      // e.target.style.background = '#181818';
+      // // e.target.classList.remove('todo__start-drag');
+    }
+    const enterData: TodoInterface[] = [...todos];
+    const draggedIndex: number = Number(e.dataTransfer.getData('text/plain'));
+    const swapElements = (
+      enterData: TodoInterface[],
+      indexDraged: number,
+      indexTarget: number
+    ): TodoInterface[] => {
+      const temp: TodoInterface = enterData[indexDraged - 1];
+      enterData[indexDraged - 1] = enterData[indexTarget - 1];
+      enterData[indexTarget - 1] = temp;
+      return enterData;
+    };
+    const swapTodos: TodoInterface[] = [
+      ...swapElements(enterData, draggedIndex, targetIndex),
+    ];
+    dispatch(reorderTodos(swapTodos));
+  };
+  const dragEndHandler = (e: React.DragEvent) => {
+    e.preventDefault();
+    if (e.target instanceof HTMLElement) {
+      // e.target.style.background = 'black';
+      // e.target.classList.add('todo__start-drag');
+    }
+  };
+
+  const allowDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    if (e.target instanceof HTMLElement) {
+      // e.target.style.background = '#black';
+      // e.target.classList.add('todo__start-drag');
+    }
+  };
+
   return (
-    <Reorder.Item
-      as='li'
-      value={todo}
-      whileDrag={{ scale: 1.05, border: '1px solid #9896f1' }}
-      {...variants}
+    <li
+      draggable={true}
+      onDragStart={(e) => dragStartHandler(e, index)}
+      onDragLeave={(e) => dragEndHandler(e)}
+      onDragEnd={(e) => dragEndHandler(e)}
+      onDrop={(e) => handleDrop(e, index)}
+      onDragOver={allowDrop}
       className='todo__todo-item'
       key={id}
     >
       <div className='todo__todo-text'>
-        <p className={completed ? 'todo__completed-task' : ''}>{text}</p>
+        <p className={completed ? 'todo__completed-task' : ''}>
+          {++index}. {text}
+        </p>
       </div>
       <div className='todo__todo-actions'>
         <div className='todo__todo-employee'>
@@ -105,7 +149,7 @@ const ToDo: React.FC<TodoInterfaceProps> = ({
           </button>
         </div>
       </div>
-    </Reorder.Item>
+    </li>
   );
 };
 export default ToDo;

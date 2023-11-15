@@ -10,7 +10,7 @@ interface EditTaskAction {
   id: string;
 }
 
-interface putTaskOnSomebody {
+interface putTaskOnSomebodyAction {
   id: string;
   text: string;
   employee: string;
@@ -293,7 +293,7 @@ const tasksSlice = createSlice({
       }
       return state;
     },
-    putTaskOnSomebody(state, action: PayloadAction<putTaskOnSomebody>) {
+    putTaskOnSomebody(state, action: PayloadAction<putTaskOnSomebodyAction>) {
       const timeSelectEmployee: string = getFormattedDateAndTime();
       const textPutOnTaskEmployeeEng: string = `Task ${action.payload.text} now on ${action.payload.employee} - ${timeSelectEmployee}`;
       const textPutOnTaskEmployeeUkr: string = `Завдання ${action.payload.text} зараз на ${action.payload.employee} - ${timeSelectEmployee}`;
@@ -320,11 +320,11 @@ const tasksSlice = createSlice({
         },
       };
     },
-    reorderTodos(state, action: PayloadAction<any>) {
-      const newOrder = action.payload;
+    reorderTodos(state, action: PayloadAction<TodoInterface[]>) {
+      // state.todos = action.payload;
       return {
         ...state,
-        todos: newOrder,
+        todos: action.payload,
       };
     },
   },
