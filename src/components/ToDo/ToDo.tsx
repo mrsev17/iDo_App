@@ -55,14 +55,12 @@ const ToDo: React.FC<TodoInterfaceProps> = ({
 
   const dragStartHandler = (e: React.DragEvent, index: number): void => {
     e.dataTransfer.setData('text/plain', index.toString());
+    e.stopPropagation();
   };
 
   const handleDrop = (e: React.DragEvent, targetIndex: number): void => {
     e.preventDefault();
-    if (e.target instanceof HTMLElement) {
-      // e.target.style.background = '#181818';
-      // // e.target.classList.remove('todo__start-drag');
-    }
+    e.stopPropagation();
     const enterData: TodoInterface[] = [...todos];
     const draggedIndex: number = Number(e.dataTransfer.getData('text/plain'));
     const swapElements = (
@@ -82,18 +80,49 @@ const ToDo: React.FC<TodoInterfaceProps> = ({
   };
   const dragEndHandler = (e: React.DragEvent) => {
     e.preventDefault();
-    if (e.target instanceof HTMLElement) {
-      // e.target.style.background = 'black';
-      // e.target.classList.add('todo__start-drag');
-    }
+    e.stopPropagation();
   };
 
   const allowDrop = (e: React.DragEvent) => {
     e.preventDefault();
-    if (e.target instanceof HTMLElement) {
-      // e.target.style.background = '#black';
-      // e.target.classList.add('todo__start-drag');
+    e.stopPropagation();
+  };
+
+  // Touch screen events
+
+  const [touchStartIndex, setTouchStartIndex] = useState<number | null>(null);
+
+  const touchStartHandler = (e: React.TouchEvent, index: number): void => {
+    e.stopPropagation();
+    setTouchStartIndex(index);
+  };
+
+  const touchMoveHandler = (e: React.TouchEvent, targetIndex: number): void => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (touchStartIndex !== null) {
+      const enterData: TodoInterface[] = [...todos];
+      const draggedIndex: number = touchStartIndex;
+      const swapElements = (
+        enterData: TodoInterface[],
+        indexDraged: number,
+        indexTarget: number
+      ): TodoInterface[] => {
+        const temp: TodoInterface = enterData[indexDraged - 1];
+        enterData[indexDraged - 1] = enterData[indexTarget - 1];
+        enterData[indexTarget - 1] = temp;
+        return enterData;
+      };
+      const swapTodos: TodoInterface[] = [
+        ...swapElements(enterData, draggedIndex, targetIndex),
+      ];
+      dispatch(reorderTodos(swapTodos));
+      setTouchStartIndex(null);
     }
+  };
+
+  const touchEndHandler = () => {
+    setTouchStartIndex(null);
   };
 
   return (
@@ -104,6 +133,10 @@ const ToDo: React.FC<TodoInterfaceProps> = ({
       onDragEnd={(e) => dragEndHandler(e)}
       onDrop={(e) => handleDrop(e, index)}
       onDragOver={allowDrop}
+      //
+      onTouchStart={(e) => touchStartHandler(e, index)}
+      onTouchMove={(e) => touchMoveHandler(e, index)}
+      onTouchEnd={touchEndHandler}
       className='todo__todo-item'
       key={id}
     >
