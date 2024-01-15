@@ -39,7 +39,10 @@ export const NavigationQuiz: React.FC = () => {
             badgeContent={getTasksLength}
             color='default'
           >
-            <Link className={location.pathname === '/' ? 'active' : ''} to='/'>
+            <Link
+              className={location.pathname === '/' ? 'active' : 'notActive'}
+              to='/'
+            >
               {getCurrentLangDB.navigation.tasks}
             </Link>
           </Badge>
@@ -52,7 +55,9 @@ export const NavigationQuiz: React.FC = () => {
           color='default'
         >
           <Link
-            className={location.pathname === '/employees' ? 'active' : ''}
+            className={
+              location.pathname === '/employees' ? 'active' : 'notActive'
+            }
             to='/employees'
           >
             {getCurrentLangDB.navigation.employees}
@@ -65,7 +70,9 @@ export const NavigationQuiz: React.FC = () => {
           color='default'
         >
           <Link
-            className={location.pathname === '/operations' ? 'active' : ''}
+            className={
+              location.pathname === '/operations' ? 'active' : 'notActive'
+            }
             to='/operations'
           >
             {getCurrentLangDB.navigation.operations}

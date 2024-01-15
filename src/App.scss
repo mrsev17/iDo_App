@@ -170,10 +170,16 @@ h1 {
 }
 
 .app-dark-body {
-  background-color: $color-bg-body-dark;
+  // background-color: $color-bg-body-dark;
+  background-color: transparent;
+  height: 100vh;
 }
 
 .app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   main {
     margin-bottom: 30px;
     .content-page {
@@ -263,7 +269,12 @@ h1 {
 }
 
 @media (max-width: 568px) {
+  .app-dark-body,
   .app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     main {
       display: flex;
       flex-direction: column;

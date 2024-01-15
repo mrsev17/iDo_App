@@ -16,6 +16,14 @@
   }
   .header__right-side {
     display: flex;
+    gap: 34px;
+    div > button {
+      margin-top: 12px;
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
   }
 }
 

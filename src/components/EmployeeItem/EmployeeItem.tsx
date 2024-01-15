@@ -27,16 +27,16 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
   const getTasksEmployee: TodoInterface[] = getTasks.filter(
     (task: TodoInterface) => task.responsiblePerson === employee
   );
-  const getCompletedTasks = getTasksEmployee.filter(
+  const getCompletedTasks: TodoInterface[] = getTasksEmployee.filter(
     (task) => task.completed === true
   );
-  const currentProgressEmployeeCalc = () => {
+  const currentProgressEmployeeCalc = (): number => {
     if (getCompletedTasks.length) {
       return (getCompletedTasks.length / getTasksEmployee.length) * 100;
     }
     return 0;
   };
-  const currentProgressEmployee = currentProgressEmployeeCalc();
+  const currentProgressEmployee: number = currentProgressEmployeeCalc();
   const handleClickOpen = (): void => {
     setOpen(true);
   };
@@ -53,7 +53,7 @@ const EmployeeItem: React.FC<EmployeeProps> = ({ employee, id }) => {
   const badgeStyleEmployee = {
     width: '100%',
     margin: '0 auto',
-
+    // transform: 'scale(0.95)',
     '& .MuiBadge-badge': {
       color: 'azure',
       backgroundColor: mode ? '#6a5acd' : '#363b4e',

@@ -3,6 +3,7 @@ import { ToggleSwitch } from '../ToggleSwitch';
 import { useSelectMode } from '../../redux/selectors/modeSelector';
 import { IconCat } from '../IconCat/IconCat';
 import './Header.scss';
+import ModalSettings from '../ModalSettings/ModalSettings';
 
 export const Header: React.FC = () => {
   const mode: boolean = useSelectMode();
@@ -17,6 +18,9 @@ export const Header: React.FC = () => {
         </h2>
       </div>
       <div className='header__right-side'>
+        <div>
+          <ModalSettings />
+        </div>
         <ToggleSwitch />
       </div>
     </header>

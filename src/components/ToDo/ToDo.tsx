@@ -11,7 +11,6 @@ import removeIcon from '../../assets/icon-delete.svg';
 import SelectEmployee from '../SelectEmployee/SelectEmployee';
 import ToDoEditModal from '../ToDoEditModal/ToDoEditModal';
 import { useAppDispatch } from '../../hooks';
-// import { LanguageTranslations } from '../../interfaces';
 import {
   removeTask,
   completeTask,
@@ -133,7 +132,6 @@ const ToDo: React.FC<TodoInterfaceProps> = ({
       onDragEnd={(e) => dragEndHandler(e)}
       onDrop={(e) => handleDrop(e, index)}
       onDragOver={allowDrop}
-      //
       onTouchStart={(e) => touchStartHandler(e, index)}
       onTouchMove={(e) => touchMoveHandler(e, index)}
       onTouchEnd={touchEndHandler}

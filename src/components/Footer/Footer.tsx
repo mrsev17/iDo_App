@@ -8,9 +8,7 @@ export const Footer: React.FC = () => {
     <footer className={mode ? 'footer fade-in dark-footer' : 'footer fade-in'}>
       <div className='footer__wrapper'>
         <div className='footer__left-side'></div>
-        <div className='footer__right-side'>
-          <ModalSettings />
-        </div>
+        <div className='footer__right-side'>{/* <ModalSettings /> */}</div>
       </div>
     </footer>
   );
